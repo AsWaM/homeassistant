@@ -1,0 +1,111 @@
+elements:
+  - entity: switch.appliquesalon
+    image: /local/images/salon/applique2.png
+    state_image:
+      'off': /local/images/salon/applique2_off.png
+      'on': /local/images/salon/applique2.png
+    style:
+      left: 30.55%
+      top: 31.9%
+      width: 14.5%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: switch.couloir
+    image: /local/images/salon/couloir.png
+    state_image:
+      'off': /local/images/salon/couloir_off.png
+      'on': /local/images/salon/couloir.png
+    style:
+      left: 44.45%
+      top: 36.3%
+      width: 6.2%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: switch.lustresalon
+    image: /local/images/salon/lustre_on.png
+    state_image:
+      'off': /local/images/salon/lustre_off.png
+      'on': /local/images/salon/lustre_on.png
+    style:
+      left: 49.25%
+      top: 13.9%
+      width: 20.2%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: switch.cuisine1
+    image: /local/images/salon/cuisine1.png
+    state_image:
+      'off': /local/images/salon/cuisine1_off.png
+      'on': /local/images/salon/cuisine1.png
+    style:
+      left: 68.35%
+      top: 30.5%
+      width: 15%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: switch.cuisine2
+    image: /local/images/salon/cuisine2.png
+    state_image:
+      'off': /local/images/salon/cuisine2_off.png
+      'on': /local/images/salon/cuisine2.png
+    style:
+      left: 97.7%
+      top: 16.8%
+      width: 4.5%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: switch.plug_158d0001a5d465
+    image: /local/images/salon/lampadaire.png
+    state_image:
+      'off': /local/images/salon/lampadaire_off.png
+      'on': /local/images/salon/lampadaire.png
+    style:
+      left: 8.4%
+      top: 16.7%
+      width: 16.9%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: switch.ambiance_salon
+    image: /local/images/salon/ambiance.png
+    state_image:
+      'off': /local/images/salon/ambiance_off.png
+      'on': /local/images/salon/ambiance.png
+    style:
+      left: 14.1%
+      top: 52.5%
+      width: 7.2%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: switch.plan_travail
+    image: /local/images/salon/plantravailfull.png
+    state_image:
+      'off': /local/images/salon/plantravailfull.png
+      'on': /local/images/salon/plantravailfull_on.png
+    style:
+      left: 89.6%
+      top: 37.5%
+      width: 21.05%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: switch.tv_composite
+    image: /local/images/salon/tv_on.png
+    state_image:
+      'off': /local/images/salon/tv.png
+      'on': /local/images/salon/tv_on.png
+    style:
+      left: 31.5%
+      top: 48.2%
+      width: 15%
+    tap_action:
+      action: toggle
+    type: image
+image: /local/images/Salon2.jpg
+type: picture-elements
