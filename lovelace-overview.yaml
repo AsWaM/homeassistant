@@ -1,0 +1,693 @@
+elements:
+  - entity: switch.chambre
+    image: /local/images/chambre.png
+    state_image:
+      'off': /local/images/chambre_off.png
+      'on': /local/images/chambre.png
+    style:
+      left: 30%
+      top: 64.5%
+      width: 24.5%
+    tap_action:
+      action: none
+    type: image
+  - entity: switch.chambre
+    image: /local/images/garage_off.png
+    style:
+      left: 67%
+      top: 16.8%
+      width: 31.5%
+    tap_action:
+      action: none
+    type: image
+  - entity: switch.sdb
+    image: /local/images/sdb.png
+    state_image:
+      'off': /local/images/sdb_off.png
+      'on': /local/images/sdb.png
+    style:
+      left: 30%
+      top: 13.5%
+      width: 24.5%
+    tap_action:
+      action: none
+    type: image
+  - entity: light.yeelight_color1_7811dc6a9651
+    image: /local/images/couloir_bas.png
+    state_image:
+      'off': /local/images/couloir_bas_off.png
+      'on': /local/images/couloir_bas.png
+    style:
+      left: 46.8%
+      top: 54.1%
+      width: 9.2%
+    tap_action:
+      action: none
+    type: image
+  - entity: light.yeelight_color2_7c49eb157ed5
+    image: /local/images/couloir_haut.png
+    state_image:
+      'off': /local/images/couloir_haut_off.png
+      'on': /local/images/couloir_haut.png
+    style:
+      left: 46.8%
+      top: 20.8%
+      width: 8.7%
+    tap_action:
+      action: none
+    type: image
+  - entity: switch.cuisine1
+    image: /local/images/salon_haut.png
+    state_image:
+      'off': /local/images/salon_haut_off.png
+      'on': /local/images/salon_haut.png
+    style:
+      left: 67%
+      top: 44%
+      width: 32.5%
+    tap_action:
+      action: none
+    type: image
+  - entity: switch.plug_158d0001a5d465
+    image: /local/images/salon_bas.png
+    state_image:
+      'off': /local/images/salon_bas_off.png
+      'on': /local/images/salon_bas.png
+    style:
+      left: 67%
+      top: 79.2%
+      width: 32.5%
+    tap_action:
+      action: none
+    type: image
+  - entity: switch.chiottelum
+    image: /local/images/chiotte.png
+    state_image:
+      'off': /local/images/chiotte_off.png
+      'on': /local/images/chiotte.png
+    style:
+      left: 46.5%
+      top: 77%
+      width: 9%
+    tap_action:
+      action: none
+    type: image
+  - entity: switch.chambredoud
+    image: /local/images/chambre_doudou.png
+    state_image:
+      'off': /local/images/chambre_doudou_off.png
+      'on': /local/images/chambre_doudou.png
+    style:
+      left: 30%
+      top: 34%
+      width: 24.5%
+    tap_action:
+      action: none
+    type: image
+  - entity: switch.tv_composite
+    image: /local/images/tv.png
+    state_image:
+      'off': /local/images/tv_off.png
+      'on': /local/images/tv.png
+    style:
+      left: 58%
+      top: 68.5%
+      width: 6%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: light.yeelight_strip2_04cf8c7acfe8
+    image: /local/images/ledstrip.png
+    state_image:
+      'off': /local/images/ledstrip_off.png
+      playing: /local/images/ledstrip.png
+    style:
+      left: 28%
+      top: 23.5%
+      width: 18%
+    tap_action:
+      action: toggle
+    title: ledstrip bureau doudou
+    type: image
+  - entity: light.yeelight_strip1_7811dc66e549
+    image: /local/images/ledstrip.png
+    state_image:
+      'off': /local/images/ledstrip_off.png
+      playing: /local/images/ledstrip.png
+    style:
+      left: 73%
+      top: 30.3%
+      width: 18%
+    tap_action:
+      action: toggle
+    title: ledstrip cuisine
+    type: image
+  - entity: light.yeelight_strip1_7811dca22953
+    image: /local/images/ledstrip_v.png
+    state_image:
+      'off': /local/images/ledstrip_v_off.png
+      playing: /local/images/ledstrip_v.png
+    style:
+      left: 54%
+      top: 69%
+      width: 1.5%
+    tap_action:
+      action: toggle
+    title: ledstrip tv
+    type: image
+  - entity: binary_sensor.door_window_sensor_158d0001ab1b67
+    image: /local/images/door_o_b.png
+    state_image:
+      'off': /local/images/door_c_b.png
+      'on': /local/images/door_o_b.png
+    style:
+      left: 46.5%
+      top: 66.9%
+      width: 5.6%
+    title: porte chiotte
+    type: image
+  - entity: binary_sensor.door_window_sensor_158d0001d8526a
+    image: /local/images/door_o_l.png
+    state_image:
+      'off': /local/images/door_c_l.png
+      'on': /local/images/door_o_l.png
+    style:
+      left: 53.7%
+      top: 22.2%
+      width: 5.6%
+    title: porte garage
+    type: image
+  - entity: binary_sensor.door_window_sensor_158d000239438b
+    image: /local/images/door_o_l.png
+    state_image:
+      'off': /local/images/door_c_l.png
+      'on': /local/images/door_o_l.png
+    style:
+      left: 85.2%
+      top: 54.7%
+      width: 5.6%
+    title: fenetre terasse 2
+    type: image
+  - entity: binary_sensor.door_window_sensor_158d0001dbd24f
+    image: /local/images/door_o_l.png
+    state_image:
+      'off': /local/images/door_c_l.png
+      'on': /local/images/door_o_l.png
+    style:
+      left: 85.2%
+      top: 45.2%
+      width: 5.6%
+    title: fenetre terasse
+    type: image
+  - entity: binary_sensor.door_window_sensor_158d0001de78e5
+    image: /local/images/door_o_r.png
+    state_image:
+      'off': /local/images/door_c_r.png
+      'on': /local/images/door_o_r.png
+    style:
+      left: 15%
+      top: 15.7%
+      width: 5.6%
+    title: fenetre salle de bains
+    type: image
+  - entity: binary_sensor.door_window_sensor_158d0002391048
+    image: /local/images/door_o_r.png
+    state_image:
+      'off': /local/images/door_c_r.png
+      'on': /local/images/door_o_r.png
+    style:
+      left: 15%
+      top: 39.7%
+      width: 5.6%
+    title: fenetre chambre doudou
+    type: image
+  - entity: binary_sensor.door_window_sensor_158d00023949af
+    image: /local/images/door_o_r.png
+    state_image:
+      'off': /local/images/door_c_r.png
+      'on': /local/images/door_o_r.png
+    style:
+      left: 15%
+      top: 57.4%
+      width: 5.6%
+    title: fenetre chambre
+    type: image
+  - entity: binary_sensor.door_window_sensor_158d0001ab5aaa
+    image: /local/images/door_o_t.png
+    state_image:
+      'off': /local/images/door_c_t.png
+      'on': /local/images/door_o_t.png
+    style:
+      left: 46.4%
+      top: 9.1%
+      width: 5.6%
+    title: porte entrée
+    type: image
+  - entity: binary_sensor.door_window_sensor_158d000272f13c
+    image: /local/images/door_o_r2.png
+    state_image:
+      'off': /local/images/door_c_r2.png
+      'on': /local/images/door_o_r2.png
+    style:
+      left: 39.7%
+      top: 16.5%
+      width: 5.6%
+    title: porte salle de bains
+    type: image
+  - entity: cover.garage_door
+    image: /local/images/door_u_garage.png
+    state_image:
+      closed: /local/images/door_c_garage.png
+      open: /local/images/door_o_garage.png
+      unknown: /local/images/door_u_garage.png
+    style:
+      left: 86.6%
+      top: 16.5%
+      width: 8.6%
+    title: porte garage
+    type: image
+  - entity: camera.dafang1
+    icon: 'mdi:cctv'
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 82%
+      top: 30.5%
+    title: camera dafang
+    type: icon
+  - camera_image: null
+    entity: camera.frigo
+    icon: 'mdi:cctv'
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 52%
+      top: 30.5%
+    title: camera frigo
+    type: icon
+  - entity: switch.chambre
+    style:
+      '--iron-icon-height': 70px
+      '--iron-icon-width': 70px
+      left: 28%
+      top: 50%
+    tap_action:
+      action: toggle
+    title: lumiere chambre
+    type: state-icon
+  - entity: switch.chambredoud
+    style:
+      '--iron-icon-height': 70px
+      '--iron-icon-width': 70px
+      left: 28%
+      top: 34%
+    tap_action:
+      action: toggle
+    title: lumiere chambre doudou
+    type: state-icon
+  - entity: switch.cuisine1
+    style:
+      '--iron-icon-height': 50px
+      '--iron-icon-width': 50px
+      left: 55%
+      top: 40%
+    tap_action:
+      action: toggle
+    title: lumiere cuisine
+    type: state-icon
+  - entity: switch.cuisine1
+    style:
+      '--iron-icon-height': 50px
+      '--iron-icon-width': 50px
+      left: 67%
+      top: 40%
+    tap_action:
+      action: toggle
+    title: lumiere cuisine
+    type: state-icon
+  - entity: switch.appliquesalon
+    style:
+      '--iron-icon-height': 30px
+      '--iron-icon-width': 30px
+      left: 52.5%
+      top: 69%
+    tap_action:
+      action: toggle
+    title: lumiere applique salon
+    type: state-icon
+  - entity: switch.lustresalon
+    style:
+      '--iron-icon-height': 80px
+      '--iron-icon-width': 80px
+      left: 69%
+      top: 69%
+    tap_action:
+      action: toggle
+    title: lumiere lustre salon
+    type: state-icon
+  - entity: switch.cuisine2
+    style:
+      '--iron-icon-height': 50px
+      '--iron-icon-width': 50px
+      left: 77%
+      top: 40%
+    tap_action:
+      action: toggle
+    title: lumiere cuisine
+    type: state-icon
+  - entity: switch.chiottelum
+    style:
+      '--iron-icon-height': 45px
+      '--iron-icon-width': 45px
+      left: 46.3%
+      top: 74%
+    tap_action:
+      action: toggle
+    title: lumiere chiotte
+    type: state-icon
+  - entity: switch.plug_158d0001de56c2
+    style:
+      '--iron-icon-height': 30px
+      '--iron-icon-width': 30px
+      left: 69%
+      top: 35%
+    tap_action:
+      action: toggle
+    title: spots cuisine
+    type: state-icon
+  - entity: switch.plug_158d0001de56c2
+    style:
+      '--iron-icon-height': 30px
+      '--iron-icon-width': 30px
+      left: 79%
+      top: 35%
+    tap_action:
+      action: toggle
+    title: spots cuisine
+    type: state-icon
+  - entity: light.yeelight_color2_7c49eb157ed5
+    style:
+      '--iron-icon-height': 70px
+      '--iron-icon-width': 70px
+      left: 45%
+      top: 13%
+    tap_action:
+      action: toggle
+    title: lampe couloir entrée
+    type: state-icon
+  - entity: switch.sdb
+    style:
+      '--iron-icon-height': 70px
+      '--iron-icon-width': 70px
+      left: 28%
+      top: 10%
+    tap_action:
+      action: toggle
+    title: lampe salle de bains
+    type: state-icon
+  - entity: light.yeelight_color1_7811dc6a9651
+    style:
+      '--iron-icon-height': 70px
+      '--iron-icon-width': 70px
+      left: 45%
+      top: 45%
+    tap_action:
+      action: toggle
+    title: lampe couloir
+    type: state-icon
+  - entity: switch.ambiance_salon
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 82.5%
+      top: 60%
+    tap_action:
+      action: toggle
+    title: lumières salon
+    type: state-icon
+  - entity: switch.ambiance_salon
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 82.5%
+      top: 75%
+    tap_action:
+      action: toggle
+    title: lumières salon
+    type: state-icon
+  - entity: switch.ambiance_salon
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 52.5%
+      top: 80%
+    tap_action:
+      action: toggle
+    title: lumières salon
+    type: state-icon
+  - entity: light.bedside_philips
+    style:
+      '--iron-icon-height': 45px
+      '--iron-icon-width': 45px
+      left: 33%
+      top: 70%
+    title: lampe de chevet
+    type: state-icon
+  - entity: light.yeelight_bslamp1_7811dc904840
+    style:
+      '--iron-icon-height': 45px
+      '--iron-icon-width': 45px
+      left: 20%
+      top: 64%
+    title: lampe de chevet 2
+    type: state-icon
+  - entity: switch.chiotteventil
+    style:
+      '--iron-icon-height': 35px
+      '--iron-icon-width': 35px
+      left: 44%
+      top: 80%
+    tap_action:
+      action: toggle
+    title: Ventilation Chiotte
+    type: state-icon
+  - entity: switch.plug_158d0001a5d465
+    style:
+      '--iron-icon-height': 42px
+      '--iron-icon-width': 42px
+      left: 72.1%
+      top: 78.9%
+    tap_action:
+      action: toggle
+    title: Lampadaire
+    type: state-icon
+  - entity: binary_sensor.motion_sensor_158d0001e47f52
+    style:
+      '--iron-icon-height': 20px
+      '--iron-icon-width': 20px
+      '--paper-item-icon-active-color': red
+      '--paper-item-icon-color': lightgreen
+      left: 20%
+      top: 20%
+    title: Mouvement Salle de bains
+    type: state-icon
+  - entity: binary_sensor.motion_sensor_158d0001e47d34
+    style:
+      '--iron-icon-height': 20px
+      '--iron-icon-width': 20px
+      '--paper-item-icon-active-color': red
+      '--paper-item-icon-color': lightgreen
+      left: 44%
+      top: 12%
+    title: Mouvement Entrée
+    type: state-icon
+  - entity: binary_sensor.motion_sensor_158d0001ddca38
+    style:
+      '--iron-icon-height': 20px
+      '--iron-icon-width': 20px
+      '--paper-item-icon-active-color': red
+      '--paper-item-icon-color': lightgreen
+      left: 44%
+      top: 63%
+    title: Mouvement Couloir
+    type: state-icon
+  - entity: binary_sensor.motion_sensor_158d0001b7542d
+    style:
+      '--iron-icon-height': 20px
+      '--iron-icon-width': 20px
+      '--paper-item-icon-active-color': red
+      '--paper-item-icon-color': lightgreen
+      left: 80%
+      top: 85%
+    type: state-icon
+  - entity: binary_sensor.motion_sensor_158d0001d6675f
+    style:
+      '--iron-icon-height': 20px
+      '--iron-icon-width': 20px
+      '--paper-item-icon-active-color': red
+      '--paper-item-icon-color': lightgreen
+      left: 44%
+      top: 75%
+    title: mouvement chiotte
+    type: state-icon
+  - entity: vacuum.xiaomi_vacuum_cleaner
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 54%
+      top: 54%
+    type: state-icon
+  - entity: sensor.yr_temperature
+    prefix: 'YR: '
+    style:
+      font-size: 15px
+      left: 91%
+      top: 32%
+    title: température yr
+    type: state-label
+  - entity: sensor.temperature_158d000272e88d
+    prefix: 'Mesurée: '
+    style:
+      font-size: 15px
+      left: 91%
+      top: 34%
+    title: température exterieure
+    type: state-label
+  - entity: weather.dark_sky
+    style:
+      left: 91%
+      top: 45%
+    title: dark sky
+    type: state-badge
+  - entity: sensor.temperature_158d0001b96127
+    style:
+      font-size: 15px
+      left: 39%
+      top: 29%
+    title: température chanmbre Doudou
+    type: state-label
+  - entity: sensor.temperature_158d0001b8f1b1
+    style:
+      font-size: 15px
+      left: 55%
+      top: 46%
+    title: température salon
+    type: state-label
+  - entity: sensor.temperature_158d0001b92bcc
+    style:
+      font-size: 15px
+      left: 39%
+      top: 50%
+    title: température chambre
+    type: state-label
+  - entity: sensor.temperature_158d00022734f8
+    style:
+      font-size: 15px
+      left: 39%
+      top: 7%
+    title: température salle de bains
+    type: state-label
+  - entity: sensor.temperature_158d000273a1ce
+    style:
+      font-size: 15px
+      left: 58%
+      top: 31%
+    title: température frigo
+    type: state-label
+  - entity: sensor.temperature_158d0002c8bc1c
+    style:
+      font-size: 15px
+      left: 58%
+      top: 9%
+    title: température garage
+    type: state-label
+  - entity: sensor.humidity_158d0001b96127
+    style:
+      font-size: 15px
+      left: 39%
+      top: 31%
+    title: humidité chanmbre Doudou
+    type: state-label
+  - entity: sensor.humidity_158d0001b8f1b1
+    style:
+      font-size: 15px
+      left: 55%
+      top: 48%
+    title: humidité salon
+    type: state-label
+  - entity: sensor.humidity_158d0001b92bcc
+    style:
+      font-size: 15px
+      left: 39%
+      top: 52%
+    title: humidité chambre
+    type: state-label
+  - entity: sensor.humidity_158d00022734f8
+    style:
+      font-size: 15px
+      left: 39%
+      top: 9%
+    title: humidité salle de bains
+    type: state-label
+  - entity: sensor.humidity_158d000273a1ce
+    style:
+      font-size: 15px
+      left: 58%
+      top: 33%
+    title: humidité frigo
+    type: state-label
+  - entity: sensor.humidity_158d0002c8bc1c
+    style:
+      font-size: 15px
+      left: 58%
+      top: 11%
+    title: humidité garage
+    type: state-label
+  - entity: input_boolean.mode_present
+    state_image:
+      'off': /local/images/away.png
+      'on': /local/images/home.png
+    style:
+      left: 6%
+      top: 10%
+      width: 10%
+    tap_action:
+      action: toggle
+    title: mode présent/absent
+    type: image
+  - entity: switch.terasse
+    style:
+      '--iron-icon-height': 60px
+      '--iron-icon-width': 60px
+      left: 84%
+      top: 67%
+    tap_action:
+      action: toggle
+    title: lumiere terasse
+    type: state-icon
+  - entity: input_boolean.mode_waf
+    state_image:
+      'off': /local/images/waf_off.png
+      'on': /local/images/waf.png
+    style:
+      left: 6%
+      top: 28%
+      width: 9%
+    tap_action:
+      action: toggle
+    title: mode diana
+    type: image
+  - entity: input_boolean.mode_nuit
+    state_image:
+      'off': /local/images/day.png
+      'on': /local/images/night.png
+    style:
+      left: 6%
+      top: 47%
+      width: 9%
+    tap_action:
+      action: toggle
+    title: mode nuit
+    type: image
+image: /local/images/floorplan.png
+type: picture-elements
