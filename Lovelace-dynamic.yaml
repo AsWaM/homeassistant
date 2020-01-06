@@ -1,0 +1,49 @@
+  - badges: []
+    cards:
+      - card:
+          title: Lumières Allumées
+          type: entities
+        filter:
+          include:
+            - entity_id: light.*
+              state: 'on'
+        type: 'custom:monster-card'
+      - card:
+          title: Personnes présentes
+          type: glance
+        filter:
+          include:
+            - entity_id: device_tracker.*
+              state: home
+        type: 'custom:monster-card'
+      - card:
+          title: Interrupteurs Allumées
+          type: entities
+        filter:
+          exclude:
+            - entity_id: switch.tv_ch
+            - entity_id: switch.sound_bar_vol
+            - entity_id: switch.synology_home_mode
+            - entity_id: switch.dafang*
+            - entity_id: switch.tv
+          include:
+            - entity_id: switch.*
+              state: 'on'
+        type: 'custom:monster-card'
+      - card:
+          title: Portes/fenêtres ouvertes
+          type: glance
+        filter:
+          include:
+            - entity_id: binary_sensor.door_window_sensor*
+              state: 'on'
+        type: 'custom:monster-card'
+      - card:
+          title: Batteries inférieures a 33%
+          type: glance
+        filter:
+          include:
+            - entity_id: sensor.bat*
+              state: < 30
+        type: 'custom:monster-card'
+    title: DYNAMIC
