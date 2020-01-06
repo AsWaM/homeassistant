@@ -39,6 +39,7 @@ Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
 - Xiaomi Gateway V2
 - Xiaomi Temperature and Humidity Sensor (x9) both v1 and v2
 - Xiaomi Window/Door Sensor (x6) both v1 and v2
+- Xiaomi Motion Sensor (x5) both v1 and v2
 - Xiaomi Bed Activity Sensor (currently unused)
 ### Actionners
 - Xiaomi Smart Button (x3) both v1 and v2
