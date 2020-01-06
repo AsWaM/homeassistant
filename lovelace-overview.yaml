@@ -689,5 +689,29 @@ elements:
       action: toggle
     title: mode nuit
     type: image
+  - entity: climate.chambre_alex
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 20%
+      top: 50%
+    title: radiateur chambre
+    type: state-icon
+  - entity: climate.salon
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 80%
+      top: 92%
+    title: radiateur salon
+    type: state-icon
+  - entity: climate.chambre_doudou
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 20%
+      top: 39%
+    title: radiateur doudou
+    type: state-icon
 image: /local/images/floorplan.png
-type: picture-elements
+type: picture-elements   
