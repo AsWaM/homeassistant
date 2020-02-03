@@ -151,6 +151,18 @@ These groups allow to control several lights simultaneously
        - light.yeelight_strip1_7811dca22953
 ```
 
+### Groups
+
+And of course groups of groups
+```
+  all_open_sensors:
+    name: Tous capteurs ouverture
+    entities:
+       - group.door_sensors
+       - group.window_sensors
+```
+
+
 ### Automations
 
 Allows to deactivate the automations not "supported" by the wife when she is at home, and reactivate them the rest of the time
