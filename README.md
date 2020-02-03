@@ -1,85 +1,85 @@
-# homeassistant
+# Introduction
 **AsWaM's** home assistant configuration
 This is a work in progress, not a tutorial. Happy if it helps.
 
 Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
 
-## Expected improvements
+# Expected improvements
 - Add motors to the Rolle Shutters and integrate them
 - <del>Add a Tado smart TRV in the bathroom</del> --> Done
 
-## Live demo (floorplan)
+# Live demo (floorplan)
  - Overview is created with Picture elements and image superpositions
 [Youtube Live demo](https://www.youtube.com/watch?v=4EGnCFBxhZg)
 
 - Livingroom is created with Picture elements and image superpositions
 [Youtube Live demo](https://www.youtube.com/watch?v=QuAtu_bE5hE)
 
-## Used integrations & Hardware
-### Heating / Climate
+# Used integrations & Hardware
+## Heating / Climate
 - Tado smart TRVs (x5) + Tado Gateway
-### Custom Sensors
+## Custom Sensors
 - Template (for sensor batteries, average temperature, turned on lights etc...) 
 - History (Already cleaned today, Sonnzed notification, ect) 
-### Calendar
+## Calendar
 - Google Calendar
-### Notification
+## Notification
 - Telegram
-### Cameras integration
+## Cameras integration
 - Synology, custom python script to trigger home/away mode
-### Cameras Models
+## Cameras Models
 - Foscam FI9821P
 - Xiaomi dafang with [EliasKotlyar Xiaomi-Dafang-Hacks custom Firmware](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
 - Eufy Security cam V2 (not integrated yet) 
-### Presence Detection
+## Presence Detection
 - bluetooth device tracker
 - <del>Tado GeoFence</del> Desactivated that, prevents you to remotely turn the heating on
 - Could not get the NUT ble tracker to work (ble_device_tracker)
-### Sensors
+## Sensors
 - Xiaomi Gateway V2
 - Xiaomi Temperature and Humidity Sensor (x9) both v1 and v2
 - Xiaomi Window/Door Sensor (x6) both v1 and v2
 - Xiaomi Motion Sensor (x5) both v1 and v2
 - Xiaomi Bed Activity Sensor (currently unused)
-### Actionners
+## Actionners
 - Xiaomi Smart Button (x3) both v1 and v2
 - Xiaomi Magic Cube (x2)
 - Xiaomi Smart Plug (x3)
 - Sonoff T2 EU 1CH (x4) with [arendst Tasmota Custom Firmware](https://github.com/arendst/Tasmota)
 - Sonoff T2 EU 2CH (x3) with [arendst Tasmota Custom Firmware](https://github.com/arendst/Tasmota)
-### Media Player
+## Media Player
 - LG TV
-### Plants
+## Plants
 - Mi flora (x2)
-### Meteo
+## Meteo
 - YR.no
 - DarkSky
-### Lights
+## Lights
 - Yeelight RGB Bulb (x6) both v1 and v2
 - YeeLight RGB Led Strip (x3) both v1 and v2
 - Yeelight BedSide Lamp (v2)
 - Xiaomi Philips BedSide Lamp
-### Infrared / Radio Frequency
+## Infrared / Radio Frequency
 - Broadlink RM Plus
-### Vaccuum cleaner
+## Vaccuum cleaner
 - Roborock S50 Vacuum cleaner
-### Garage
+## Garage
 - Garadget
-### Hass.IO Extensions
+## Hass.IO Extensions
 - Google cloud backup
 - Tasmota Admin
 - Mosquito Broker
-### Hardware
+## Hardware
 - FritzBox 6190 Cable
 - Xiaomi Mi Router 3G with [OpenWRT LuCi](https://openwrt.org/docs/guide-user/luci/start)
 - Synology NAS DS218+
 - Raspberry Pi 4B
 
-## Groups
+# Groups
 Originally, (pre-lovelace) this was used for both display and use of multiple sensors/automations/lights etc together.
 Now, with lovelace, the display is useless, but still here for automations, sums, etc
 
-### Device tracker
+## Device tracker
 
 The magic about that, is that the group is 'home' if any of the trackers is 'home' and is 'not_home' if nobody is in the house. So the group is actually 'anyone home?' it switches to 'home' when the first person comes, and switches to 'not_home' when the last departs, which is just perfect for automations
 
@@ -93,7 +93,7 @@ The magic about that, is that the group is 'home' if any of the trackers is 'hom
        - device_tracker.lia
 ```
 
-### Sensors
+## Sensors
 The magic about that, is that if any goes from 'off' to 'on' the the whole group goes from 'off' to 'on', so you can trigger an automation if any of them is triggered, and if you add a new one, just add it to the group and it is intergrated to automations automatically
 
 The list here is not exhaustive, have a look a the groups.yaml file
@@ -137,7 +137,7 @@ These groups help for the averages
        - sensor.temperature_158d0001b8f1b1
        - sensor.temperature_158d00022734f8
 ```
-### Lights
+## Lights
 
 These groups allow to control several lights simultaneously
 ```
@@ -151,7 +151,7 @@ These groups allow to control several lights simultaneously
        - light.yeelight_strip1_7811dca22953
 ```
 
-### Groups
+## Groups
 
 And of course groups of groups
 ```
@@ -163,7 +163,7 @@ And of course groups of groups
 ```
 
 
-### Automations
+## Automations
 
 Allows to deactivate the automations not "supported" by the wife when she is at home, and reactivate them the rest of the time
 
@@ -183,15 +183,15 @@ Allows to deactivate the automations not "supported" by the wife when she is at 
 ```
 
 
-## Automations
+# Automations
 Currently 66
 Soon...
-## Custom Sensors
+# Custom Sensors
 Currently many
 Soon...
 
-## How it works
-### lovelace dynamic
+# How it works
+## lovelace dynamic
 It is based on the moster card. You can find it on [ciotlosm Github](https://github.com/ciotlosm/custom-lovelace/tree/master/monster-card). Copy it to your /js folder
 
 Add code at the beigining of the lovelace file
@@ -246,7 +246,7 @@ Last example with exclusions, all the turned on switches except the ones created
               state: 'on'
         type: 'custom:monster-card'
 ```
-### Picture elements
+## Picture elements
 You need a background image, and if you like a different one for the switched (on or off) then another one.
 I used [Paint.Net](https://www.getpaint.net/download.html) to darken/lighten the images
 then you just need to switch the image according to the status of a sensor (here a switch). You could also do the same with css transforms on the image.
