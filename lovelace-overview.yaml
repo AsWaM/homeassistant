@@ -677,17 +677,41 @@ elements:
       action: toggle
     title: mode diana
     type: image
+  - entity: input_boolean.mode_waf
+    state_image:
+      'off': /local/images/waf_off.png
+      'on': /local/images/waf.png
+    style:
+      left: 6%
+      top: 28%
+      width: 9%
+    tap_action:
+      action: toggle
+    title: mode diana
+    type: image
   - entity: input_boolean.mode_nuit
     state_image:
       'off': /local/images/day.png
       'on': /local/images/night.png
     style:
       left: 6%
-      top: 47%
+      top: 45%
       width: 9%
     tap_action:
       action: toggle
     title: mode nuit
+    type: image
+  - entity: input_boolean.heating
+    state_image:
+      'off': /local/images/heating_off.png
+      'on': /local/images/heating_on.png
+    style:
+      left: 6%
+      top: 60%
+      width: 9%
+    tap_action:
+      action: toggle
+    title: chauffage
     type: image
   - entity: climate.chambre_alex
     style:
@@ -713,5 +737,22 @@ elements:
       top: 39%
     title: radiateur doudou
     type: state-icon
+  - entity: climate.salle_de_bains
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 20%
+      top: 10%
+    title: radiateur sdb
+    type: state-icon
+  - entity: climate.cuisine
+    style:
+      '--iron-icon-height': 40px
+      '--iron-icon-width': 40px
+      left: 80%
+      top: 49%
+    title: radiateur cuisine
+    type: state-icon
 image: /local/images/floorplan.png
-type: picture-elements   
+type: picture-elements
+
