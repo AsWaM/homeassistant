@@ -1,0 +1,670 @@
+####################################################
+#                                                  #
+#                    VIEWS                         #
+#                                                  #
+####################################################
+
+####################################################
+#                 Home page                        #
+####################################################
+
+#  Default_view:
+  Home:
+#    name: Home
+    view: yes
+    icon: mdi:home
+    entities:
+       - group.detectors_presence
+       - group.config
+       - group.ambiance_salon
+       - group.average_values
+       - group.vaccum_info
+       - group.links
+       - group.overview
+       - group.tracked_devices
+       - group.all_open_sensors
+       - group.garage_control
+
+####################################################
+#                  Lumière                         #
+####################################################
+  Lights:
+    view: yes
+    icon: mdi:lightbulb
+    entities:
+       - group.light_bulbs
+       - group.light_devices
+       - group.ambiance_salon
+       - group.light_flashing
+       - group.light_control
+       - group.config
+       - group.automation_lights
+       - group.control_chiotte
+####################################################
+#                   Média                          #
+####################################################
+
+
+  Media:
+    view: yes
+    icon: mdi:monitor
+    entities:
+       - group.media_switches
+       - media_player.lg_tv_remote
+       - switch.tv_composite
+
+####################################################
+#                Surveillance                      #
+####################################################
+
+  Surveillance:
+    icon: mdi:camcorder
+    view: yes
+    entities:
+       - group.cameras
+       - group.detectors_presence
+       - group.motion_sensors
+       - sensor.last_motion
+       - group.all_open_sensors
+       - group.window_sensors
+       - group.door_sensors
+       - group.dafang_control
+       - group.garage_control
+
+
+####################################################
+#                  Capteurs                        #
+####################################################
+
+
+  Capteurs:
+    icon: mdi:nfc
+    view: yes
+    entities:
+       - group.sensors_external
+       - group.sensors_luminosity
+       - group.room_temperature
+       - group.room_humidity
+       - group.average_values
+       - group.sensors_pressure
+       - group.frigo
+       - group.garage_conditions
+####################################################
+#                   Fleurs                         #
+####################################################
+
+
+  Plantes:
+    icon: mdi:flower
+    view: yes
+    entities:
+       - group.plant_clivia
+       - group.plant_spathiphyllum
+
+####################################################
+#                 Batterie                        #
+####################################################
+
+
+  Batterie:
+    icon: mdi:battery
+    view: yes
+    entities:
+       - group.batteries_sensors
+       - group.batteries_others
+
+####################################################
+#                 Scénarios                        #
+####################################################
+
+
+  Scenarios:
+    view: yes
+    icon: mdi:home-automation
+    entities:
+       - group.automation_lights
+       - group.automation_buttons
+       - group.automation_notification
+       - group.automation_timer
+       - group.automation_detection
+       - group.automation_telegram
+####################################################
+#                   Bordel                         #
+####################################################
+
+  Vrac:
+    view: yes
+    icon: mdi:delete-variant
+    entities:
+       - binary_sensor.switch_158d0001e18d16
+       - binary_sensor.switch_158d0001e18d90
+       - binary_sensor.switch_158d0002134b92
+       - binary_sensor.switch_158d0001e62208
+       - binary_sensor.wall_switch_both_158d000170ead4
+       - binary_sensor.wall_switch_left_158d000170ead4
+       - binary_sensor.wall_switch_right_158d000170ead4
+       - input_boolean.radio_lights
+       - input_boolean.landing_dim
+
+####################################################
+#                                                  #
+#                    GROUPS                        #
+#                                                  #
+####################################################
+
+
+
+####################################################
+#                   Calculs                        #
+####################################################
+#ces gropes servent aux affichages cumulés, comptes, moyennes etc.
+#Capteurs mouvements
+  motion_sensors:
+    name: Mouvement intérieur
+    entities:
+       - binary_sensor.motion_sensor_158d0001e47f52
+       - binary_sensor.motion_sensor_158d0001e47d34
+       - binary_sensor.motion_sensor_158d0001ddca38
+       - binary_sensor.motion_sensor_158d0001b7542d
+       - binary_sensor.motion_sensor_158d0001d6675f
+#Capteurs ouvertures portes
+  door_sensors:
+    name: Ouvertures Portes
+    entities:
+       - binary_sensor.door_window_sensor_158d0001ab1b67
+       - binary_sensor.door_window_sensor_158d0001ab5aaa
+       - binary_sensor.door_window_sensor_158d0001d8526a
+       - binary_sensor.door_window_sensor_158d000272f13c
+
+#Capteurs ouvertures fenetres
+  window_sensors:
+    name: Ouvertures Fenêtres
+    entities:
+       - binary_sensor.door_window_sensor_158d0001dbd24f
+       - binary_sensor.door_window_sensor_158d0001de78e5
+       - binary_sensor.door_window_sensor_158d0002391048
+       - binary_sensor.door_window_sensor_158d000239438b
+       - binary_sensor.door_window_sensor_158d00023949af
+  all_open_sensors:
+    name: Tous capteurs ouverture
+    entities:
+       - group.door_sensors
+       - group.window_sensors
+  room_humidity:
+    name: Humidité Maison
+    entities:
+       - sensor.humidity_158d0001b96127
+       - sensor.humidity_158d0001b92bcc
+       - sensor.humidity_158d0001b8f1b1
+       - sensor.humidity_158d00022734f8
+  room_temperature:
+    name: Température Maison
+    entities:
+       - sensor.temperature_158d0001b96127
+       - sensor.temperature_158d0001b92bcc
+       - sensor.temperature_158d0001b8f1b1
+       - sensor.temperature_158d00022734f8
+  monitored_light:
+    name: Contrôle lumieres
+    entities:
+       - switch.chambre
+       - switch.chambredoud
+       - switch.chiottelum
+       - switch.cuisine1
+       - switch.cuisine2
+       - switch.terasse
+       - switch.lustresalon
+       - switch.appliquesalon
+       - switch.plug_158d0001de56c2
+       - switch.sdb
+       - light.yeelight_strip1_7811dc66e549
+       - light.yeelight_color2_7c49eb157ed5
+       - light.yeelight_color2_7c49eb157a7e
+       - light.yeelight_color1_7811dc6a9651
+       - light.yeelight_bedside_7811dc904840
+       - light.yeelight_ceiling_34ce00be1f20
+       - group.light_salon
+       - switch.plug_158d0001a5d465
+       - light.bedside_philips
+       - light.yeelight_strip2_04cf8c7acfe8
+####################################################
+#                   Lumière                        #
+####################################################
+  light_bulbs:
+    name: Ampoules
+    entities:
+       - light.gateway_light_34ce00fb5df0
+       - light.yeelight_color2_7c49eb157ed5
+       - light.yeelight_color1_7811dc6a9651
+       - light.yeelight_strip1_7811dc66e549
+       - light.yeelight_color2_7c49eb157a7e
+       - light.yeelight_color1_34ce008fcea8
+       - light.yeelight_color1_34ce00900013
+       - light.yeelight_color1_7811dc6aaca4
+       - light.yeelight_strip1_7811dca22953
+       - light.yeelight_strip2_04cf8c7acfe8
+  plan_travail: 
+       - light.yeelight_strip1_7811dc66e549
+       - switch.plug_158d0001de56c2
+  light_salon:
+    name: Salon
+    entities:
+       - light.yeelight_color1_34ce008fcea8
+       - light.yeelight_color1_34ce00900013
+       - light.yeelight_color1_7811dc6aaca4
+       - light.yeelight_strip1_7811dca22953
+  light_couloir:
+    name: Couloir
+    entities:
+       - light.yeelight_color1_7811dc6a9651
+       - light.yeelight_color2_7c49eb157ed5
+       - light.gateway_light_34ce00fb5df0
+  light_devices:
+    name: Lampes
+    entities:
+       - light.bedside_philips
+       - light.yeelight_bedside_7811dc904840
+  light_flashing:
+     name: Police
+     entities:
+       - light.bedside_philips
+       - light.yeelight_bedside_7811dc904840
+       - light.gateway_light_34ce00fb5df0
+       - light.yeelight_color2_7c49eb157ed5
+       - light.yeelight_color1_7811dc6a9651
+       - light.yeelight_strip1_7811dc66e549
+       - light.yeelight_color2_7c49eb157a7e
+       - light.yeelight_color1_34ce008fcea8
+       - light.yeelight_color1_34ce00900013
+       - light.yeelight_color1_7811dc6aaca4
+       - light.yeelight_strip1_7811dca22953
+       - light.yeelight_strip2_04cf8c7acfe8
+  light_cuisine:
+    name: Cuisine
+    entities:
+       - switch.cuisine1
+       - switch.cuisine2
+  control_chiotte:
+    name: Chiotte
+    entities:
+       - switch.chiottelum
+       - switch.chiotteventil
+  light_control:
+     name: Controle
+     entities:
+       - switch.plug_158d0001de56c2
+       - switch.chambre
+       - switch.chambredoud
+       - automation.bouton_cuisine
+       - switch.cuisine1
+       - switch.cuisine2
+       - switch.lustresalon
+       - switch.appliquesalon
+       - group.light_cuisine
+       - switch.chiottelum
+       - switch.plug_158d0001a5d465
+####################################################
+#                 Détecteurs                       #
+#       - device_tracker.galaxy_s8
+####################################################
+  tracked_devices:
+    name: Tracked devices
+    entities:
+       - device_tracker.qcombtd
+       - device_tracker.samsungsmg920f
+       - device_tracker.galaxy_s8
+       - device_tracker.lia
+  detectors_presence:
+    name: Présence
+    entities:
+       - group.tracked_devices
+       - input_boolean.mode_present
+       - switch.synology_home_mode
+       - input_boolean.mode_douche
+       - input_boolean.snooze_notifs
+       - sensor.last_motion
+       - sensor.already_snoozed_notifs
+
+####################################################
+#                    Config                        #
+####################################################
+  ambiance_salon:
+    name: Ambiance Salon
+    entities:
+       - switch.ambiance_salon
+       - input_number.salon_brightness
+       - input_select.salon_color
+       - group.light_salon
+       - switch.plug_158d0001a5d465
+       - binary_sensor.cube_158d00027984bb_2
+       - switch.lustresalon
+       - switch.appliquesalon
+  config:
+    name: Paramètres
+    entities:
+       - input_number.global_brightness
+       - input_select.global_color
+       - input_boolean.mode_douche
+       - binary_sensor.cube_158d00027984bb_2
+####################################################
+#                  Capteurs                        #
+####################################################
+  average_values:
+    name: Moyennes
+    entities:
+       - sensor.average_temperature
+       - sensor.average_humidity
+  sensors_external:
+    name: Exterieur
+    entities:
+       - sun.sun
+       - sensor.yr_symbol
+       - sensor.yr_temperature
+       - sensor.yr_humidity
+       - sensor.yr_pressure
+       - sensor.yr_precipitation
+       - sensor.temperature_158d000272e88d
+       - sensor.humidity_158d000272e88d
+       - sensor.pressure_158d000272e88d
+  frigo:
+    name: Frigo
+    entities:
+       - sensor.humidity_158d000273a1ce
+       - sensor.temperature_158d000273a1ce
+       - sensor.pressure_158d000273a1ce
+  garage_conditions:
+    name: Conditions garage
+    entities:
+       - sensor.temperature_158d0002c8bc1c
+       - sensor.humidity_158d0002c8bc1c
+  sensors_luminosity:
+    name: Luminosité
+    entities:
+       - sensor.illumination_158d0001b7542d
+       - sensor.illumination_158d0001e47d34
+       - sensor.illumination_158d0001e47f52
+       - sensor.illumination_158d0001ddca38
+  sensors_humidity:
+    name: Humidité
+    entities:
+       - group.room_humidity
+       - sensor.average_humidity
+  sensors_temperature:
+    name: Température
+    entities:
+       - group.room_temperature
+       - sensor.average_temperature
+  sensors_pressure:
+    name: Pression
+    entities:
+       - sensor.pressure_158d0001b92bcc
+       - sensor.pressure_158d0001b96127
+       - sensor.pressure_158d00022734f8
+####################################################
+#                  Aspirateur                      #
+####################################################
+  vaccum_info:
+    name: Aspirateur
+    entities:
+       - vacuum.xiaomi_vacuum_cleaner
+       - sensor.cleaned_today
+       - sensor.vacuum_status
+       - automation.telegram_active_aspi
+       - automation.demande_si_aspi_doit_passer_apres_depart
+       - automation.aspi_9h_si_absent
+####################################################
+#                   Plantes                        #
+####################################################
+
+  plant_clivia:
+    name: Clivia
+    entities:
+       - sensor.flower1_battery
+       - sensor.flower1_conductivity
+       - sensor.flower1_light_intensity
+       - sensor.flower1_moisture
+       - sensor.flower1_temperature
+  plant_spathiphyllum:
+    name: Spathiphyllum
+    entities:
+       - sensor.flower2_battery
+       - sensor.flower2_conductivity
+       - sensor.flower2_light_intensity
+       - sensor.flower2_moisture
+       - sensor.flower2_temperature
+####################################################
+#                  Overview                        #
+####################################################
+  overview:
+    name: Résumé
+    entities:
+       - group.tracked_devices
+       - sensor.home_trackers
+       - input_boolean.mode_present
+       - switch.synology_home_mode
+       - sensor.active_lights
+       - sensor.opened_windows
+       - sensor.opened_doors
+       - sensor.average_temperature
+       - sensor.average_humidity
+       - sensor.garage_summary
+
+####################################################
+#                     IR                           #
+####################################################
+
+  media_switches:
+    name: Commandes IR
+    entities:
+       - switch.tv
+       - switch.tv_ch
+       - switch.sound_bar_vol
+
+
+####################################################
+#                  Monitoring                      #
+####################################################
+
+  pi_conditions:
+    name: Etat Pi 
+    entities:
+       - sensor.pi_cpu_temp
+       - sensor.disk_free
+       - sensor.disk_use
+       - sensor.disk_use_percent
+       - sensor.memory_free
+       - sensor.last_boot
+       - sensor.processor_use
+  nas_conditions:
+    name: Etat NAS 
+    entities:
+       - sensor.synology_dsm_cpu_load_total
+       - sensor.synology_dsm_total_size_volume_1
+       - sensor.synology_dsm_used_space_volume_1
+       - sensor.synology_dsm_volume_used_volume_1
+  fritzbox_conditions:
+    name: Etat FritzBox 
+    entities:
+       - sensor.fritz_box_6490_cable_kbyte_sec_received
+       - sensor.fritz_box_6490_cable_kbyte_sec_sent
+####################################################
+#                  Scénarios                       #
+####################################################
+
+  non_waf:
+    name: Non WAF scenarios
+    entities:
+#       - automation.allumage_chiotte_auto
+#       - automation.extinction_chiotte_auto
+       - automation.allumage_sdb_auto
+       - automation.extinction_sdb_auto
+       - automation.allumage_couloir_auto
+       - automation.extinction_couloir_auto
+       - automation.changement_lumieres_a_6h_et_20
+       - automation.changement_lumieres_a_7h_et_19h
+       - automation.changement_lumieres_a_9h_et_17h
+       - automation.changement_lumieres_a_22h
+       - automation.changement_lumieres_a_23
+#       - automation.passage_mode_absent_auto_apres_5_min
+  automation_lights:
+    name: Lumières
+    entities:
+       - automation.allumage_chiotte_auto
+       - automation.extinction_chiotte_auto
+       - automation.allumage_sdb_auto
+       - automation.extinction_sdb_auto
+       - automation.allumage_couloir_auto
+       - automation.extinction_couloir_auto
+  automation_buttons:
+    name: Boutons
+    entities:
+       - automation.bouton_cuisine
+       - automation.switch_mode_douche
+  automation_timer:
+    name: Planifiées
+    entities:
+       - automation.changement_lumieres_a_6h_et_20
+       - automation.changement_lumieres_a_7h_et_19h
+       - automation.changement_lumieres_a_9h_et_17h
+       - automation.changement_lumieres_a_22h
+       - automation.changement_lumieres_a_23
+       - automation.aspi_9h_si_absent
+  automation_notification:
+    name: Notifications
+    entities:
+       - automation.notification_si_porte_reste_ouverte
+       - automation.notification_si_absent_et_mouvement
+       - automation.suspend_notifs_telegram
+       - automation.reactive_notifs_telegram
+       - automation.notification_verre_papier
+       - automation.notification_verre_papier_rappel
+       - automation.notification_poubelle_noire
+       - automation.notification_poubelle_noire_rappel
+  automation_telegram:
+    name: Actions Telegramme
+    entities:
+       - automation.telegram_active_alarme
+       - automation.telegram_stoppe_alarme
+       - automation.telegram_mode_present
+       - automation.telegram_mode_absent
+       - automation.telegram_activate_notifs
+       - automation.telegram_stop_notifs
+       - automation.telegram_active_aspi
+       - automation.telegram_etient_lumieres
+  
+  automation_detection:
+    name: Detection Presence
+    entities:
+       - automation.passage_mode_absent_auto_apres_5_min
+       - automation.passage_mode_present_auto_bt_phone
+       - automation.enclenchement_mode_absent
+       - automation.enclenchement_mode_present
+       - automation.notification_si_absent_et_mouvement
+       - automation.demande_si_aspi_doit_passer_apres_depart
+####################################################
+#                   Scripts                        #
+####################################################
+
+  global_scripts:
+    name: Scripts Présent/Absent
+    entities:
+       - script.away_mode
+       - script.home_mode
+       - script.alarm_on
+       - script.alarm_off
+       - script.snooze_xh
+
+####################################################
+#                   Garage                        #
+####################################################
+  garage_control:
+    name: Garage door
+    entities:
+       - cover.garage_door
+       - sensor.garage_summary
+       - group.garage_conditions
+
+####################################################
+#                   Caméras                        #
+####################################################
+
+  cameras:
+    name: Caméras
+    entities:
+      - camera.frigo
+      - camera.dafang1
+  dafang_control:
+    name: Panel Dafang
+    entities:
+      - camera.dafang1
+      - switch.dafang_salon_h264_rtsp_server
+      - switch.dafang_salon_mjpeg_rtsp_server
+      - sensor.dafang_salon
+      - device_tracker.dafang_salon
+      - sensor.dafang_salon_light_sensor
+      - switch.dafang_salon_ir_filter
+      - switch.dafang_salon_ir_led
+      - switch.dafang_salon_night_mode
+      - switch.dafang_salon_night_mode_auto
+      - switch.dafang_salon_blue_led
+      - switch.dafang_salon_yellow_led
+      - switch.dafang_salon_motion_detection
+      - switch.dafang_salon_motion_tracking
+      - camera.dafang_salon_motion_snapshot
+      - binary_sensor.dafang_salon_motion_sensor
+      - cover.dafang_salon_move_left_right
+      - cover.dafang_salon_move_up_down
+####################################################
+#                   Batterie                       #
+####################################################
+
+  batteries_sensors:
+    name: Capteurs
+    entities:
+       - sensor.bat_mvt_couloir
+       - sensor.bat_mvt_entree
+       - sensor.bat_mvt_salon
+       - sensor.bat_mvt_sdb
+       - sensor.bat_ouv_chiotte
+       - sensor.bat_ouv_entree
+       - sensor.bat_ouv_garage
+       - sensor.bat_ouv_terasse
+       - sensor.bat_ouv_sdb
+       - sensor.bat_tmp_chambre
+       - sensor.bat_tmp_salon
+       - sensor.bat_tmp_sdb
+       - sensor.bat_tmp_doudou
+
+
+  batteries_others:
+    name: Autres
+    entities:
+       - sensor.bat_aspi
+       - sensor.bat_btn_cuisine
+       - sensor.bat_btn_garage
+       - sensor.bat_btn_douche
+####################################################
+#                     Liens                        #
+####################################################
+  links:
+    name: Liens
+    entities:
+       - weblink.dafang
+       - weblink.fritzbox
+       - weblink.nas
+       - weblink.openwrt
+       - weblink.sickrage
+  buttons:
+    name: Boutons et actionneurs
+    entities:
+       - binary_sensor.cube_158d00027984bb_2
+       - binary_sensor.switch_158d0001e18d16
+       - binary_sensor.switch_158d0001e18d90
+       - binary_sensor.switch_158d0001e62208
+       - binary_sensor.switch_158d0002134b92
+  lost_buttons:
+    name: Boutons perdus
+    entities:
+       - binary_sensor.wall_switch_right_158d000170ead4
+       - binary_sensor.wall_switch_left_158d000170ead4
+       - binary_sensor.wall_switch_both_158d000170ead4
