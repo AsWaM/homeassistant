@@ -1,0 +1,1325 @@
+#################################
+#            Boutons            #
+#################################
+# Toggle le led strip et la prise lors de l'appui du bouton cuisine
+- alias: Bouton Cuisine
+  id: switch.cuisine
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001e18d90
+  condition: []
+  action:
+    - service: light.toggle
+      entity_id: light.yeelight_strip1_7811dc66e549
+    - service: switch.toggle
+      entity_id: switch.plug_158d0001de56c2
+# Ambiance Salon
+# Toggle les lampes d'ambiance lors de l'appui du bouton salon
+- alias: Bouton Salon
+  id: switch.salon
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001e62208
+  condition: []
+  action:
+    - service: light.toggle
+      entity_id: group.light_salon
+    - service: switch.toggle
+      entity_id: switch.plug_158d0001a5d465
+## Change la couleur des lampes d'ambiance (double clic)
+- alias: Bouton Salon double
+  id: switch.salon.double
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d0001e62208
+  condition: []
+  action:
+    service: input_select.select_next
+    data:
+      entity_id: input_select.salon_color
+## Change uniquement le lampadaire
+- alias: Bouton Salon long
+  id: switch.salon.long
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000xxxxxc2
+      click_type: long_click_press
+  condition: []
+  action:
+    service: switch.toggle
+    entity_id: switch.plug_158d0001a5d465
+
+# Toggle le mode présent lors de l'appui du bouton garage (recyclé pour doudou)
+#- alias: Switch present absent manuel
+#  id: manual.present.absent
+#  trigger:
+#    platform: event
+#    event_type: xiaomi_aqara.click
+#    event_data:
+#      click_type: single
+#      entity_id: binary_sensor.switch_158d0001e18d16
+#  condition: []
+#  action:
+#    service: input_boolean.toggle
+#    data:
+#      entity_id: input_boolean.mode_present
+# Toggle le mode douche lors de l'appui du bouton sdb
+- alias: Switch mode douche
+  id: switch.douche
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0002134b92
+  condition: []
+  action:
+    service: input_boolean.toggle
+    data:
+      entity_id: input_boolean.mode_douche
+# Chambre Doudou
+# Toggle la lampe principale lors de l'apuui du bouton
+- alias: Bouton Doudou
+  id: switch.doudou
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001e18d16
+  condition: []
+  action:
+    - service: switch.toggle
+      entity_id: switch.chambredoud
+## Toggle le lightstrip (double clic)
+- alias: Bouton doudou double
+  id: switch.doudou.double
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d0001e18d16
+  condition: []
+  action:
+    - service: light.toggle
+      entity_id: light.yeelight_strip2_04cf8c7acfe8
+#################################
+#      wow effect (cube)        #
+#################################
+# rotate change la couleur du salon 
+- alias: Cube Rotate
+  id: cube.rotate
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00027984bb_2
+      action_type: rotate
+  condition: []
+  action:
+    service: input_select.select_next
+    data:
+      entity_id: input_select.salon_color
+# move allume ou eteint la cuisine
+- alias: Cube Move
+  id: cube.move
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00027984bb_2
+      action_type: move
+  condition: []
+  action:
+    - service: light.toggle
+      entity_id: light.yeelight_strip1_7811dc66e549
+    - service: switch.toggle
+      entity_id: switch.plug_158d0001de56c2
+# shake allume la télé et les lumieres du salon douces, et eteint les autres lumieres (plus tard media center)
+- alias: Cube Shake
+  id: cube.shake
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00027984bb_2
+      action_type: shake_air
+  condition: []
+  action:
+    - service: light.turn_off
+      entity_id: light.yeelight_strip1_7811dc66e549
+    - service: switch.turn_off
+      entity_id: switch.plug_158d0001de56c2, switch.plug_158d0001a5d465, group.light_cuisine, switch.lustresalon, switch.appliquesalon
+    - service: switch.turn_on
+      entity_id: switch.tv
+    - service: light.turn_on
+      data: 
+        entity_id: group.light_salon
+        color_name: 'hotpink'
+        brightness: '180'
+# free fall déclenche le mode nuit
+- alias: Cube free fall
+  id: cube.freefall
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00027984bb_2
+      action_type: free_fall
+  condition: []
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.mode_nuit
+#    - service: light.turn_off
+#      entity_id: light.yeelight_strip1_7811dc66e549, group.light_salon
+#    - service: switch.turn_off
+#      entity_id: switch.plug_158d0001de56c2, switch.plug_158d0001a5d465, group.light_cuisine, switch.lustresalon, switch.appliquesalon
+#    - service: media_player.turn_off
+#      data: 
+#        entity_id: media_player.lg_tv_remote
+# flip90 toggle les lampes du salon
+- alias: Cube flip90
+  id: cube.flip90
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00027984bb_2
+      action_type: flip90
+  condition: []
+  action:
+    - service: light.toggle
+      entity_id: group.light_salon
+    - service: switch.toggle
+      entity_id: switch.plug_158d0001a5d465, switch.lustresalon, switch.appliquesalon
+# flip180 inverse toutes les lumieres
+- alias: Cube flip180
+  id: cube.flip180
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00027984bb_2
+      action_type: flip180
+  condition: []
+  action:
+    - service: light.toggle
+      entity_id: group.light_salon, light.yeelight_strip1_7811dc66e549
+    - service: switch.toggle
+      entity_id: switch.plug_158d0001de56c2, switch.plug_158d0001a5d465, group.light_cuisine, switch.lustresalon, switch.appliquesalon
+# tap_twice toggle le lampadaire et eteint le reste
+- alias: Cube tap twice
+  id: cube.taptwice
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00027984bb_2
+      action_type: tap_twice
+  condition: []
+  action:
+    - service: light.turn_off
+      entity_id: light.yeelight_strip1_7811dc66e549, group.light_salon
+    - service: switch.toggle
+      entity_id: switch.plug_158d0001a5d465
+    - service: switch.turn_off
+      entity_id: switch.plug_158d0001de56c2, group.light_cuisine
+#################################
+#            Trackers           #
+#################################
+# Passe en mode absent si tel non visible depuis 5 minutes
+- alias: Passage mode absent auto apres 5 min
+  id: auto.absent
+  trigger:
+    platform: state
+    entity_id: group.tracked_devices
+    from: home
+    to: not_home
+    for:
+      minutes: 5
+  condition: []
+  action:
+     - service: input_boolean.turn_off
+       data:
+         entity_id: input_boolean.mode_present
+     - service: notify.telegram
+       data:
+         title: '*Téléphone hors zone*'
+         message: 'Mode absent déclenché car téléphone hors zone depuis 5 minutes'
+         data:
+           keyboard:
+             - '/HomeMode, /SnoozeNotifs'
+# Propose de passer l'aspi si absent depuis 30 minutes et qu'il n'est pas encore passé
+- alias: Demande si aspi doit passer après depart
+  id: auto.aspi.absent
+  trigger:
+    platform: state
+    entity_id: input_boolean.mode_present
+    from: 'on'
+    to: 'off'
+    for:
+      minutes: 30
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.cleaned_today
+      below: 0.1
+    - condition: state
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      state: 'docked'
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Démarrage aspirateur?*'
+      message: 'Le robot aspirateur n est pas encore passé aujourd hui'
+      data:
+        keyboard:
+          - '/LaunchAspi'
+
+# Passe en mode présent si tel devient visible
+- alias: Passage mode présent auto (BT phone)
+  id: auto.present
+  trigger:
+    platform: state
+    entity_id: group.tracked_devices
+    from: not_home
+    to: home
+  condition: []
+  action:
+    service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.mode_present
+#change les couleurs lorsque le selecteur salon est changé
+- alias: Change ambiance salon
+  trigger:
+    platform: state
+    entity_id: input_select.salon_color
+  condition: []
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: group.light_salon
+        color_name: '{{ states(''input_select.salon_color'') }}'
+        brightness: '{{ states(''input_number.salon_brightness'') | int }}'
+- alias: Change luminosité salon
+  trigger:
+    platform: state
+    entity_id: input_number.salon_brightness
+  condition: []
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: group.light_salon
+        brightness: '{{ states(''input_number.salon_brightness'') | int }}'
+#################################
+#        Automatisations        #
+#################################
+# Exécute les actions du mode absent lorsqu'il s'enclenche (script away_mode)
+- alias: Enclenchement mode absent
+  id: activate.awaymode
+  trigger:
+    platform: state
+    entity_id: input_boolean.mode_present
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+     - service: script.turn_on
+       data:
+        entity_id: script.away_mode
+     - service: input_boolean.turn_off
+       data:
+         entity_id: input_boolean.heating
+# Exécute les actions du mode waf lorsqu'il s'enclenche
+- alias: Enclenchement mode waf
+  id: activate.wafmode
+  trigger:
+    platform: state
+    entity_id: input_boolean.mode_waf
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+    service: script.turn_on
+    data:
+      entity_id: script.waf_mode
+# Exécute les actions du mode waf lorsqu'il s'eteint
+- alias: Arret mode waf
+  id: deactivate.wafmode
+  trigger:
+    platform: state
+    entity_id: input_boolean.mode_waf
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+    service: script.turn_on
+    data:
+      entity_id: script.waf_mode_off
+- alias: Reactive notifs telegram
+  id: activate.telegram
+  trigger:
+    platform: state
+    entity_id: input_boolean.snooze_notifs
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+    - service: script.turn_off
+      entity_id: script.snooze_xh
+    - service: automation.turn_on
+      entity_id: automation.notification_si_absent_et_mouvement
+    - service: notify.telegram
+      data_template:
+        title: '*Notifications réactivées*'
+        message: 'Les notifications d intrusions sont réactivées'
+        data:
+          keyboard:
+            - '/SnoozeNotifs'
+
+# Suspend les notifs pour 1h puis 4h
+- alias: Suspend notifs telegram
+  id: snooze.telegram
+  trigger:
+    platform: state
+    entity_id: input_boolean.snooze_notifs
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+    - service: script.turn_on
+      entity_id: script.snooze_xh
+      data:
+        variables:
+          automation: 'automation.notification_si_absent_et_mouvement'
+    - service: notify.telegram
+      data_template:
+        title: '*Notifications suspendues*'
+        message: 'Les notifications d intrusions sont suspendues pour {{ states.sensor.already_snoozed_notifs.state |int *2 +1 }} heure(s)'
+        data:
+          keyboard:
+              - '/LaunchNotifs'
+# Exécute les actions du mode présent lorsqu'il s'enclenche (script home_mode)
+- alias: Enclenchement mode présent
+  id: activate.homemode
+  trigger:
+    platform: state
+    entity_id: input_boolean.mode_present
+    from: 'off'
+    to: 'on'
+  condition: 
+    - condition: state
+      entity_id: input_boolean.mode_nuit
+      state: 'off'
+  action:
+    - service: script.turn_on
+      data:
+        entity_id: script.home_mode
+# Présent = Chauffage /Cams Off
+- alias: Activation Chauffage si présent
+  id: activate.homemode.heating
+  trigger:
+    platform: state
+    entity_id: input_boolean.mode_present
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.heating
+    - service: switch.turn_on
+      data:
+        entity_id: switch.synology_home_mode
+# Revert unexpected auto mode --> devrait ne plus servir
+#- alias: Mode eco forcé si bouton désactivé
+#  id: override.homemode.heating
+#  trigger:
+#    platform: state
+#    entity_id: climate.cuisine, climate.salon, climate.chambre_alex, climate.chambre_doudou, climate.salle_de_bains
+#    from: 'heat'
+#    to: 'auto'
+#    for:
+#      minutes: 5
+#  condition:
+#    - condition: state
+#      entity_id: input_boolean.heating
+#      state: 'off'
+#  action:
+#    service: script.turn_on
+#    data:
+#      entity_id: script.heating_off
+# Exécute les actions du mode heating
+- alias: Chauffage mode auto
+  id: activate.heating
+  trigger:
+    platform: state
+    entity_id: input_boolean.heating
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+    service: script.turn_on
+    data:
+      entity_id: script.heating_on
+# Exécute les actions du mode heating off
+- alias: Chauffage mode eco
+  id: deactivate.heating
+  trigger:
+    platform: state
+    entity_id: input_boolean.heating
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+    service: script.turn_on
+    data:
+      entity_id: script.heating_off
+
+# Exécute les actions du mode douche lorsqu'il s'enclenche 
+- alias: Enclenchement mode douche
+  id: activate.showermode
+  trigger:
+    platform: state
+    entity_id: input_boolean.mode_douche
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+    - service: automation.turn_off
+      data:
+        entity_id: automation.allumage_sdb_auto, automation.extinction_sdb_auto
+    - service: switch.turn_on
+      data:
+        entity_id: switch.sdb
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.salle_de_bains
+        temperature: 25
+        hvac_mode: heat
+    # - service: light.turn_off
+    #   data:
+    #     entity_id: light.yeelight_color2_7c49eb157a7e
+    # - service: light.turn_on
+    #   data:
+    #     entity_id: light.yeelight_color2_7c49eb157a7e
+    #     color_name: 'palegoldenrod'
+    #     brightness: '250'
+# Exécute les actions du mode douche lorsqu'il sort 
+- alias: Sortie mode douche
+  id: deactivate.showermode
+  trigger:
+    platform: state
+    entity_id: input_boolean.mode_douche
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+    - service: automation.turn_on
+      data:
+        entity_id: automation.allumage_sdb_auto, automation.extinction_sdb_auto
+    - service: switch.turn_off
+      data:
+        entity_id: switch.sdb
+    - service: climate.set_hvac_mode
+      data:
+        entity_id: climate.salle_de_bains
+        hvac_mode: auto
+    # - service: light.turn_off
+    #   data:
+    #     entity_id: light.yeelight_color2_7c49eb157a7e
+# Exécute les actions du mode nuit lorsqu'il s'enclenche (extinction salon/cuisine)
+- alias: Mode nuit
+  id: activate.nightmode
+  trigger:
+    platform: state
+    entity_id: input_boolean.mode_nuit
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+    - service: light.turn_off
+      entity_id: light.yeelight_strip1_7811dc66e549, group.light_salon
+    - service: switch.turn_off
+      entity_id: switch.plug_158d0001de56c2, switch.plug_158d0001a5d465, group.light_cuisine, switch.lustresalon, switch.appliquesalon
+    - service: media_player.turn_off
+      data: 
+        entity_id: media_player.lg_tv_remote
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.global_brightness
+        value: '50'
+
+# Allume le chiotte si ouverture ou mouvement
+- alias: Allumage chiotte auto
+  id: auto.chiotte.on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001d6675f, binary_sensor.door_window_sensor_158d0001ab1b67
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.chiottelum, switch.chiotteventil
+
+# Eteint les chiottes après 5 min
+- alias: Extinction chiotte auto
+  id: auto.chiotte.off
+  trigger:
+    platform: state
+    entity_id: switch.chiottelum, switch.chiotteventil
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 5
+  condition: []
+  action:
+    service: switch.turn_off
+    data:
+      entity_id: switch.chiottelum, switch.chiotteventil
+#################################
+#        Telegram bot           #
+#################################
+# commande /Help
+- alias: Telegram commandes
+  id: telegrambot.help
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/Help'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/help'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/?'
+  condition: []
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Commandes implémentées*'
+      message: |
+          Résumé: /Status
+          Alarme: /StopAlarm  /LaunchAlarm
+          Lumières: /LightsOff
+          Présence: /HomeMode  /AwayMode
+          Caméras: /Cams  /NoCams  /Live
+          Notifications: /SnoozeNotifs  /LaunchNotifs
+          Aspi: /LaunchAspi
+          Chauffage: /Heat /NoHeat
+          Garage: /OpenGarage /CloseGarage
+# commande /Status
+- alias: Telegram etat
+  id: telegrambot.status
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/Status'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/status'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/s'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/!'
+  condition: []
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Statut de la maison*'
+      message: |
+          Mode présent: {% if is_state("input_boolean.mode_present", "on") -%} Activé {%- else -%} Désactivé {%- endif %}
+          Mode de chauffage: {% if is_state("input_boolean.heating", "on") -%} Auto {%- else -%} Absent {%- endif %}
+          Mode nuit: {% if is_state("input_boolean.mode_nuit", "on") -%} Activé {%- else -%} Désactivé {%- endif %}
+          Dernier mouvement: {{ states("sensor.last_motion") }}
+          Cameras : {% if is_state("switch.synology_home_mode", "on") -%} Desactivées {%- else -%} Activées {%- endif %}
+          Notifications: {% if is_state("input_boolean.snooze_notifs", "on") -%} Desactivées {%- else -%} Activées {%- endif %} (Desactivées {{ states("sensor.already_snoozed_notifs") }} fois ce jour)
+          Aspi: Passé pendant {{ states("sensor.cleaned_today") }} h
+          Conditions: {{ states("sensor.average_temperature") }} °C, {{ states("sensor.average_humidity") }} % hum
+          Portes ouvertes: {{ states("sensor.opened_doors") }} 
+          Fenetres ouvertes: {{ states("sensor.opened_windows") }}
+          Lumières allumées: {{ states("sensor.active_lights") }}
+          Porte garage: {{ states("sensor.garage_summary") }}
+- alias: Telegram active aspi
+  id: telegrambot.alarm.start
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/LaunchAspi'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/aspi'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/clean'
+  condition: []
+  action:
+    service: vacuum.start
+    data:
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+#command snpashot (/live)
+- alias: Telegram photo dafang
+  id: telegrambot.alarm.start
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/Live'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/SnapShot'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/live'
+  condition: []
+  action:
+    service: script.turn_on
+    data:
+      entity_id: script.camera_snap_message
+# commande /LaunchAlarm
+- alias: Telegram active alarme
+  id: telegrambot.alarm.start
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/LaunchAlarm'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/alarm'
+  condition: []
+  action:
+    service: script.turn_on
+    data:
+      entity_id: script.alarm_on
+
+# commande /StopAlarm
+- alias: Telegram stoppe alarme
+  id: telegrambot.alarm.stop
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/StopAlarm'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/alarmoff'
+  condition: []
+  action:
+    service: script.turn_on
+    data:
+      entity_id: script.alarm_off
+# commande /LightsOff
+- alias: Telegram etient lumieres
+  id: telegrambot.lights.off
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/LightsOff'
+  condition: []
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: group.light_devices, group.light_bulbs
+    - service: switch.turn_off
+      data:
+        entity_id: switch.plug_158d0001de56c2, switch.chambre, switch.cuisine1, switch.cuisine2, switch.plug_158d0001a5d465, switch.chambredoud, switch.chiottelum, switch.chiotteventil, switch.plug_158d0001a5d465, switch.terasse, switch.lustresalon, switch.appliquesalon, switch.sdb
+#        entity_id: switch.synology_home_mode, switch.plug_158d0001de56c2, switch.chambre, switch.cuisine1, switch.cuisine2, switch.plug_158d0001a5d465, switch.chambredoud, switch.chiottelum, switch.chiotteventil, switch.plug_158d0001a5d465, switch.terasse, switch.lustresalon, switch.appliquesalon, switch.sdb
+# commande /OpenGarage
+- alias: Telegram ouvre garage
+  id: telegrambot.garage.open
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/OpenGarage'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/open'
+  condition: []
+  action:
+    service: mqtt.publish
+    data:
+      payload: "open"
+      topic: "garadget/Garage/command"
+# commande /CloseGarage
+- alias: Telegram ferme garage
+  id: telegrambot.garage.close
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/CloseGarage'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/close'
+  condition: []
+  action:
+    service: mqtt.publish
+    data:
+      payload: "close"
+      topic: "garadget/Garage/command"
+# commande /HomeMode
+- alias: Telegram mode présent
+  id: telegrambot.homemode.activate
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/HomeMode'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/home'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/h'
+  condition: []
+  action:
+    service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.mode_present
+# commande /AwayMode
+- alias: Telegram mode absent
+  id: telegrambot.awaymode.activate
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/AwayMode'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/away'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/a'
+  condition: []
+  action:
+    service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.mode_present
+# commande /HeatAuto
+- alias: Telegram chauffage auto
+  id: telegrambot.heating.activate
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/Heat'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/heat'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/HeatAuto'
+  condition: []
+  action:
+    service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.heating
+# commande /HeatEco
+- alias: Telegram chauffage eco
+  id: telegrambot.heating.deactivate
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/HeatEco'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/noheat'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/NoHeat'
+  condition: []
+  action:
+    service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.heating
+# commande /LaunchNotifs
+- alias: Telegram activate notifs
+  id: telegrambot.notification.activate
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/LaunchNotifs'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/notifs'
+  condition: []
+  action:
+    service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.snooze_notifs
+# commande /Cams
+- alias: Telegram activate cams
+  id: telegrambot.cameras.activate
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/Cams'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/cams'
+  condition: []
+  action:
+    service: switch.turn_off
+    data:
+      entity_id: switch.synology_home_mode
+# commande /NoCams
+- alias: Telegram desactive cams
+  id: telegrambot.cameras.deactivate
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/NoCams'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/nocams'
+  condition: []
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.synology_home_mode
+# commande /SnoozeNotifs
+- alias: 'Telegram stop notifs'
+  id: telegrambot.notification.snooze
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/SnoozeNotifs'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/snooze'
+  condition: []
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.snooze_notifs
+
+#################################
+#         Notifications         #
+#################################
+# Sonne la gateway si une porte reste ouverte plus de 5 minutes
+- alias: Notification si porte reste ouverte
+  id: auto.notif.portes
+  trigger:
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d0001d8526a, binary_sensor.door_window_sensor_158d0001ab5aaa, binary_sensor.door_window_sensor_158d0001ab1b67
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 5
+  condition: []
+  action:
+    service: xiaomi_aqara.play_ringtone
+    data:
+      gw_mac: 34:CE:00:FB:5D:F0
+      ringtone_id: 12
+# Aspi coincé
+- alias: Aspi bloque
+  id: auto.aspi.error
+  trigger:
+    - platform: state
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      from: 'cleaning'
+      to: 'error'
+    - platform: state
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      from: 'cleaning'
+      to: 'paused'
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Aspirateur Coincé!*'
+      message: 'L aspirateur est coincé après {{ states("sensor.cleaned_today") }} h de nettoyage'
+      data:
+        keyboard:
+          - '/LaunchAspi'
+# Notifie via telegramme un capteur détecte un changement pendant le mode absent
+- alias: Notification si absent et mouvement
+  id: notif.intrusion
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001e47d34, binary_sensor.motion_sensor_158d0001ddca38, binary_sensor.motion_sensor_158d0001e47f52, binary_sensor.door_window_sensor_158d0001d8526a, binary_sensor.door_window_sensor_158d0001ab5aaa, binary_sensor.door_window_sensor_158d0001dbd24f, binary_sensor.door_window_sensor_158d0001de78e5,binary_sensor.motion_sensor_158d0001b7542d, binary_sensor.door_window_sensor_158d000272f13c
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.mode_present
+    state: 'off'
+  action:
+    service: notify.telegram
+#    data_template: souci avec le template???
+    data_template:
+      title: '*Mouvenent détecté*'
+      message: 'Le capteur {{ trigger.to_state.attributes.friendly_name }} a détecté un mouvement'
+#      message: 'Un Capteur a détecté une anomalie'
+      data:
+        keyboard:
+          - '/LaunchAlarm, /HomeMode'
+          - '/StopAlarm, /SnoozeNotifs'
+# Notifie via telegramme un capteur détecte une ouverture (non impacté par le snooze notifs) pendant le mode absent
+- alias: Notification si absent et ouverture
+  id: notif.intrusion.porte
+  trigger:
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d0001d8526a, binary_sensor.door_window_sensor_158d0001ab5aaa, binary_sensor.door_window_sensor_158d0001dbd24f, binary_sensor.door_window_sensor_158d0001de78e5, binary_sensor.door_window_sensor_158d000272f13c
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.mode_present
+    state: 'off'
+  action:
+    service: notify.telegram
+#    data_template: souci avec le template???
+    data_template:
+      title: '*Ouverture détectée*'
+      message: 'Le capteur {{ trigger.to_state.attributes.friendly_name }} a détecté une ouverture'
+#      message: 'Un Capteur a détecté une anomalie'
+      data:
+        keyboard:
+          - '/LaunchAlarm, /HomeMode'
+          - '/StopAlarm, /SnoozeNotifs'
+#################################
+#           Lumières            #
+#################################
+# Couloir
+
+# Allume le couloir dans la couleur et l'intensité choisie lors de la detection de mouvement
+
+- alias: Allumage couloir auto
+  id: auto.couloir.on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001e47d34, binary_sensor.motion_sensor_158d0001ddca38
+    from: 'off'
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.mode_present
+      state: 'on'
+  action:
+    service: light.turn_on
+    data_template:
+      entity_id: light.yeelight_color1_7811dc6a9651, light.gateway_light_34ce00fb5df0,
+        light.yeelight_color2_7c49eb157ed5
+      color_name: '{{ states(''input_select.global_color'') }}'
+      brightness: '{{ states(''input_number.global_brightness'') | int }}'
+
+# Eteint le couloir si absence de mouvement
+- alias: Extinction couloir auto
+  id: auto.couloir.off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001e47d34, binary_sensor.motion_sensor_158d0001ddca38
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.yeelight_color1_7811dc6a9651, light.gateway_light_34ce00fb5df0, light.yeelight_color2_7c49eb157ed5
+ 
+# Allume la salle de bains dans la couleur et l'intensité choisie lors de la detection de mouvement
+- alias: Allumage sdb auto
+  id: auto.sdb.on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001e47f52
+    from: 'off'
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.mode_present
+      state: 'on'
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.sdb
+    # service: light.turn_on
+    # data_template:
+    #   entity_id: light.yeelight_color2_7c49eb157a7e
+    #   color_name: '{{ states(''input_select.global_color'') }}'
+    #   brightness: '{{ states(''input_number.global_brightness'') | int }}'
+
+# Eteint la salle de bains si absence de mouvement
+- alias: Extinction sdb auto
+  id: auto.sdb.off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001e47f52
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+    service: switch.turn_off
+    data:
+      entity_id: switch.sdb
+#    service: light.turn_off
+#    data:
+#      entity_id: light.yeelight_color2_7c49eb157a7e
+
+#################################
+#            Timers             #
+#################################
+# Couleurs / Luminosité
+- alias: Changement lumieres à 22h
+  id: auto.color.22
+  trigger:
+    platform: time
+    at: '22:00:00'
+  condition: []
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.global_color
+        option: deepskyblue
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.global_brightness
+        value: '180'
+
+- alias: Changement lumieres à 23
+  id: auto.color.23
+  trigger:
+    platform: time
+    at: '23:00:00'
+  condition: []
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.global_color
+        option: blueviolet
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.global_brightness
+        value: '50'
+
+- alias: Changement lumieres à 9h et 17h
+  id: auto.color.17
+  trigger:
+  - platform: time
+    at: '17:00:00'
+  - platform: time
+    at: 08:30:00
+  condition: []
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.global_color
+        option: palegoldenrod
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.global_brightness
+        value: '250'
+
+- alias: Desactivation auto mode nuit
+  id: auto.deactivate.nightmode
+  trigger:
+  - platform: time
+    at: 08:30:00
+  condition: []
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.mode_nuit
+
+- alias: Changement lumieres à 7h et 19h
+  id: auto.color.19
+  trigger:
+  - platform: time
+    at: '19:00:00'
+  - platform: time
+    at: 07:30:00
+  condition: []
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.global_color
+        option: ivory
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.global_brightness
+        value: '250'
+
+- alias: Changement lumieres à 6h et 20
+  id: auto.color.20
+  trigger:
+  - platform: time
+    at: '20:00:00'
+  - platform: time
+    at: 06:30:00
+  condition: []
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.global_color
+        option: greenyellow
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.global_brightness
+        value: '250'
+- alias: Aspi 9h si absent
+  id: auto.aspi.9h
+  trigger:
+    platform: time
+    at: '09:00:00'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.cleaned_today
+      below: 0.1
+    - condition: state
+      entity_id: input_boolean.mode_present
+      state: 'off'
+    - condition: state
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      state: 'docked'
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Démarrage aspirateur?*'
+      message: 'Il est 9h et l aspirateur n est pas encore passé'
+      data:
+        keyboard:
+          - '/LaunchAspi'
+- alias: Mise a jour statut garage
+  id: auto.garage.update
+  trigger:
+    platform: time_pattern
+    minutes: '/5'
+  action:
+    service: mqtt.publish
+    data:
+      topic: "garadget/garadget/garage/command"
+      payload: "get-status"
+- alias: Notification Poubelle noire
+  id: auto.notification.poubelle
+  trigger:
+    platform: state
+    entity_id: calendar.calendar_poubelle
+    to: 'on'
+  condition: []
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Sortir La Poubelle*'
+      message: 'C est le jour des poubelles!'
+- alias: Notification Poubelle noire rappel
+  id: auto.notification.poubelle.reminder
+  trigger:
+    platform: state
+    entity_id: calendar.calendar_poubelle
+    to: 'on'
+    for:
+      minutes: 25
+  condition: []
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Sortir La Poubelle*'
+      message: 'Rappel: C est le jour des poubelles!'
+- alias: Notification Verre Papier
+  id: auto.notification.paperglas
+  trigger:
+    platform: state
+    entity_id: calendar.calendar_papier_verre
+    to: 'on'
+  condition: []
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Verre, Papier, Valorlux*'
+      message: 'C est le jour du verre, papier et valorlux!'
+- alias: Notification Verre Papier rappel
+  id: auto.notification.paperglas.reminder
+  trigger:
+    platform: state
+    entity_id: calendar.calendar_papier_verre
+    to: 'on'
+    for:
+      minutes: 25
+  condition: []
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Verre, Papier, Valorlux*'
+      message: 'C est le jour du verre, papier et valorlux!'
+#################################
+#            Background         #
+#################################
+# Sonoff Tasmota
+- alias: Force les sonoffs a se montrer
+  id: auto.sonoff.discovery
+  trigger:
+    platform: homeassistant
+    event: start
+  condition: []
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "sonoff/salon/cmnd/SetOption19"
+        payload: "1"
+    - service: mqtt.publish
+      data:
+        topic: "sonoff/cuisine/cmnd/SetOption19"
+        payload: "1"
+    - service: mqtt.publish
+      data:
+        topic: "sonoff/chiotte/cmnd/SetOption19"
+        payload: "1"
+    - service: mqtt.publish
+      data:
+        topic: "sonoff/chambre/alex/cmnd/SetOption19"
+        payload: "1"
+    - service: mqtt.publish
+      data:
+        topic: "sonoff/chambre/doudou/cmnd/SetOption19"
+        payload: "1"
