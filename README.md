@@ -75,6 +75,102 @@ Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
 - Synology NAS DS218+
 - Raspberry Pi 4B
 
+## Groups
+Originally, (pre-lovelace) this was used for both display and use of multiple sensors/automations/lights etc together.
+Now, with lovelace, the display is useless, but still here for automations, sums, etc
+
+### Device tracker
+
+The magic about that, is that the group is 'home' if any of the trackers is 'home' and is 'not_home' if nobody is in the house. So the group is actually 'anyone home?' it switches to 'home' when the first person comes, and switches to 'not_home' when the last departs, which is just perfect for automations
+
+```
+  tracked_devices:
+    name: Tracked devices
+    entities:
+       - device_tracker.qcombtd
+       - device_tracker.samsungsmg920f
+       - device_tracker.galaxy_s8
+       - device_tracker.lia
+```
+
+### Sensors
+The magic about that, is that if any goes from 'off' to 'on' the the whole group goes from 'off' to 'on', so you can trigger an automation if any of them is triggered, and if you add a new one, just add it to the group and it is intergrated to automations automatically
+
+The list here is not exhaustive, have a look a the groups.yaml file
+
+Motion sensors inside the house 
+```
+  motion_sensors:
+    name: Mouvement intérieur
+    entities:
+       - binary_sensor.motion_sensor_158d0001e47f52
+       - binary_sensor.motion_sensor_158d0001e47d34
+       - binary_sensor.motion_sensor_158d0001ddca38
+       - binary_sensor.motion_sensor_158d0001b7542d
+       - binary_sensor.motion_sensor_158d0001d6675f
+```
+Open closed sensor on doors
+```
+  door_sensors:
+    name: Ouvertures Portes
+    entities:
+       - binary_sensor.door_window_sensor_158d0001ab1b67
+       - binary_sensor.door_window_sensor_158d0001ab5aaa
+       - binary_sensor.door_window_sensor_158d0001d8526a
+       - binary_sensor.door_window_sensor_158d000272f13c
+```
+
+These groups help for the averages
+```
+  room_humidity:
+    name: Humidité Maison
+    entities:
+       - sensor.humidity_158d0001b96127
+       - sensor.humidity_158d0001b92bcc
+       - sensor.humidity_158d0001b8f1b1
+       - sensor.humidity_158d00022734f8
+  room_temperature:
+    name: Température Maison
+    entities:
+       - sensor.temperature_158d0001b96127
+       - sensor.temperature_158d0001b92bcc
+       - sensor.temperature_158d0001b8f1b1
+       - sensor.temperature_158d00022734f8
+```
+### Lights
+
+These groups allow to control several lights simultaneously
+```
+
+  light_salon:
+    name: Salon
+    entities:
+       - light.yeelight_color1_34ce008fcea8
+       - light.yeelight_color1_34ce00900013
+       - light.yeelight_color1_7811dc6aaca4
+       - light.yeelight_strip1_7811dca22953
+```
+
+### Automations
+
+Allows to deactivate the automations not "supported" by the wife when she is at home, and reactivate them the rest of the time
+
+```
+  non_waf:
+    name: Non WAF scenarios
+    entities:
+       - automation.allumage_sdb_auto
+       - automation.extinction_sdb_auto
+       - automation.allumage_couloir_auto
+       - automation.extinction_couloir_auto
+       - automation.changement_lumieres_a_6h_et_20
+       - automation.changement_lumieres_a_7h_et_19h
+       - automation.changement_lumieres_a_9h_et_17h
+       - automation.changement_lumieres_a_22h
+       - automation.changement_lumieres_a_23
+```
+
+
 ## Automations
 Currently 66
 Soon...
