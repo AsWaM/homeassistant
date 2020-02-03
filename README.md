@@ -6,7 +6,7 @@ Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
 
 ## Expected improvements
 - Add motors to the Rolle Shutters and integrate them
-- Add a Tado smart TRV in the bathroom
+- <del>Add a Tado smart TRV in the bathroom</del> --> Done
 
 ## Live demo (floorplan)
  - Overview is created with Picture elements and image superpositions
