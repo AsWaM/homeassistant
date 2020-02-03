@@ -33,7 +33,7 @@ Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
 - Eufy Security cam V2 (not integrated yet) 
 ### Presence Detection
 - bluetooth device tracker
-- Tado GeoFence
+- <del>Tado GeoFence</del> Desactivated that, prevents you to remotely turn the heating on
 - Could not get the NUT ble tracker to work (ble_device_tracker)
 ### Sensors
 - Xiaomi Gateway V2
