@@ -17,7 +17,7 @@ Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
 
 ## Used integrations & Hardware
 ### Heating / Climate
-- Tado smart TRVs (x3) + Tado Gateway
+- Tado smart TRVs (x5) + Tado Gateway
 ### Custom Sensors
 - Template (for sensor batteries, average temperature, turned on lights etc...) 
 - History (Already cleaned today, Sonnzed notification, ect) 
