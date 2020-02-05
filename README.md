@@ -214,6 +214,21 @@ Allows to deactivate the automations not "supported" by the wife when she is at 
 
 
 # Automations
+
+Automations are in diferent categories
+
+## Buttons
+
+## Automatic
+
+## Telegram
+
+## Magic Cube
+
+## Calendar based
+
+## Time based
+
 Currently 66
 Soon...
 # Custom Sensors
