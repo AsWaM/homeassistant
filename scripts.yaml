@@ -1,0 +1,172 @@
+#Mode absent: Extinction de toutes les lumières, de la télé, activation des cams, desactivation du mode douche
+  away_mode:
+    alias: Passage mode absent
+    sequence:
+      - service: light.turn_off
+        data:
+          entity_id: group.light_devices, group.light_bulbs
+      - service: switch.turn_off
+        data:
+          entity_id: switch.synology_home_mode, switch.plug_158d0001de56c2, switch.chambre, switch.cuisine1, switch.cuisine2, switch.plug_158d0001a5d465, switch.chambredoud, switch.chiottelum, switch.chiotteventil, switch.plug_158d0001a5d465, switch.terasse, switch.lustresalon, switch.appliquesalon, switch.sdb
+      - service: media_player.turn_off
+        data: 
+          entity_id: media_player.lg_tv_remote
+      - service: input_boolean.turn_off
+        data: 
+          entity_id: input_boolean.mode_douche
+#Passage de tous les radiateurs en mode auto [TODO: considerer le calendrier doudou]
+  heating_on:
+    alias: Passe chauffage en mode Home
+    sequence:
+      - service: climate.set_hvac_mode
+        data: 
+          entity_id: climate.salon
+          hvac_mode: auto
+      - delay:
+          seconds: 3
+      - service: climate.set_hvac_mode
+        data: 
+          entity_id: climate.cuisine
+          hvac_mode: auto
+      - delay:
+          seconds: 3
+      - service: climate.set_hvac_mode
+        data: 
+          entity_id: climate.chambre_alex
+          hvac_mode: auto
+      - delay:
+          seconds: 3
+      - service: climate.set_hvac_mode
+        data: 
+          entity_id: climate.chambre_doudou
+          hvac_mode: auto
+      - delay:
+          seconds: 3
+      - service: climate.set_hvac_mode
+        data: 
+          entity_id: climate.salle_de_bains
+          hvac_mode: auto
+#Passage de tous les radiateurs en mode manuel 
+  heating_off:
+    alias: Eteint chauffage
+    sequence:
+      - service: climate.set_temperature
+        data: 
+          entity_id: climate.salon
+          hvac_mode: heat
+          temperature: 16
+      - delay:
+          seconds: 3
+      - service: climate.set_temperature
+        data: 
+          entity_id: climate.cuisine
+          hvac_mode: heat
+          temperature: 16
+      - delay:
+          seconds: 3
+      - service: climate.set_temperature
+        data: 
+          entity_id: climate.chambre_alex
+          hvac_mode: heat
+          temperature: 16
+      - delay:
+          seconds: 3
+      - service: climate.set_temperature
+        data: 
+          entity_id: climate.chambre_doudou
+          hvac_mode: heat
+          temperature: 16
+      - delay:
+          seconds: 3
+      - service: climate.set_temperature
+        data: 
+          entity_id: climate.salle_de_bains
+          hvac_mode: heat
+          temperature: 14
+#Allumage des lampes d'ambiance et du lampadaire piur confirmer la détection
+  home_mode:
+    alias: Passage mode présent
+    sequence:
+      - service: switch.turn_on
+        data:
+          entity_id: switch.plug_158d0001a5d465
+      - service: light.turn_on
+        data:
+          entity_id: group.light_salon
+# Le mode ne marche qu'au turn on qui n'est pas enclenché si la lampe est eteinte donc il faut l'eteindre avant au cas ou
+  alarm_on:
+    alias: Lance alarme
+    sequence:
+      - service: xiaomi_aqara.play_ringtone
+        data:
+          gw_mac: 34:CE:00:FB:5D:F0
+          ringtone_id: 0
+          ringtone_vol: 100
+      - service: light.turn_off
+        data:
+          entity_id: group.light_flashing
+      - delay:
+          seconds: 1
+      - service: light.turn_on
+        data:
+          entity_id: group.light_flashing
+          effect: Police
+# Arret du mode alarme
+  alarm_off:
+    alias: Stoppe alarme
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: group.light_flashing
+          effect: Stop
+      - delay:
+          seconds: 1
+      - service: light.turn_off
+        data:
+          entity_id: group.light_flashing
+# Finalement pour 1h, puis 3, puis 5, etc. Desactive les notifications d'intrusion temporairement
+  snooze_xh:
+    alias: Snooze an automation for x hour
+    sequence:
+      - service: automation.turn_off
+        data_template:
+          entity_id: '{{ automation }}'
+      - delay: '{{ states.sensor.already_snoozed_notifs.state | int * 2 +1 }}:00:00'
+      - service: automation.turn_on
+        data_template:
+          entity_id: '{{ automation }}'
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.snooze_notifs
+#waf mode: force l'allumage et fixe la couleur des lampes du couloir et du salon, desactive les allumages/changements de couleurs/extinctions automatiques des lampes du couloir et du salon
+  waf_mode:
+    alias: Stop non WAF Automations
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: light.yeelight_color1_7811dc6a9651, light.yeelight_color2_7c49eb157ed5, light.yeelight_color2_7c49eb157a7e
+          color_name: ivory
+          brightness: 250
+      - service: automation.turn_off
+        data:
+          entity_id: group.non_waf
+#rétablit les automatisations désactivées par le waf mode
+  waf_mode_off:
+    alias: Relaunch non WAF Automations
+    sequence:
+      - service: automation.turn_on
+        data:
+          entity_id: group.non_waf
+#Photo de la dafang en direct, envoyée via télégram
+  camera_snap_message:
+    alias: Send Camera snapshot
+    sequence:
+      - service: notify.telegram
+        data:
+          message: "Captures des caméras"
+          data:
+            photo:
+            - url: https://192.168.178.240/cgi-bin/currentpic.cgi
+              username: root
+              password: !secret dafang_pass
+              verify_ssl: false

@@ -1,0 +1,36 @@
+#all booleans
+  radio_lights:
+    name: Radio Lights stats
+    initial: off
+    icon: mdi:light
+  mode_present:
+    name: Mode présent
+    initial: on
+    icon: mdi:account-check
+  landing_dim:
+    name: Landing Dim
+    initial: off
+  mode_douche:
+    name: Mode douche
+    initial: off
+    icon: mdi:duck
+  mode_nuit:
+    name: Mode nuit
+    initial: off
+    icon: mdi:weather-night
+  snooze_notifs:
+    name: Notifications suspendues
+    initial: off
+    icon: mdi:bell-sleep
+  vide_aspi:
+    name: Vidage aspi
+    initial: off
+    icon: mdi:delete-variant
+  mode_waf:
+    name: Mode waf
+    initial: off
+    icon: mdi:human-female-girl
+  heating:
+    name: Chauffage
+    initial: off
+    icon: mdi:radiator
