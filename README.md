@@ -3,20 +3,20 @@
 This is a work in progress, not a tutorial. Happy if it helps.
 
 Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
-## Live demo (floorplan)
- - Overview is created with Picture elements and image superpositions
-[Youtube Live demo](https://www.youtube.com/watch?v=4EGnCFBxhZg)
-
-- Livingroom is created with Picture elements and image superpositions
-[Youtube Live demo](https://www.youtube.com/watch?v=QuAtu_bE5hE)
 
 ## Screenshots
 Below a few screenshots of how it looks like (wip)
 
 ### Interactive Overview (Picture Elements card)
+Except the furniture, everything is clickable or actionable
+[Live demo (YouTube)](https://www.youtube.com/watch?v=4EGnCFBxhZg)
+
 ![Overview](Overview.PNG)
 
 ### Interactive Living Room (Picture Elements card) 
+All the lights and the tv are actionable
+[Live demo (YouTube)](https://www.youtube.com/watch?v=QuAtu_bE5hE)
+
 ![LivingRoom](LivingRoom.PNG)
 
 ### Summary (mostly Entities card)
