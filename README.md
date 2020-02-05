@@ -26,14 +26,14 @@ Below a few screenshots of how it looks like (wip)
 ### Interactive Overview (Picture Elements card)
 Except the furniture, everything is clickable or actionable
 [Live demo (YouTube)](https://www.youtube.com/watch?v=4EGnCFBxhZg)
-![Yaml configuration](lovelace-overview.yaml)
-[Overview](Overview.PNG)
+[Yaml configuration](lovelace-overview.yaml)
+![Overview](Overview.PNG)
 
 ### Interactive Living Room (Picture Elements card) 
 All the lights and the tv are actionable
 [Live demo (YouTube)](https://www.youtube.com/watch?v=QuAtu_bE5hE)
-![Yaml configuration](lovelace-salon.yaml)
-[LivingRoom](LivingRoom.PNG)
+[Yaml configuration](lovelace-salon.yaml)
+![LivingRoom](LivingRoom.PNG)
 
 ### Summary (mostly Entities card)
 ![Summary](Summary.PNG)
@@ -233,7 +233,7 @@ Allows to deactivate the automations not "supported" by the wife when she is at 
 
 # Automations
 
-All the automations can be found in the dedicated file ![automations.yaml](automations.yaml)
+All the automations can be found in the dedicated file [automations.yaml](automations.yaml)
 
 ## Buttons
 
