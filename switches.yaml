@@ -1,0 +1,103 @@
+- platform: template
+  switches:
+      tv_composite:
+        friendly_name: Switch Tv
+        value_template: "{{ is_state('media_player.lg_tv_remote', 'playing') }}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: switch.tv
+        turn_off:
+          service: media_player.turn_off
+          data:
+            entity_id: media_player.lg_tv_remote
+      ambiance_salon:
+        friendly_name: Switch Ambiance Salon
+        value_template: "{{ is_state('group.light_salon', 'on') }}"
+        turn_on:
+          service: light.turn_on
+          data:
+            entity_id: group.light_salon
+        turn_off:
+          service: light.turn_off
+          data:
+            entity_id: group.light_salon
+      couloir:
+        friendly_name: Switch Couloir
+        value_template: "{{ is_state('group.light_couloir', 'on') }}"
+        turn_on:
+          service: light.turn_on
+          data:
+            entity_id: group.light_couloir
+        turn_off:
+          service: light.turn_off
+          data:
+            entity_id: group.light_couloir
+      plan_travail:
+        friendly_name: Switch plan travail
+        value_template: "{{ is_state('group.plan_travail', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.plan_travail
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.plan_travail
+#- platform: mqtt
+#  name: "Lustre"
+#  state_topic: "home/sonoff/t2/3/tele/STATE"
+#  command_topic: "home/sonoff/t2/3/cmnd/Power2"
+#  value_template: "{{value_json.POWER2}}"
+#  qos: 1
+#  payload_on: "on"
+#  payload_off: "off"
+#  retain: false
+#- platform: mqtt
+#  name: "Applique"
+#  state_topic: "home/sonoff/t2/3/tele/STATE"
+#  command_topic: "home/sonoff/t2/3/cmnd/Power1"
+#  value_template: "{{value_json.POWER1}}"
+#  qos: 1
+#  payload_on: "on"
+#  payload_off: "off"
+#  retain: false
+- platform: broadlink
+  host: !redacted
+  mac: 'redacted'
+  switches:
+    tv:
+      friendly_name: "Tv Power"
+      command_on: 'JgBYAAABIJISExETETcSEhISEhQQFBETETcROBESEjcRNhM1EjcTNRMTERISNxEUERMSExE2EjYSNhM2EhIROBE3ETcREhITEgAFGwABH0oSAAwzAAEfShEADQU='
+      command_off: 'JgBYAAABJJQSExISEjcSExETERQRExETEjcSNxISEjcSNxI2ETgSNxETEhMSEhE4EhISExISEhMSNxE3EjcRExI3ETgSNhI3EgAFKgABI0sSAAwIAAEkSxEADQU='
+    tv_ch:
+      friendly_name: "Tv CH Up Down"
+      command_on: 'JgBQAAABI5YSExISETgRExITERMSExISETgSNxISEjcSNhE4EjcSNhITEhIRFBETEhMSEhEUERMSNxI3EjYSNxI3EjYSNxI3EgAFKwABJEoSAA0FAAAAAAAAAAA='
+      command_off: 'JgBQAAABJJUSEhITETcSExETERQSEhITETcSNxITEDgSNxI2EjcSNxI3ERMSExAUEhMRExISERQRFBE3EjcSNxE3EjcSNhE4EQAFLQABI0wRAA0FAAAAAAAAAAA='
+    sound_bar_vol:
+      friendly_name: "Volume Up Down"
+      command_on: 'JgCgAJGUEBAQEQ8SDxEQMg8yEBAQEQ8yDzIQMg8yDxIPEQ8SDxEQkxARDxEPEhAREDEPMg8yDxIPMhAxEDIQEA8SDxIPEQ8yEBEPEg8RDzMQAAcLkZQQEBARDxEQEQ8yDzMPEQ8SDzIPMg8zDzIPERARDxIPEQ+UEBEPEQ8SDxEQMg8yEDEPEg8yDzIPMw8RDxIQEBARDzIQEQ8SDxEQMRAADQUAAAAAAAAAAA=='
+      command_off: 'JgCgAJKTEBEPEhAQEBEPMg8yEBEPEg8yDzIQMRAxEBEPEg8REBEPlBAQDxIPEg8RDxIPERAREDEQMRExEDEPEg8yEDEQMRAREBEPERARDzIPAAcMkpMPEg8REBEPEg8yEDEPEhAQEDIQMQ8yDzIQEQ8SDxEPEg+TEBEQERAQEBEPEg8RDxIQMRAxEDIQMRAREDEQMRAxEBEPEg8RDxIQMRAADQUAAAAAAAAAAA=='
+#    radio_lights:
+#      friendly_name: "Lampes salon"
+#      command_on: 'sgCUAhoaDhoNDRoNGgADEk8NGg0aDRoNGw0bDRoNGhsNGg0aDQ0aDRsbDRoNDRoNGxoNDRoNGg4aGw0NGg0bGg0NGg0aDRsaDQ4aGwwbDRoNGg0aDRoOGg0OGhoNGg4MGw0aGwwaDRsNDhoNGg0bDRoaDRoNDhoMGwADEk8MGw0aDRoNGw0bDRoNGhsNGg0aDQ0aDRsbDRoNDRoNGxoNDRoNGg0bGw0NGg0bGg0NGg0bDBsaDQ4aGw0aDRoNGg0aDhoNGg0OGhsMGg4NGg0aGg4ZDhoNDhoNGg0bDRoaDRsNDBsNGgADEk8MGw0aDRoNGg4bDRoNGhsMGw0aDQ0aDRocDRoNDRoNGxoNDRoNGg0bGw0NGg0bGg0NGg0aDRsaDQ4aGg4aDRoNGg0aDRoOGg0OGhoNGg4MGw0aGg0aDhoNDhoNGg4aDRoaDRsMDRsNGgADEVAMGg0bDRoNGg4bDRoNGhoNGg0bDQ0aDRocDRoNDRoNGhoNDhoNGg0aHA0NGg0aGw0MGw0aDRsaDQ4aGg0bDRoNGg0aDRoOGQ4OGhoNGg0NGw0aGg0aDRsMDxoNGg0aDhoaDRoNDRoNGwADEVAMGg0aDRsMGw4aDRoOGRsNGg0aDQ0bDRobDRsMDRsNGhoNDRsMGw0aGw0NGw0aGg0OGQ4aDRoaDQ4bGg0aDRoOGg0aDRoNGg0OGhsNGg0NGg0aGw0aDRoNDhsNGg0aDRobDRoNDRoNGgADEk8MGw0aDRoNGw0bDRoNGhsNGg0aDQ0aDRsbDRoNDRoNGxoNDRoNGg4aGw0NGg0bGg0NGg0bDBsaDQ4bGg0aDRoNGg0bDRoNGg0OGhsNGg0NGg0aGw0aDRoNDhoNGw0aDRobDRoNDBsNGgAF3A0aDRs='
+#      command_off: 'sgD6ARoOGg0bDRoNGxoNGg0aDQ0aDRsbDRoNDRoOGhoNDRoNGw0aGw0NGg0bGg0NGg0aDRsaDQ4aGwwbDRoNGg0aDRsNDBsOGg0aDRsaDRoNDRoNGhsNDhoNGg4aDRoNGhsNGg0NGgADEk8MGw0aDRoNGw0bDRoNGhsNGg0aDQ0aDRsbDRoNDRoNGxoNDRoNGg0bGw0NGg0aGw0NGg0aDRobDQ4aGwwbDRoNGg0aDRsMDRsOGg0aDRsaDRoNDRsMGxoNDhoNGg4aDRoNGhsNGg0NGgADEk8NGg0aDhkOGg4aDRoNGxoNGg0bDA0bDBsbDRsNDBsNGhoNDRoNGw0aHAwNGw0aGg0NGg0bDRobDA4aGw0aDRoNGw0aDRoNDRoOGw0aDRoaDhoMDhoNGhoNDhsNGg0aDRsNGhoNGg0NGwADEU8MGw0aDRoNGw0bDRoNGhsNGg0aDQ0aDRsbDRoNDRoNGxoNDRoNGg0bGw0NGg0aGw0NGg0aDRobDQ4aGg4aDRoNGg0aDRsMDRsOGg0bDBsaDRoNDRoNGxoNDhoNGw0aDRoNGxoNGg0NGgADEk8MGwwbDRoNGg4bDRoNGhsNGg0aDQ0aDRocDRoNDRoNGxoNDRoNGg0bGw0NGg0bGg0NGg0aDRsaDQ4aGg4aDRoNGg0aDRsNDRoOGg0bAAXcGw0aDRobDRoNGg0NGg0='
+#- platform: command_line
+#  switches:
+#    synology_home_mode:
+#      command_on: "python3 /config/syno_homemode.py home"
+#      command_off: "python3 /config/syno_homemode.py away"
+#      command_state: "python3 /config/syno_homemode.py status"
+#      value_template: >
+#        {% if value_json is defined %}
+#          {{ value_json.data.on}}
+#        {% else %}
+#          {{ states.switch.synology_home_mode.state == 'on' }}
+#        {% endif %}
+#      friendly_name: Surveillance Station Home Mode
+- platform: command_line
+  switches:
+    synology_home_mode:
+      command_on: "python3 /config/syno_homemode.py home"
+      command_off: "python3 /config/syno_homemode.py away"
+      friendly_name: Surveillance Station Home Mode

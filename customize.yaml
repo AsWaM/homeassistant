@@ -1,0 +1,182 @@
+sensor.humidity_158d0001b8f1b1:
+  friendly_name: HUM Salon
+sensor.temperature_158d0001b8f1b1:
+  friendly_name: TMP Salon
+light.yeelight_strip1_7811dc66e549:
+  friendly_name: RGB Strip Cuisine
+  icon: mdi:led-off
+light.gateway_light_34ce00fb5df0:
+  friendly_name: RGB Gateway
+binary_sensor.switch_158d0001e18d16:
+  friendly_name: BTN Doudou
+binary_sensor.door_window_sensor_158d0001d8526a:
+  device_class: door
+  friendly_name: Ouverture Garage
+binary_sensor.door_window_sensor_158d0001ab5aaa:
+  device_class: door
+  friendly_name: Ouverture Entree
+binary_sensor.motion_sensor_158d0001ddca38:
+  friendly_name: MVT Couloir
+sensor.illumination_34ce00fb5df0:
+  friendly_name: LUM Gateway
+sensor.illumination_158d0001e47d34:
+  friendly_name: LUM Entree
+binary_sensor.motion_sensor_158d0001e47d34:
+  friendly_name: MVT Entree
+binary_sensor.motion_sensor_158d0001e47f52:
+  friendly_name: MVT SDB
+sensor.illumination_158d0001e47f52:
+  friendly_name: LUM SDB
+binary_sensor.switch_158d0001e18d90:
+  friendly_name: BTN Cuisine
+switch.plug_158d0001de56c2:
+  friendly_name: PLUG Cuisine
+  icon: mdi:track-light
+sensor.humidity_158d0001b92bcc:
+  friendly_name: HUM Chambre
+sensor.pressure_158d0001b92bcc:
+  friendly_name: BAR Chambre
+sensor.temperature_158d0001b92bcc:
+  friendly_name: TMP Chambre
+sensor.temperature_158d0001b96127:
+  friendly_name: TMP Doudou
+sensor.pressure_158d0001b96127:
+  friendly_name: BAR Doudou
+sensor.humidity_158d0001b96127:
+  friendly_name: HUM Doudou
+sensor.illumination_158d0001b7542d:
+  friendly_name: LUM Salon
+binary_sensor.motion_sensor_158d0001b7542d:
+  friendly_name: MVT Salon
+binary_sensor.door_window_sensor_158d0001ab1b67:
+  device_class: door
+  friendly_name: Ouverture Chiotte
+light.yeelight_ceiling_34ce00be1f20:
+  friendly_name: Lampe Salon
+sensor.humidity_158d00022734f8:
+  friendly_name: HUM SDB
+sensor.temperature_158d00022734f8:
+  friendly_name: TMP SDB
+sensor.pressure_158d00022734f8:
+  friendly_name: BAR SDB
+light.yeelight_color2_7c49eb157ed5:
+  friendly_name: rgb couloir 2
+  icon: mdi:ceiling-light
+light.yeelight_color1_7811dc6a9651:
+  friendly_name: rgb couloir 1
+  icon: mdi:ceiling-light
+light.yeelight_color2_7c49eb157a7e:
+  friendly_name: rbg sdb
+  icon: mdi:ceiling-light
+light.yeelight_bedside_7811dc901a4c:
+  friendly_name: rgb chevet 1
+device_tracker.samsung_galaxy_s7:
+  friendly_name: Tel Doudou
+device_tracker.qcombtd:
+  friendly_name: Tel Alex
+light.yeelight_bedside_7811dc904840:
+  friendly_name: rgb chevet 2
+binary_sensor.door_window_sensor_158d0001dbd24f:
+  device_class: window
+  friendly_name: Ouverture Terasse
+binary_sensor.door_window_sensor_158d0001de78e5:
+  device_class: window
+  friendly_name: Ouverture sdb jardin
+binary_sensor.switch_158d0002134b92:
+  friendly_name: BTN2 SDB
+sensor.illumination_158d0001ddca38:
+  friendly_name: LUM Couloir
+binary_sensor.motion_sensor_158d0001d6675f:
+  friendly_name: MVT Chiotte
+light.yeelight_color1_34ce008fcea8:
+  friendly_name: RGB Canape 2
+light.yeelight_color1_7811dc6aaca4:
+  friendly_name: RGB Tv
+light.yeelight_color1_34ce00900013:
+  friendly_name: RGB Canape 1
+switch.plug_158d0001a5d465:
+  friendly_name: Plug Lampadaire
+  icon: mdi:disc
+binary_sensor.door_window_sensor_158d0002391048:
+  device_class: window
+  friendly_name: Ouverture Chambre doudou
+binary_sensor.door_window_sensor_158d00023949af:
+  device_class: window
+  friendly_name: Ouverture Chambre
+binary_sensor.door_window_sensor_158d000239438b:
+  device_class: window
+  friendly_name: Ouverture Salon 2
+sensor.temperature_158d000272e88d:
+  friendly_name: TMP Exterieur
+sensor.humidity_158d000272e88d:
+  friendly_name: HUM Exterieur
+sensor.pressure_158d000272e88d:
+  friendly_name: BAR Ext
+sensor.humidity_158d000273a1ce:
+  friendly_name: HUM Frigo
+sensor.temperature_158d000273a1ce:
+  friendly_name: TMP Frigo
+sensor.pressure_158d000273a1ce:
+  friendly_name: BAR Frigo
+sensor.temperature_158d0002c8bc1c:
+  friendly_name: TMP Garage
+sensor.humidity_158d0002c8bc1c:
+  friendly_name: HUM Garage
+binary_sensor.door_window_sensor_158d000272f13c:
+  device_class: door
+  friendly_name: Ouverture porte sdb
+binary_sensor.switch_158d0001e62208:
+  friendly_name: BTN Salon
+light.yeelight_strip1_7811dca22953:
+  friendly_name: RGB Strip TV
+  icon: mdi:led-off
+binary_sensor.cube_158d00027984bb_2:
+  friendly_name: Magic Cube
+light.yeelight_strip2_04cf8c7acfe8:
+  friendly_name: LightStrip Doudou
+  icon: mdi:led-off
+switch.cuisine1:
+  icon: mdi:ceiling-light
+switch.cuisine2:
+  icon: mdi:ceiling-light
+switch.chambredoud:
+  icon: mdi:ceiling-light
+switch.chiottelum:
+  icon: mdi:ceiling-light
+switch.chambre:
+  icon: mdi:ceiling-light
+switch.chiotteventil:
+  icon: mdi:fan
+light.bedside_philips:
+  icon: mdi:desk-lamp
+switch.tv:
+  icon: mdi:power
+group.light_salon:
+  icon: mdi:lightbulb
+switch.ambiance_salon:
+  icon: mdi:lamp
+switch.terasse:
+  icon: mdi:track-light
+switch.lustresalon:
+  icon: mdi:weather-sunny
+switch.applique:
+  icon: mdi:track-light
+switch.appliquesalon:
+  icon: mdi:track-light
+light.yeelight_bslamp1_7811dc904840:
+  friendly_name: lampe chevet 2
+  icon: mdi:desk-lamp
+device_tracker.samsungsmg920f:
+  friendly_name: Madre
+switch.sdb:
+  icon: mdi:ceiling-light
+climate.chambre_alex:
+  icon: mdi:radiator
+climate.salon:
+  icon: mdi:radiator
+climate.chambre_doudou:
+  icon: mdi:radiator
+climate.salle_de_bains:
+  icon: mdi:radiator
+climate.cuisine:
+  icon: mdi:radiator

@@ -1,0 +1,14 @@
+#Intensité lumières couloir / sdb
+  global_brightness:
+    name: All Brightness
+    initial: 255
+    min: 0
+    max: 255
+    step: 5
+#Intensité lumières salon
+  salon_brightness:
+    name: Salon Luminosité
+    initial: 255
+    min: 0
+    max: 255
+    step: 5

@@ -1,0 +1,187 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !redacted
+  longitude: !redacted
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 191
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Luxembourg
+  # Customization file
+  customize: !include customize.yaml
+system_health:
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - mac: !redacted
+      key: !secret xiaomi_gateway
+
+recorder:
+#  db_url: !secret mariadb
+  purge_keep_days: 10
+
+frontend:
+  extra_html_url:
+    - /local/custom_ui/state-card-floorplan.html
+config:
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky
+
+panel_custom:
+  - name: floorplan
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:floor-plan
+    url_path: floorplan
+    config: !include floorplan.yaml
+panel_iframe:
+  ide:
+    title: IDE
+    icon: mdi:code-braces
+    url: !redacted
+
+
+binary_sensor:
+  - platform: mqtt
+    state_topic: dummy/floorplan/sensor
+    name: Floorplan
+http:
+  # Secrets are defined in the file secrets.yaml
+  #api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+  exclude:
+    entities:
+      - sensor.garage_door_time_in_state
+      - sensor.garage_door_wifi_signal_strength
+      - sensor.garage_summary
+      - sensor.garage_door_since
+      - sensor.date_time
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+google:
+  client_id : !secret google_clientid
+  client_secret: !secret google_client_secret
+camera:
+  - platform: synology
+    url: !redacted
+    username: !secret nas_user
+    password: !secret nas_pass
+    timeout: 30
+    verify_ssl: false
+
+tado:
+  username: !secret tado_user
+  password: !secret tado_pass
+  
+vacuum:
+  - platform: xiaomi_miio
+    host: !redacted
+    token: !secret aspi_key
+
+device_tracker:
+  - platform: bluetooth_tracker
+  - platform: tado
+    username: !secret tado_user
+    password: !secret tado_pass
+    home_id: !secret tado_homeid
+#INPUTS
+input_boolean: !include input_boolean.yaml
+input_select: !include input_select.yaml
+input_number: !include input_number.yaml
+
+cover:
+  - platform: mqtt
+    name: "Garage Door"
+    command_topic: "garadget/Garage/command"
+    state_topic: "garadget/Garage/status"
+    payload_open: "open"
+    payload_close: "close"
+    payload_stop: "stop"
+    value_template: '{{ value_json.status }}'
+
+
+media_player:
+  - platform: lg_netcast
+    host: !redacted
+    access_token: !secret tv_token
+weblink:
+  entities:
+    - name: FritzBox
+      url: !redacted
+      icon: mdi:router-wireless
+    - name: OpenWrt
+      url: !redacted
+      icon: mdi:router-wireless
+    - name: Dafang
+      icon: mdi:camcorder
+      url: !redacted
+    - name: NAS
+      icon: mdi:nas
+      url: !redacted
+    - name: Sickrage
+      icon: mdi:cloud-download
+      url: !redacted
+
+  - platform: xiaomi_miio
+    name: Bedside Philips
+    host: !redacted
+    token: !redacted 
+
+
+# Sensors
+sensor: !include sensors.yaml
+#switches
+switch: !include switches.yaml
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_apikey
+    allowed_chat_ids:
+      - !secret telegram_id_alex
+notify:
+  - name: telegram
+    platform: telegram
+    api_key: !secret telegram_apikey
+    chat_id: !secret telegram_id_alex
+#temp force yeelight v2 to be found (FW issue)
+yeelight:
+  devices:
+    !redacted:
+      name: yeelight_color2_7c49eb157ed5
+    !redacted:
+      name: yeelight_strip2_04cf8c7acfe8
+# Cloud
+cloud:
+logger:
+  default: warning
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml

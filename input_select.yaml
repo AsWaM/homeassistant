@@ -1,0 +1,31 @@
+#All selects
+#Couleurs couloir
+  global_color:
+    name: All Colors
+    options:
+     - deepskyblue
+     - greenyellow
+     - blueviolet
+     - deeppink
+     - ivory
+     - palegoldenrod
+    initial: ivory
+    icon: mdi:panda
+#Couleurs Salon
+  salon_color:
+    name: Salon Colors
+    options:
+     - deepskyblue
+     - lightblue
+     - greenyellow
+     - tomato
+     - palegreen
+     - blueviolet
+     - deeppink
+     - lightpink
+     - ivory
+     - palegoldenrod
+     - orchid
+     - beige
+    initial: ivory
+    icon: mdi:panda
