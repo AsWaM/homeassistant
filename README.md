@@ -13,31 +13,31 @@ Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
 ## Screenshots
 Below a few screenshots of how it looks like (wip)
 
-Interactive Overview (Picture Elements card)
+### Interactive Overview (Picture Elements card)
 ![Overview](Overview.PNG)
 
-Interactive Living Room (Picture Elements card) 
+### Interactive Living Room (Picture Elements card) 
 ![LivingRoom](LivingRoom.PNG)
 
-Summary (mostly Entities card)
+### Summary (mostly Entities card)
 ![Summary](Summary.PNG)
 
-Graphics (Sensor/History Graph card)
+### Graphics (Sensor/History Graph card)
 ![Graph](Graph.PNG)
 
-Dynamic content (Monster card)
+### Dynamic content (Monster card)
 ![Dynamic](Dynamic.PNG)
 
-Heating overview (Climate/Entities card)
+### Heating overview (Climate/Entities card)
 ![Chauffage](Chauffage.PNG)
 
-Sensors (Entities Cards)
+### Sensors (Entities Cards)
 ![Sensors](Sensors.PNG)
 
-Surveillance (Picture Entity/Entities Card)
+### Surveillance (Picture Entity/Entities Card)
 ![Surveillance](Surveillance.PNG)
 
-Batteries (Monster/Entities Card)
+### Batteries (Monster/Entities Card)
 ![Batteries](Batteries.PNG)
 
 # Expected improvements
