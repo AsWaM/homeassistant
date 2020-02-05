@@ -3,17 +3,47 @@
 This is a work in progress, not a tutorial. Happy if it helps.
 
 Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
-
-# Expected improvements
-- Add motors to the Rolle Shutters and integrate them
-- <del>Add a Tado smart TRV in the bathroom</del> --> Done
-
-# Live demo (floorplan)
+## Live demo (floorplan)
  - Overview is created with Picture elements and image superpositions
 [Youtube Live demo](https://www.youtube.com/watch?v=4EGnCFBxhZg)
 
 - Livingroom is created with Picture elements and image superpositions
 [Youtube Live demo](https://www.youtube.com/watch?v=QuAtu_bE5hE)
+
+## Screenshots
+Below a few screenshots of how it looks like (wip)
+
+Interactive Overview (Picture Elements card)
+![Overview](Overview.PNG)
+
+Interactive Living Room (Picture Elements card) 
+![LivingRoom](LivingRoom.PNG)
+
+Summary (mostly Entities card)
+![Summary](Summary.PNG)
+
+Graphics (Sensor/History Graph card)
+![Graph](Graph.PNG)
+
+Dynamic content (Monster card)
+![Dynamic](Dynamic.PNG)
+
+Heating overview (Climate/Entities card)
+![Chauffage](Chauffage.PNG)
+
+Sensors (Entities Cards)
+![Sensors](Sensors.PNG)
+
+Surveillance (Picture Entity/Entities Card)
+![Surveillance](Surveillance.PNG)
+
+Batteries (Monster/Entities Card)
+![Batteries](Batteries.PNG)
+
+# Expected improvements
+- Add motors to the Rolle Shutters and integrate them
+- <del>Add a Tado smart TRV in the bathroom</del> --> Done
+
 
 # Used integrations & Hardware
 ## Heating / Climate
