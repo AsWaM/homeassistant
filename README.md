@@ -4,20 +4,20 @@ This is a work in progress, not a tutorial. Happy if it helps.
 
 Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
 
-The full front end config can be found in the [Lovelace.yaml file](lovelace.yaml).
-The Picture Elements details [Overview floorplan file](lovelace-overview.yaml) and  [Living room interactive](lovelace-salon.yaml) are available as separate files
+ - The full front end config can be found in the [lovelace.yaml file](lovelace.yaml).
+ - The Picture Elements details [overview floorplan](lovelace-overview.yaml) and [living room interactive](lovelace-salon.yaml) are available as separate files
 
-Automations: [automations.yaml](automations.yaml)
-Scripts: [scripts.yaml](scripts.yaml)
-Configuration: [configuration.yaml](configuration.yaml)
-Groups: [groups.yaml](groups.yaml)
-Sensors: [sensors.yaml](sensors.yaml)
-Switches: [switches.yaml](switches.yaml)
+ - Automations: [automations.yaml](automations.yaml)
+ - Scripts: [scripts.yaml](scripts.yaml)
+ - Configuration: [configuration.yaml](configuration.yaml)
+ - Groups: [groups.yaml](groups.yaml)
+ - Sensors: [sensors.yaml](sensors.yaml)
+ - Switches: [switches.yaml](switches.yaml)
 
-Customizations: [customize.yaml](customize.yaml)
-Booleans: [input_boolean.yaml](input_boolean.yaml)
-Numbers: [input_numbers.yaml](input_numbers.yaml)
-Dropdowns: [input_select.yaml](input_select.yaml)
+ - Customizations: [customize.yaml](customize.yaml)
+ - Booleans: [input_boolean.yaml](input_boolean.yaml)
+ - Numbers: [input_numbers.yaml](input_numbers.yaml)
+ - Dropdowns: [input_select.yaml](input_select.yaml)
 
 
 ## Screenshots
