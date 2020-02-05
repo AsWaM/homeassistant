@@ -4,19 +4,35 @@ This is a work in progress, not a tutorial. Happy if it helps.
 
 Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
 
+The full front end config can be found in the ![Lovelace.yaml file](lovelace.yaml).
+The Picture Elements details ![Overview floorplan file](lovelace-overview.yaml) and  ![Living room interactive](lovelace-salon.yaml) are available as separate files
+
+Automations: ![automations.yaml](automations.yaml)
+Scripts: ![scripts.yaml](scripts.yaml)
+Configuration: ![configuration.yaml](configuration.yaml)
+Groups: ![groups.yaml](groups.yaml)
+Sensors: ![sensors.yaml](sensors.yaml)
+Switches: ![switches.yaml](switches.yaml)
+
+Customizations: ![customize.yaml](customize.yaml)
+Booleans: ![input_boolean.yaml](input_boolean.yaml)
+Numbers: ![input_numbers.yaml](input_numbers.yaml)
+Dropdowns: ![input_select.yaml](input_select.yaml)
+
+
 ## Screenshots
 Below a few screenshots of how it looks like (wip)
 
 ### Interactive Overview (Picture Elements card)
 Except the furniture, everything is clickable or actionable
 [Live demo (YouTube)](https://www.youtube.com/watch?v=4EGnCFBxhZg)
-
+![Yaml configuration](lovelace-overview.yaml)
 ![Overview](Overview.PNG)
 
 ### Interactive Living Room (Picture Elements card) 
 All the lights and the tv are actionable
 [Live demo (YouTube)](https://www.youtube.com/watch?v=QuAtu_bE5hE)
-
+![Yaml configuration](lovelace-salon.yaml)
 ![LivingRoom](LivingRoom.PNG)
 
 ### Summary (mostly Entities card)
@@ -215,7 +231,7 @@ Allows to deactivate the automations not "supported" by the wife when she is at 
 
 # Automations
 
-Automations are in diferent categories
+All the automations can be found in the dedicated file ![automations.yaml](automations.yaml)
 
 ## Buttons
 
@@ -229,11 +245,160 @@ Automations are in diferent categories
 
 ## Time based
 
-Currently 66
-Soon...
+
 # Custom Sensors
-Currently many
-Soon...
+
+All this can be found in the dedicated file ![sensors.yaml](sensors.yaml)
+
+## History
+
+These ones are used to know historical things (did the vacuum cleaner work today, did we snooze notifcations already...)
+```
+- platform: history_stats
+  name: Cleaned Today
+  entity_id: vacuum.xiaomi_vacuum_cleaner
+  state: 'cleaning'
+  type: time
+  start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  end: '{{ now() }}'
+- platform: history_stats
+  name: Already Snoozed Notifs
+  entity_id: input_boolean.snooze_notifs
+  state: 'on'
+  type: count
+  start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  end: '{{ now() }}'
+```
+## MQTT
+```
+- platform: mqtt
+  name: Garage Door Status
+  state_topic: "garadget/Garage/status"
+  value_template: '{{ value_json.status }}'
+```
+
+## Template
+
+These ones are used to calculate things (battery level of a sensor with a custom icon, averages, last mouvement, opened windows, etc...)
+
+### Battery level
+
+N.B: Could maybe done recursively, atm i do the same calcultaion for all sensors
+
+```
+- platform: template
+  sensors:
+    bat_mvt_sdb:
+      friendly_name: Mouvement SDB
+      value_template: >
+        {% if is_state('binary_sensor.motion_sensor_158d0001e47f52', 'unknown') %}
+          110
+        {% else %}
+          {{ states.binary_sensor.motion_sensor_158d0001e47f52.attributes["battery_level"] | float}}
+        {% endif %}
+      icon_template: >
+        {% set battery_level_xod1 = states.binary_sensor.motion_sensor_158d0001e47f52.attributes.battery_level|default(0)|int %}
+        {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+        {% if battery_round_xod1 >= 100 or is_state('binary_sensor.motion_sensor_158d0001e47f52', 'unknown') %}
+          mdi:battery
+        {% elif battery_round_xod1 > 0 %}
+          mdi:battery-{{ battery_round_xod1 }}
+        {% else %}
+          mdi:battery-charging-wireless-outline
+        {% endif %}
+      unit_of_measurement: '%'
+```
+### Last activated movement sensor
+
+Gives back a text with the friendly name of the sensor and its last activation
+N.B: There is a little (acceptable) bug: The last changed can be change back to 'not-detected' state 1 min after last actual movement
+
+```
+- platform: template
+  sensors:
+    last_motion:
+      friendly_name: Dernier mouvement
+      value_template: >
+        {% set allmotion = states | selectattr('entity_id', 'in', state_attr('group.motion_sensors', 'entity_id')) | list %}
+        {% set open= allmotion | map(attribute='last_changed') | list |max %}
+        {{allmotion |selectattr('last_changed','eq', open)|map(attribute='name')|list|join}} le {{ as_timestamp(open) | timestamp_custom('%d/%m/%Y à %-Hh%M') }}
+```
+
+### Summaries
+
+Gives back a comma separated list of friendly names of sensors with a given state (turned on lights, opened windows, visible trackers etc)
+
+The second line  forces the reread of the sensors value every minute, or the template sensor is never re-evaluated... Took me ages to figure that out
+```
+{% set forceupdate= strptime(states.sensor.date_time.state, '%Y-%m-%d, %H:%M')%}
+```
+
+Uses groups for dynamic integrations
+
+```
+- platform: template
+  sensors:
+### Fenetres ouvertes
+    opened_windows:
+      friendly_name:  Fenetres ouvertes
+      value_template: >
+        {% set allwindows = states | selectattr('entity_id', 'in', state_attr('group.window_sensors', 'entity_id')) | list %}
+        {% set forceupdate= strptime(states.sensor.date_time.state, '%Y-%m-%d, %H:%M')%}
+        {% set open= allwindows | selectattr('state', 'equalto', 'on') | list %}
+        {{ open| length}} / {{ allwindows | length}} ({{open | map(attribute='name') |list | join(', ') }})
+### Lumières allumées
+    active_lights:
+      friendly_name:  Lumières allumées
+      value_template: >
+        {% set alllights = states | selectattr('entity_id', 'in', state_attr('group.monitored_light', 'entity_id')) | list %}
+        {% set forceupdate= strptime(states.sensor.date_time.state, '%Y-%m-%d, %H:%M')%}
+        {% set turnedon= alllights | selectattr('state', 'equalto', 'on') | list %}
+        {{ turnedon| length}} / {{ alllights | length}} ({{turnedon | map(attribute='name') |list | join(', ') }})
+### trackers visibles
+    home_trackers:
+      friendly_name:  Trackers visibles
+      value_template: >
+        {% set alltrackers = states | selectattr('entity_id', 'in', state_attr('group.tracked_devices', 'entity_id')) | list %}
+        {% set forceupdate= strptime(states.sensor.date_time.state, '%Y-%m-%d, %H:%M')%}
+        {% set present= alltrackers | selectattr('state', 'equalto', 'home') | list %}
+        {{ present| length}} / {{ alltrackers| length}} ({{present | map(attribute='name') |list | join(', ') }})('%d/%m/%Y à %-Hh%M') }}
+```
+### Averages
+
+Gives back the value of the average of a group of sensors
+The second line forces the reread every minute of the sensors value, or the average is never recalculated... Took me ages to figure that out
+```
+{% set forceupdate= strptime(states.sensor.date_time.state, '%Y-%m-%d, %H:%M')%}
+```
+
+
+Forcing the unit allows to put them on the same graph as the actual sensors
+Uses groups for dynamic integrations
+
+
+N.B: There is a little (not very acceptable) bug: if a sensor is unavailable, it will count as 0 and trick the average. Could be excluded in the first selection
+
+
+```
+- platform: template
+  sensors:
+    average_temperature:
+      friendly_name: Températe moyenne
+      unit_of_measurement: '°C'
+      value_template: >
+           {% set sensors = states | selectattr('entity_id', 'in', state_attr('group.room_temperature', 'entity_id')) | list %}
+           {% set forceupdate= strptime(states.sensor.date_time.state, '%Y-%m-%d, %H:%M')%}
+           {% set values = sensors | map(attribute='state')|map('float')|list%}
+           {{ (values |sum / values |length)|round(2) }}
+    average_humidity:
+      friendly_name: Humidité moyenne
+      unit_of_measurement: '%'
+      value_template: >
+           {% set sensors = states | selectattr('entity_id', 'in', state_attr('group.room_humidity', 'entity_id')) | list %}
+           {% set forceupdate= strptime(states.sensor.date_time.state, '%Y-%m-%d, %H:%M')%}
+           {% set values = sensors | map(attribute='state')|map('float')|list%}
+           {{ (values |sum / values |length)|round(2) }}
+```
 
 # How it works
 ## lovelace dynamic
@@ -324,3 +489,12 @@ You can also add a tap action on the image
             title: mode waf
             type: image
  ```
+## Customizations
+They are mostly used to force the icon in the lovelace ui and/or in the picture elements cards, and to give them a friendlier name
+```
+climate.salon:
+  icon: mdi:radiator
+light.yeelight_strip2_04cf8c7acfe8:
+  friendly_name: LightStrip Doudou
+  icon: mdi:led-off
+```
