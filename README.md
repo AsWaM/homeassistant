@@ -4,20 +4,20 @@ This is a work in progress, not a tutorial. Happy if it helps.
 
 Using Hass.io (tried Jeedom, Hass OS, and dockered installation)
 
-The full front end config can be found in the ![Lovelace.yaml file](lovelace.yaml).
-The Picture Elements details ![Overview floorplan file](lovelace-overview.yaml) and  ![Living room interactive](lovelace-salon.yaml) are available as separate files
+The full front end config can be found in the [Lovelace.yaml file](lovelace.yaml).
+The Picture Elements details [Overview floorplan file](lovelace-overview.yaml) and  [Living room interactive](lovelace-salon.yaml) are available as separate files
 
-Automations: ![automations.yaml](automations.yaml)
-Scripts: ![scripts.yaml](scripts.yaml)
-Configuration: ![configuration.yaml](configuration.yaml)
-Groups: ![groups.yaml](groups.yaml)
-Sensors: ![sensors.yaml](sensors.yaml)
-Switches: ![switches.yaml](switches.yaml)
+Automations: [automations.yaml](automations.yaml)
+Scripts: [scripts.yaml](scripts.yaml)
+Configuration: [configuration.yaml](configuration.yaml)
+Groups: [groups.yaml](groups.yaml)
+Sensors: [sensors.yaml](sensors.yaml)
+Switches: [switches.yaml](switches.yaml)
 
-Customizations: ![customize.yaml](customize.yaml)
-Booleans: ![input_boolean.yaml](input_boolean.yaml)
-Numbers: ![input_numbers.yaml](input_numbers.yaml)
-Dropdowns: ![input_select.yaml](input_select.yaml)
+Customizations: [customize.yaml](customize.yaml)
+Booleans: [input_boolean.yaml](input_boolean.yaml)
+Numbers: [input_numbers.yaml](input_numbers.yaml)
+Dropdowns: [input_select.yaml](input_select.yaml)
 
 
 ## Screenshots
@@ -27,13 +27,13 @@ Below a few screenshots of how it looks like (wip)
 Except the furniture, everything is clickable or actionable
 [Live demo (YouTube)](https://www.youtube.com/watch?v=4EGnCFBxhZg)
 ![Yaml configuration](lovelace-overview.yaml)
-![Overview](Overview.PNG)
+[Overview](Overview.PNG)
 
 ### Interactive Living Room (Picture Elements card) 
 All the lights and the tv are actionable
 [Live demo (YouTube)](https://www.youtube.com/watch?v=QuAtu_bE5hE)
 ![Yaml configuration](lovelace-salon.yaml)
-![LivingRoom](LivingRoom.PNG)
+[LivingRoom](LivingRoom.PNG)
 
 ### Summary (mostly Entities card)
 ![Summary](Summary.PNG)
@@ -124,6 +124,8 @@ All the lights and the tv are actionable
 # Groups
 Originally, (pre-lovelace) this was used for both display and use of multiple sensors/automations/lights etc together.
 Now, with lovelace, the display is useless, but still here for automations, sums, etc
+
+All this can be found in the dedicated file [groups.yaml](groups.yaml)
 
 ## Device tracker
 
@@ -248,7 +250,7 @@ All the automations can be found in the dedicated file ![automations.yaml](autom
 
 # Custom Sensors
 
-All this can be found in the dedicated file ![sensors.yaml](sensors.yaml)
+All this can be found in the dedicated file [sensors.yaml](sensors.yaml)
 
 ## History
 
@@ -491,6 +493,8 @@ You can also add a tap action on the image
  ```
 ## Customizations
 They are mostly used to force the icon in the lovelace ui and/or in the picture elements cards, and to give them a friendlier name
+All this can be found in the dedicated file [customize.yaml](customize.yaml)
+
 ```
 climate.salon:
   icon: mdi:radiator
