@@ -1,0 +1,1910 @@
+resources:
+  - type: js
+    url: /local/js/monster-card.js?v=1.1
+  - type: js
+    url: /local/js/now-playing-card.js?v=1.0
+title: Alex Home
+views:
+  - icon: 'mdi:floor-plan'
+    panel: true
+    path: overview
+    title: OVERVIEW
+    badges: []
+    cards:
+      - elements:
+          - entity: switch.chambre
+            image: /local/images/chambre.png
+            state_image:
+              'off': /local/images/chambre_off.png
+              'on': /local/images/chambre.png
+            style:
+              left: 30%
+              top: 64.5%
+              width: 24.5%
+            tap_action:
+              action: none
+            type: image
+          - entity: switch.chambre
+            image: /local/images/garage_off.png
+            style:
+              left: 67%
+              top: 16.8%
+              width: 31.5%
+            tap_action:
+              action: none
+            type: image
+          - entity: switch.sdb
+            image: /local/images/sdb.png
+            state_image:
+              'off': /local/images/sdb_off.png
+              'on': /local/images/sdb.png
+            style:
+              left: 30%
+              top: 13.5%
+              width: 24.5%
+            tap_action:
+              action: none
+            type: image
+          - entity: light.yeelight_color1_7811dc6a9651
+            image: /local/images/couloir_bas.png
+            state_image:
+              'off': /local/images/couloir_bas_off.png
+              'on': /local/images/couloir_bas.png
+            style:
+              left: 46.8%
+              top: 54.1%
+              width: 9.2%
+            tap_action:
+              action: none
+            type: image
+          - entity: light.yeelight_color2_7c49eb157ed5
+            image: /local/images/couloir_haut.png
+            state_image:
+              'off': /local/images/couloir_haut_off.png
+              'on': /local/images/couloir_haut.png
+            style:
+              left: 46.8%
+              top: 20.8%
+              width: 8.7%
+            tap_action:
+              action: none
+            type: image
+          - entity: switch.cuisine1
+            image: /local/images/salon_haut.png
+            state_image:
+              'off': /local/images/salon_haut_off.png
+              'on': /local/images/salon_haut.png
+            style:
+              left: 67%
+              top: 44%
+              width: 32.5%
+            tap_action:
+              action: none
+            type: image
+          - entity: switch.plug_158d0001a5d465
+            image: /local/images/salon_bas.png
+            state_image:
+              'off': /local/images/salon_bas_off.png
+              'on': /local/images/salon_bas.png
+            style:
+              left: 67%
+              top: 79.2%
+              width: 32.5%
+            tap_action:
+              action: none
+            type: image
+          - entity: switch.chiottelum
+            image: /local/images/chiotte.png
+            state_image:
+              'off': /local/images/chiotte_off.png
+              'on': /local/images/chiotte.png
+            style:
+              left: 46.5%
+              top: 77%
+              width: 9%
+            tap_action:
+              action: none
+            type: image
+          - entity: switch.chambredoud
+            image: /local/images/chambre_doudou.png
+            state_image:
+              'off': /local/images/chambre_doudou_off.png
+              'on': /local/images/chambre_doudou.png
+            style:
+              left: 30%
+              top: 34%
+              width: 24.5%
+            tap_action:
+              action: none
+            type: image
+          - entity: switch.tv_composite
+            image: /local/images/tv.png
+            state_image:
+              'off': /local/images/tv_off.png
+              'on': /local/images/tv.png
+            style:
+              left: 58%
+              top: 68.5%
+              width: 6%
+            tap_action:
+              action: toggle
+            type: image
+          - entity: light.yeelight_strip2_04cf8c7acfe8
+            image: /local/images/ledstrip.png
+            state_image:
+              'off': /local/images/ledstrip_off.png
+              playing: /local/images/ledstrip.png
+            style:
+              left: 28%
+              top: 23.5%
+              width: 18%
+            tap_action:
+              action: toggle
+            title: ledstrip bureau doudou
+            type: image
+          - entity: light.yeelight_strip1_7811dc66e549
+            image: /local/images/ledstrip.png
+            state_image:
+              'off': /local/images/ledstrip_off.png
+              playing: /local/images/ledstrip.png
+            style:
+              left: 73%
+              top: 30.3%
+              width: 18%
+            tap_action:
+              action: toggle
+            title: ledstrip cuisine
+            type: image
+          - entity: light.yeelight_strip1_7811dca22953
+            image: /local/images/ledstrip_v.png
+            state_image:
+              'off': /local/images/ledstrip_v_off.png
+              playing: /local/images/ledstrip_v.png
+            style:
+              left: 54%
+              top: 69%
+              width: 1.5%
+            tap_action:
+              action: toggle
+            title: ledstrip tv
+            type: image
+          - entity: binary_sensor.door_window_sensor_158d0001ab1b67
+            image: /local/images/door_o_b.png
+            state_image:
+              'off': /local/images/door_c_b.png
+              'on': /local/images/door_o_b.png
+            style:
+              left: 46.5%
+              top: 66.9%
+              width: 5.6%
+            title: porte chiotte
+            type: image
+          - entity: binary_sensor.door_window_sensor_158d0001d8526a
+            image: /local/images/door_o_l.png
+            state_image:
+              'off': /local/images/door_c_l.png
+              'on': /local/images/door_o_l.png
+            style:
+              left: 53.7%
+              top: 22.2%
+              width: 5.6%
+            title: porte garage
+            type: image
+          - entity: binary_sensor.door_window_sensor_158d000239438b
+            image: /local/images/door_o_l.png
+            state_image:
+              'off': /local/images/door_c_l.png
+              'on': /local/images/door_o_l.png
+            style:
+              left: 85.2%
+              top: 54.7%
+              width: 5.6%
+            title: fenetre terasse 2
+            type: image
+          - entity: binary_sensor.door_window_sensor_158d0001dbd24f
+            image: /local/images/door_o_l.png
+            state_image:
+              'off': /local/images/door_c_l.png
+              'on': /local/images/door_o_l.png
+            style:
+              left: 85.2%
+              top: 45.2%
+              width: 5.6%
+            title: fenetre terasse
+            type: image
+          - entity: binary_sensor.door_window_sensor_158d0001de78e5
+            image: /local/images/door_o_r.png
+            state_image:
+              'off': /local/images/door_c_r.png
+              'on': /local/images/door_o_r.png
+            style:
+              left: 15%
+              top: 15.7%
+              width: 5.6%
+            title: fenetre salle de bains
+            type: image
+          - entity: binary_sensor.door_window_sensor_158d0002391048
+            image: /local/images/door_o_r.png
+            state_image:
+              'off': /local/images/door_c_r.png
+              'on': /local/images/door_o_r.png
+            style:
+              left: 15%
+              top: 39.7%
+              width: 5.6%
+            title: fenetre chambre doudou
+            type: image
+          - entity: binary_sensor.door_window_sensor_158d00023949af
+            image: /local/images/door_o_r.png
+            state_image:
+              'off': /local/images/door_c_r.png
+              'on': /local/images/door_o_r.png
+            style:
+              left: 15%
+              top: 57.4%
+              width: 5.6%
+            title: fenetre chambre
+            type: image
+          - entity: binary_sensor.door_window_sensor_158d0001ab5aaa
+            image: /local/images/door_o_t.png
+            state_image:
+              'off': /local/images/door_c_t.png
+              'on': /local/images/door_o_t.png
+            style:
+              left: 46.4%
+              top: 9.1%
+              width: 5.6%
+            title: porte entrée
+            type: image
+          - entity: binary_sensor.door_window_sensor_158d000272f13c
+            image: /local/images/door_o_r2.png
+            state_image:
+              'off': /local/images/door_c_r2.png
+              'on': /local/images/door_o_r2.png
+            style:
+              left: 39.7%
+              top: 16.5%
+              width: 5.6%
+            title: porte salle de bains
+            type: image
+          - entity: cover.garage_door
+            image: /local/images/door_u_garage.png
+            state_image:
+              closed: /local/images/door_c_garage.png
+              open: /local/images/door_o_garage.png
+              unknown: /local/images/door_u_garage.png
+            style:
+              left: 86.6%
+              top: 16.5%
+              width: 8.6%
+            title: porte garage
+            type: image
+          - entity: camera.dafang1
+            icon: 'mdi:cctv'
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 82%
+              top: 30.5%
+            title: camera dafang
+            type: icon
+          - camera_image: null
+            entity: camera.frigo
+            icon: 'mdi:cctv'
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 52%
+              top: 30.5%
+            title: camera frigo
+            type: icon
+          - entity: switch.chambre
+            style:
+              '--iron-icon-height': 70px
+              '--iron-icon-width': 70px
+              left: 28%
+              top: 50%
+            tap_action:
+              action: toggle
+            title: lumiere chambre
+            type: state-icon
+          - entity: switch.chambredoud
+            style:
+              '--iron-icon-height': 70px
+              '--iron-icon-width': 70px
+              left: 28%
+              top: 34%
+            tap_action:
+              action: toggle
+            title: lumiere chambre doudou
+            type: state-icon
+          - entity: switch.cuisine1
+            style:
+              '--iron-icon-height': 50px
+              '--iron-icon-width': 50px
+              left: 55%
+              top: 40%
+            tap_action:
+              action: toggle
+            title: lumiere cuisine
+            type: state-icon
+          - entity: switch.cuisine1
+            style:
+              '--iron-icon-height': 50px
+              '--iron-icon-width': 50px
+              left: 67%
+              top: 40%
+            tap_action:
+              action: toggle
+            title: lumiere cuisine
+            type: state-icon
+          - entity: switch.appliquesalon
+            style:
+              '--iron-icon-height': 30px
+              '--iron-icon-width': 30px
+              left: 52.5%
+              top: 69%
+            tap_action:
+              action: toggle
+            title: lumiere applique salon
+            type: state-icon
+          - entity: switch.lustresalon
+            style:
+              '--iron-icon-height': 80px
+              '--iron-icon-width': 80px
+              left: 69%
+              top: 69%
+            tap_action:
+              action: toggle
+            title: lumiere lustre salon
+            type: state-icon
+          - entity: switch.cuisine2
+            style:
+              '--iron-icon-height': 50px
+              '--iron-icon-width': 50px
+              left: 77%
+              top: 40%
+            tap_action:
+              action: toggle
+            title: lumiere cuisine
+            type: state-icon
+          - entity: switch.chiottelum
+            style:
+              '--iron-icon-height': 45px
+              '--iron-icon-width': 45px
+              left: 46.3%
+              top: 74%
+            tap_action:
+              action: toggle
+            title: lumiere chiotte
+            type: state-icon
+          - entity: switch.plug_158d0001de56c2
+            style:
+              '--iron-icon-height': 30px
+              '--iron-icon-width': 30px
+              left: 69%
+              top: 35%
+            tap_action:
+              action: toggle
+            title: spots cuisine
+            type: state-icon
+          - entity: switch.plug_158d0001de56c2
+            style:
+              '--iron-icon-height': 30px
+              '--iron-icon-width': 30px
+              left: 79%
+              top: 35%
+            tap_action:
+              action: toggle
+            title: spots cuisine
+            type: state-icon
+          - entity: light.yeelight_color2_7c49eb157ed5
+            style:
+              '--iron-icon-height': 70px
+              '--iron-icon-width': 70px
+              left: 45%
+              top: 13%
+            tap_action:
+              action: toggle
+            title: lampe couloir entrée
+            type: state-icon
+          - entity: switch.sdb
+            style:
+              '--iron-icon-height': 70px
+              '--iron-icon-width': 70px
+              left: 28%
+              top: 10%
+            tap_action:
+              action: toggle
+            title: lampe salle de bains
+            type: state-icon
+          - entity: light.yeelight_color1_7811dc6a9651
+            style:
+              '--iron-icon-height': 70px
+              '--iron-icon-width': 70px
+              left: 45%
+              top: 45%
+            tap_action:
+              action: toggle
+            title: lampe couloir
+            type: state-icon
+          - entity: switch.ambiance_salon
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 82.5%
+              top: 60%
+            tap_action:
+              action: toggle
+            title: lumières salon
+            type: state-icon
+          - entity: switch.ambiance_salon
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 82.5%
+              top: 75%
+            tap_action:
+              action: toggle
+            title: lumières salon
+            type: state-icon
+          - entity: switch.ambiance_salon
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 52.5%
+              top: 80%
+            tap_action:
+              action: toggle
+            title: lumières salon
+            type: state-icon
+          - entity: light.bedside_philips
+            style:
+              '--iron-icon-height': 45px
+              '--iron-icon-width': 45px
+              left: 33%
+              top: 70%
+            title: lampe de chevet
+            type: state-icon
+          - entity: light.yeelight_bslamp1_7811dc904840
+            style:
+              '--iron-icon-height': 45px
+              '--iron-icon-width': 45px
+              left: 20%
+              top: 64%
+            title: lampe de chevet 2
+            type: state-icon
+          - entity: switch.chiotteventil
+            style:
+              '--iron-icon-height': 35px
+              '--iron-icon-width': 35px
+              left: 44%
+              top: 80%
+            tap_action:
+              action: toggle
+            title: Ventilation Chiotte
+            type: state-icon
+          - entity: switch.plug_158d0001a5d465
+            style:
+              '--iron-icon-height': 42px
+              '--iron-icon-width': 42px
+              left: 72.1%
+              top: 78.9%
+            tap_action:
+              action: toggle
+            title: Lampadaire
+            type: state-icon
+          - entity: binary_sensor.motion_sensor_158d0001e47f52
+            style:
+              '--iron-icon-height': 20px
+              '--iron-icon-width': 20px
+              '--paper-item-icon-active-color': red
+              '--paper-item-icon-color': lightgreen
+              left: 20%
+              top: 20%
+            title: Mouvement Salle de bains
+            type: state-icon
+          - entity: binary_sensor.motion_sensor_158d0001e47d34
+            style:
+              '--iron-icon-height': 20px
+              '--iron-icon-width': 20px
+              '--paper-item-icon-active-color': red
+              '--paper-item-icon-color': lightgreen
+              left: 44%
+              top: 12%
+            title: Mouvement Entrée
+            type: state-icon
+          - entity: binary_sensor.motion_sensor_158d0001ddca38
+            style:
+              '--iron-icon-height': 20px
+              '--iron-icon-width': 20px
+              '--paper-item-icon-active-color': red
+              '--paper-item-icon-color': lightgreen
+              left: 44%
+              top: 63%
+            title: Mouvement Couloir
+            type: state-icon
+          - entity: binary_sensor.motion_sensor_158d0001b7542d
+            style:
+              '--iron-icon-height': 20px
+              '--iron-icon-width': 20px
+              '--paper-item-icon-active-color': red
+              '--paper-item-icon-color': lightgreen
+              left: 80%
+              top: 85%
+            type: state-icon
+          - entity: binary_sensor.motion_sensor_158d0001d6675f
+            style:
+              '--iron-icon-height': 20px
+              '--iron-icon-width': 20px
+              '--paper-item-icon-active-color': red
+              '--paper-item-icon-color': lightgreen
+              left: 44%
+              top: 75%
+            title: mouvement chiotte
+            type: state-icon
+          - entity: vacuum.xiaomi_vacuum_cleaner
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 54%
+              top: 54%
+            type: state-icon
+          - entity: sensor.yr_temperature
+            prefix: 'YR: '
+            style:
+              font-size: 15px
+              left: 91%
+              top: 32%
+            title: température yr
+            type: state-label
+          - entity: sensor.temperature_158d000272e88d
+            prefix: 'Mesurée: '
+            style:
+              font-size: 15px
+              left: 91%
+              top: 34%
+            title: température exterieure
+            type: state-label
+          - entity: weather.dark_sky
+            style:
+              left: 91%
+              top: 45%
+            title: dark sky
+            type: state-badge
+          - entity: sensor.temperature_158d0001b96127
+            style:
+              font-size: 15px
+              left: 39%
+              top: 29%
+            title: température chanmbre Doudou
+            type: state-label
+          - entity: sensor.temperature_158d0001b8f1b1
+            style:
+              font-size: 15px
+              left: 55%
+              top: 46%
+            title: température salon
+            type: state-label
+          - entity: sensor.temperature_158d0001b92bcc
+            style:
+              font-size: 15px
+              left: 39%
+              top: 50%
+            title: température chambre
+            type: state-label
+          - entity: sensor.temperature_158d00022734f8
+            style:
+              font-size: 15px
+              left: 39%
+              top: 7%
+            title: température salle de bains
+            type: state-label
+          - entity: sensor.temperature_158d000273a1ce
+            style:
+              font-size: 15px
+              left: 58%
+              top: 31%
+            title: température frigo
+            type: state-label
+          - entity: sensor.temperature_158d0002c8bc1c
+            style:
+              font-size: 15px
+              left: 58%
+              top: 9%
+            title: température garage
+            type: state-label
+          - entity: sensor.humidity_158d0001b96127
+            style:
+              font-size: 15px
+              left: 39%
+              top: 31%
+            title: humidité chanmbre Doudou
+            type: state-label
+          - entity: sensor.humidity_158d0001b8f1b1
+            style:
+              font-size: 15px
+              left: 55%
+              top: 48%
+            title: humidité salon
+            type: state-label
+          - entity: sensor.humidity_158d0001b92bcc
+            style:
+              font-size: 15px
+              left: 39%
+              top: 52%
+            title: humidité chambre
+            type: state-label
+          - entity: sensor.humidity_158d00022734f8
+            style:
+              font-size: 15px
+              left: 39%
+              top: 9%
+            title: humidité salle de bains
+            type: state-label
+          - entity: sensor.humidity_158d000273a1ce
+            style:
+              font-size: 15px
+              left: 58%
+              top: 33%
+            title: humidité frigo
+            type: state-label
+          - entity: sensor.humidity_158d0002c8bc1c
+            style:
+              font-size: 15px
+              left: 58%
+              top: 11%
+            title: humidité garage
+            type: state-label
+          - entity: input_boolean.mode_present
+            state_image:
+              'off': /local/images/away.png
+              'on': /local/images/home.png
+            style:
+              left: 6%
+              top: 10%
+              width: 10%
+            tap_action:
+              action: toggle
+            title: mode présent/absent
+            type: image
+          - entity: switch.terasse
+            style:
+              '--iron-icon-height': 60px
+              '--iron-icon-width': 60px
+              left: 84%
+              top: 67%
+            tap_action:
+              action: toggle
+            title: lumiere terasse
+            type: state-icon
+          - entity: input_boolean.mode_waf
+            state_image:
+              'off': /local/images/waf_off.png
+              'on': /local/images/waf.png
+            style:
+              left: 6%
+              top: 28%
+              width: 9%
+            tap_action:
+              action: toggle
+            title: mode diana
+            type: image
+          - entity: input_boolean.mode_waf
+            state_image:
+              'off': /local/images/waf_off.png
+              'on': /local/images/waf.png
+            style:
+              left: 6%
+              top: 28%
+              width: 9%
+            tap_action:
+              action: toggle
+            title: mode diana
+            type: image
+          - entity: input_boolean.mode_nuit
+            state_image:
+              'off': /local/images/day.png
+              'on': /local/images/night.png
+            style:
+              left: 6%
+              top: 45%
+              width: 9%
+            tap_action:
+              action: toggle
+            title: mode nuit
+            type: image
+          - entity: input_boolean.heating
+            state_image:
+              'off': /local/images/heating_off.png
+              'on': /local/images/heating_on.png
+            style:
+              left: 6%
+              top: 60%
+              width: 9%
+            tap_action:
+              action: toggle
+            title: chauffage
+            type: image
+          - entity: climate.chambre_alex
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 20%
+              top: 50%
+            title: radiateur chambre
+            type: state-icon
+          - entity: climate.salon
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 80%
+              top: 92%
+            title: radiateur salon
+            type: state-icon
+          - entity: climate.chambre_doudou
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 20%
+              top: 39%
+            title: radiateur doudou
+            type: state-icon
+          - entity: climate.salle_de_bains
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 20%
+              top: 10%
+            title: radiateur sdb
+            type: state-icon
+          - entity: climate.cuisine
+            style:
+              '--iron-icon-height': 40px
+              '--iron-icon-width': 40px
+              left: 80%
+              top: 49%
+            title: radiateur cuisine
+            type: state-icon
+        image: /local/images/floorplan.png
+        type: picture-elements
+  - badges: []
+    cards:
+      - elements:
+          - entity: switch.appliquesalon
+            image: /local/images/salon/applique2.png
+            state_image:
+              'off': /local/images/salon/applique2_off.png
+              'on': /local/images/salon/applique2.png
+            style:
+              left: 30.55%
+              top: 31.9%
+              width: 14.5%
+            tap_action:
+              action: toggle
+            type: image
+          - entity: switch.couloir
+            image: /local/images/salon/couloir.png
+            state_image:
+              'off': /local/images/salon/couloir_off.png
+              'on': /local/images/salon/couloir.png
+            style:
+              left: 44.45%
+              top: 36.3%
+              width: 6.2%
+            tap_action:
+              action: toggle
+            type: image
+          - entity: switch.lustresalon
+            image: /local/images/salon/lustre_on.png
+            state_image:
+              'off': /local/images/salon/lustre_off.png
+              'on': /local/images/salon/lustre_on.png
+            style:
+              left: 49.25%
+              top: 13.9%
+              width: 20.2%
+            tap_action:
+              action: toggle
+            type: image
+          - entity: switch.cuisine1
+            image: /local/images/salon/cuisine1.png
+            state_image:
+              'off': /local/images/salon/cuisine1_off.png
+              'on': /local/images/salon/cuisine1.png
+            style:
+              left: 68.35%
+              top: 30.5%
+              width: 15%
+            tap_action:
+              action: toggle
+            type: image
+          - entity: switch.cuisine2
+            image: /local/images/salon/cuisine2.png
+            state_image:
+              'off': /local/images/salon/cuisine2_off.png
+              'on': /local/images/salon/cuisine2.png
+            style:
+              left: 97.7%
+              top: 16.8%
+              width: 4.5%
+            tap_action:
+              action: toggle
+            type: image
+          - entity: switch.plug_158d0001a5d465
+            image: /local/images/salon/lampadaire.png
+            state_image:
+              'off': /local/images/salon/lampadaire_off.png
+              'on': /local/images/salon/lampadaire.png
+            style:
+              left: 8.4%
+              top: 16.7%
+              width: 16.9%
+            tap_action:
+              action: toggle
+            type: image
+          - entity: switch.ambiance_salon
+            image: /local/images/salon/ambiance.png
+            state_image:
+              'off': /local/images/salon/ambiance_off.png
+              'on': /local/images/salon/ambiance.png
+            style:
+              left: 14.1%
+              top: 52.5%
+              width: 7.2%
+            tap_action:
+              action: toggle
+            type: image
+          - entity: switch.plan_travail
+            image: /local/images/salon/plantravailfull.png
+            state_image:
+              'off': /local/images/salon/plantravailfull.png
+              'on': /local/images/salon/plantravailfull_on.png
+            style:
+              left: 89.6%
+              top: 37.5%
+              width: 21.05%
+            tap_action:
+              action: toggle
+            type: image
+          - entity: switch.tv_composite
+            image: /local/images/salon/tv_on.png
+            state_image:
+              'off': /local/images/salon/tv.png
+              'on': /local/images/salon/tv_on.png
+            style:
+              left: 31.5%
+              top: 48.2%
+              width: 15%
+            tap_action:
+              action: toggle
+            type: image
+        image: /local/images/Salon2.jpg
+        type: picture-elements
+    panel: true
+    path: salon
+    title: Salon
+  - badges: []
+    cards:
+      - card:
+          title: Lumières Allumées
+          type: entities
+        filter:
+          include:
+            - entity_id: light.*
+              state: 'on'
+        type: 'custom:monster-card'
+      - card:
+          title: Personnes présentes
+          type: glance
+        filter:
+          include:
+            - entity_id: device_tracker.*
+              state: home
+        type: 'custom:monster-card'
+      - card:
+          title: Interrupteurs Allumées
+          type: entities
+        filter:
+          exclude:
+            - entity_id: switch.tv_ch
+            - entity_id: switch.sound_bar_vol
+            - entity_id: switch.synology_home_mode
+            - entity_id: switch.dafang*
+            - entity_id: switch.tv
+          include:
+            - entity_id: switch.*
+              state: 'on'
+        type: 'custom:monster-card'
+      - card:
+          title: Portes/fenêtres ouvertes
+          type: glance
+        filter:
+          include:
+            - entity_id: binary_sensor.door_window_sensor*
+              state: 'on'
+        type: 'custom:monster-card'
+      - card:
+          title: Batteries inférieures a 33%
+          type: glance
+        filter:
+          include:
+            - entity_id: sensor.bat*
+              state: < 30
+        type: 'custom:monster-card'
+      - card:
+          title: Radiateurs chauffants
+          type: glance
+        filter:
+          include:
+            - entity_id: climate.*
+              state: heating
+        type: 'custom:monster-card'
+    title: DYNAMIC
+  - badges:
+      - entity: binary_sensor.floorplan
+      - entity: binary_sensor.vibration_158d0002a6e053
+      - entity: device_tracker.desktopdrhclh3
+      - entity: device_tracker.iphone_2
+      - entity: device_tracker.samsung_galaxy_s7
+      - entity: sensor.coordination_158d0002a6e053
+      - entity: sensor.yr_wind_speed
+      - entity: sensor.date_time
+      - entity: sensor.garage_door_since
+      - entity: sensor.sigi
+      - entity: sensor.tilt_angle_158d0002a6e053
+      - entity: sensor.bed_activity_158d0002a6e053
+      - entity: sensor.garage_door_status
+      - entity: sensor.illumination_34ce00fb5df0
+    cards:
+      - entities:
+          - entity: switch.chambre
+          - entity: switch.chambredoud
+          - entity: switch.chiottelum
+          - entity: switch.cuisine1
+          - entity: switch.cuisine2
+          - entity: switch.plug_158d0001de56c2
+          - entity: light.yeelight_strip1_7811dc66e549
+          - entity: light.yeelight_color2_7c49eb157ed5
+          - entity: light.yeelight_color2_7c49eb157a7e
+          - entity: light.yeelight_color1_7811dc6a9651
+          - entity: light.yeelight_bslamp1_7811dc904840
+          - entity: group.light_salon
+          - entity: switch.plug_158d0001a5d465
+          - entity: light.bedside_philips
+          - entity: light.yeelight_strip2_04cf8c7acfe8
+        show_header_toggle: true
+        title: Contrôle lumieres
+        type: entities
+      - entities:
+          - entity: light.gateway_light_34ce00fb5df0
+          - entity: light.yeelight_color2_7c49eb157ed5
+          - entity: light.yeelight_color1_7811dc6a9651
+          - entity: light.yeelight_strip1_7811dc66e549
+          - entity: light.yeelight_color2_7c49eb157a7e
+          - entity: light.yeelight_color1_34ce008fcea8
+          - entity: light.yeelight_color1_34ce00900013
+          - entity: light.yeelight_color1_7811dc6aaca4
+          - entity: light.yeelight_strip1_7811dca22953
+          - entity: light.yeelight_strip2_04cf8c7acfe8
+        show_header_toggle: true
+        title: Ampoules
+        type: entities
+      - entities:
+          - entity: light.bedside_philips
+          - entity: light.yeelight_bslamp1_7811dc904840
+        show_header_toggle: true
+        title: Lampes
+        type: entities
+      - entities:
+          - entity: light.bedside_philips
+          - entity: light.yeelight_bslamp1_7811dc904840
+          - entity: light.gateway_light_34ce00fb5df0
+          - entity: light.yeelight_color2_7c49eb157ed5
+          - entity: light.yeelight_color1_7811dc6a9651
+          - entity: light.yeelight_strip1_7811dc66e549
+          - entity: light.yeelight_color2_7c49eb157a7e
+          - entity: light.yeelight_color1_34ce008fcea8
+          - entity: light.yeelight_color1_34ce00900013
+          - entity: light.yeelight_color1_7811dc6aaca4
+          - entity: light.yeelight_strip1_7811dca22953
+          - entity: light.yeelight_strip2_04cf8c7acfe8
+        show_header_toggle: true
+        title: Police
+        type: entities
+      - entities:
+          - switch.cuisine1
+          - switch.cuisine2
+        show_header_toggle: true
+        title: Cuisine
+        type: entities
+      - entities:
+          - entity: device_tracker.qcombtd
+          - entity: device_tracker.galaxy_s8
+          - entity: device_tracker.samsungsmg920f
+          - entity: device_tracker.lia
+        show_header_toggle: false
+        title: Tracked devices
+        type: entities
+      - entities:
+          - entity: switch.plug_158d0001de56c2
+          - entity: switch.chambre
+          - entity: switch.chambredoud
+          - entity: automation.bouton_cuisine
+          - entity: switch.cuisine1
+          - entity: switch.cuisine2
+          - entity: group.light_cuisine
+          - entity: switch.chiottelum
+          - entity: switch.plug_158d0001a5d465
+        show_header_toggle: true
+        title: Controle
+        type: entities
+      - entities:
+          - input_number.salon_brightness
+          - input_select.salon_color
+          - group.light_salon
+          - switch.plug_158d0001a5d465
+          - binary_sensor.cube_158d00027984bb_2
+        show_header_toggle: false
+        title: Ambiance Salon
+        type: entities
+      - entities:
+          - sensor.average_temperature
+          - sensor.average_humidity
+        show_header_toggle: false
+        title: Moyennes
+        type: entities
+      - entities:
+          - sun.sun
+          - sensor.yr_symbol
+          - sensor.yr_temperature
+          - sensor.yr_humidity
+          - sensor.yr_pressure
+          - sensor.yr_precipitation
+          - sensor.temperature_158d000272e88d
+          - sensor.humidity_158d000272e88d
+          - sensor.pressure_158d000272e88d
+        show_header_toggle: false
+        title: Exterieur
+        type: entities
+      - entities:
+          - sensor.humidity_158d000273a1ce
+          - sensor.temperature_158d000273a1ce
+          - sensor.pressure_158d000273a1ce
+        show_header_toggle: false
+        title: Frigo
+        type: entities
+      - entities:
+          - sensor.temperature_158d0002c8bc1c
+          - sensor.humidity_158d0002c8bc1c
+        show_header_toggle: false
+        title: Conditions garage
+        type: entities
+      - entities:
+          - sensor.illumination_158d0001b7542d
+          - sensor.illumination_158d0001e47d34
+          - sensor.illumination_158d0001e47f52
+          - sensor.illumination_158d0001ddca38
+        show_header_toggle: false
+        title: Luminosité
+        type: entities
+      - entities:
+          - sensor.pressure_158d0001b92bcc
+          - sensor.pressure_158d0001b96127
+          - sensor.pressure_158d00022734f8
+        show_header_toggle: false
+        title: Pression
+        type: entities
+      - entities:
+          - sensor.flower1_battery
+          - sensor.flower1_conductivity
+          - sensor.flower1_light_intensity
+          - sensor.flower1_moisture
+          - sensor.flower1_temperature
+        show_header_toggle: false
+        title: Clivia
+        type: entities
+      - entities:
+          - sensor.flower2_battery
+          - sensor.flower2_conductivity
+          - sensor.flower2_light_intensity
+          - sensor.flower2_moisture
+          - sensor.flower2_temperature
+        show_header_toggle: false
+        title: Spathiphyllum
+        type: entities
+      - entities:
+          - switch.tv
+          - switch.tv_ch
+          - switch.sound_bar_vol
+        show_header_toggle: false
+        title: Commandes IR
+        type: entities
+      - entities:
+          - automation.allumage_chiotte_auto
+          - automation.extinction_chiotte_auto
+          - automation.allumage_sdb_auto
+          - automation.extinction_sdb_auto
+          - automation.allumage_couloir_auto
+          - automation.extinction_couloir_auto
+        show_header_toggle: true
+        title: Lumières
+        type: entities
+      - entities:
+          - entity: automation.changement_lumieres_a_6h_et_20
+          - entity: automation.changement_lumieres_a_7h_et_19h
+          - entity: automation.changement_lumieres_a_9h_et_17h
+          - entity: automation.changement_lumieres_a_22h
+          - entity: automation.changement_lumieres_a_23
+          - entity: automation.aspi_9h_si_absent
+          - entity: automation.desactivation_auto_mode_nuit
+        show_header_toggle: true
+        title: Planifiées
+        type: entities
+      - entities:
+          - entity: automation.telegram_active_alarme
+          - entity: automation.telegram_stoppe_alarme
+          - entity: automation.telegram_mode_present
+          - entity: automation.telegram_mode_absent
+          - entity: automation.telegram_activate_notifs
+          - entity: automation.telegram_stop_notifs
+          - entity: automation.telegram_active_aspi
+          - entity: automation.telegram_activate_cams
+        show_header_toggle: true
+        title: Actions Telegramme
+        type: entities
+      - entities:
+          - automation.passage_mode_absent_auto_apres_5_min
+          - automation.passage_mode_present_auto_bt_phone
+          - automation.enclenchement_mode_absent
+          - automation.enclenchement_mode_present
+          - automation.notification_si_absent_et_mouvement
+          - automation.demande_si_aspi_doit_passer_apres_depart
+        show_header_toggle: true
+        title: Detection Presence
+        type: entities
+      - entities:
+          - cover.garage_door
+          - sensor.garage_summary
+          - group.garage_conditions
+        show_header_toggle: false
+        title: Garage door
+        type: entities
+      - entities:
+          - switch.dafang_stream_h264
+          - switch.dafang_up_down
+          - switch.dafang_left_right
+          - switch.dafang_screenshot
+        show_header_toggle: true
+        title: Panel Dafang
+        type: entities
+      - entities:
+          - sensor.bat_mvt_couloir
+          - sensor.bat_mvt_entree
+          - sensor.bat_mvt_salon
+          - sensor.bat_mvt_sdb
+          - sensor.bat_ouv_chiotte
+          - sensor.bat_ouv_entree
+          - sensor.bat_ouv_garage
+          - sensor.bat_ouv_terasse
+          - sensor.bat_ouv_sdb
+          - sensor.bat_tmp_chambre
+          - sensor.bat_tmp_salon
+          - sensor.bat_tmp_sdb
+          - sensor.bat_tmp_doudou
+        show_header_toggle: false
+        title: Capteurs
+        type: entities
+      - entities:
+          - icon: 'mdi:camcorder'
+            name: Dafang
+            type: weblink
+            url: 'http://192.168.178.240/cgi-bin/status.cgi'
+          - icon: 'mdi:router-wireless'
+            name: FritzBox
+            type: weblink
+            url: 'http://192.168.178.1/'
+          - icon: 'mdi:nas'
+            name: NAS
+            type: weblink
+            url: 'http://192.168.178.238:5000/'
+          - icon: 'mdi:router-wireless'
+            name: OpenWrt
+            type: weblink
+            url: 'http://192.168.178.52/cgi-bin/luci/admin/status/overview'
+          - icon: 'mdi:cloud-download'
+            name: Sickrage
+            type: weblink
+            url: 'http://192.168.178.238:8083/home/'
+        show_header_toggle: false
+        title: Liens
+        type: entities
+      - entities:
+          - vacuum.xiaomi_vacuum_cleaner
+          - sensor.cleaned_today
+          - sensor.vacuum_status
+          - automation.telegram_active_aspi
+          - automation.demande_si_aspi_doit_passer_apres_depart
+          - automation.aspi_9h_si_absent
+        show_header_toggle: false
+        title: Aspirateur
+        type: entities
+      - entities:
+          - switch.chiottelum
+          - switch.chiotteventil
+        show_header_toggle: true
+        title: Chiotte
+        type: entities
+    icon: 'mdi:home'
+    path: default_view
+    title: Home
+  - badges: []
+    cards:
+      - entity: weather.dark_sky
+        name: Dalheim
+        type: weather-forecast
+      - columns: 3
+        entities:
+          - entity: group.tracked_devices
+          - entity: input_boolean.mode_present
+          - entity: input_boolean.mode_douche
+          - entity: sensor.cleaned_today
+          - entity: switch.synology_home_mode
+          - entity: sensor.average_humidity
+          - entity: sensor.average_temperature
+          - entity: input_boolean.mode_nuit
+        title: Résumé
+        type: glance
+      - columns: 2
+        entities:
+          - entity: sensor.home_trackers
+          - entity: sensor.opened_doors
+          - entity: sensor.opened_windows
+          - entity: sensor.active_lights
+          - entity: sensor.last_motion
+        show_name: true
+        show_state: true
+        title: Détails
+        type: glance
+      - columns: 2
+        entities:
+          - entity: input_boolean.snooze_notifs
+          - entity: automation.telegram_activate_notifs
+          - entity: sensor.already_snoozed_notifs
+        title: Notifications
+        type: glance
+      - entities:
+          - input_number.global_brightness
+          - input_select.global_color
+          - input_boolean.mode_douche
+          - binary_sensor.cube_158d00027984bb_2
+        show_header_toggle: false
+        title: Paramètres
+        type: entities
+      - entities:
+          - cover.garage_door
+          - sensor.garage_summary
+          - group.garage_conditions
+        show_header_toggle: false
+        title: Garage door
+        type: entities
+      - entities:
+          - entity: sensor.snapshot_backup
+        show_header_toggle: false
+        title: Backup
+        type: entities
+      - entities:
+          - automation.notification_si_porte_reste_ouverte
+          - automation.notification_si_absent_et_mouvement
+          - automation.suspend_notifs_telegram
+          - automation.reactive_notifs_telegram
+        show_header_toggle: true
+        title: Notifications
+        type: entities
+      - entities:
+          - entity: script.away_mode
+          - entity: script.home_mode
+          - entity: script.alarm_on
+          - entity: script.alarm_off
+          - entity: script.snooze_xh
+          - entity: script.heating_off
+          - entity: script.heating_on
+        show_header_toggle: false
+        title: Scripts Présent/Absent
+        type: entities
+    icon: ''
+    panel: false
+    path: summary
+    title: SUMMARY
+  - badges: []
+    cards:
+      - entity: climate.chambre_alex
+        name: Radiateur Chambre
+        type: thermostat
+      - entity: climate.salon
+        name: Radiateur Salon
+        type: thermostat
+      - entities:
+          - entity: climate.salon
+          - entity: climate.chambre_alex
+          - entity: climate.chambre_doudou
+          - entity: climate.cuisine
+          - entity: climate.salle_de_bains
+        show_header_toggle: false
+        title: Radiateurs
+        type: entities
+      - entities:
+          - entity: sensor.temperature_158d0001b96127
+          - entity: sensor.temperature_158d0001b92bcc
+          - entity: sensor.temperature_158d0001b8f1b1
+          - entity: sensor.temperature_158d00022734f8
+          - entity: sensor.chambre_alex_temperature
+          - entity: sensor.salon_temperature
+          - entity: sensor.chambre_doudou_temperature
+          - entity: sensor.cuisine_temperature_2
+          - entity: sensor.salle_de_bains_temperature
+        show_header_toggle: false
+        title: Température Maison
+        type: entities
+      - entity: climate.chambre_doudou
+        name: Radiateur Doudou
+        type: thermostat
+      - entity: climate.salle_de_bains
+        type: thermostat
+      - entity: climate.cuisine
+        type: thermostat
+      - entities:
+          - entity: sensor.humidity_158d0001b96127
+          - entity: sensor.humidity_158d0001b92bcc
+          - entity: sensor.humidity_158d0001b8f1b1
+          - entity: sensor.humidity_158d00022734f8
+          - entity: sensor.chambre_alex_humidity
+          - entity: sensor.salon_humidity
+          - entity: sensor.chambre_doudou_humidity
+        show_header_toggle: false
+        title: Humidité Maison
+        type: entities
+    icon: 'mdi:radiator'
+    path: chauffage
+    title: Chauffage
+  - badges: []
+    cards:
+      - detail: 2
+        entity: sensor.temperature_158d0001b92bcc
+        graph: line
+        hours_to_show: 72
+        name: Température Chambre 72h
+        type: sensor
+      - detail: 2
+        entity: sensor.temperature_158d0001b8f1b1
+        graph: line
+        hours_to_show: 72
+        name: Température salon 72h
+        type: sensor
+      - detail: 2
+        entity: sensor.average_temperature
+        graph: line
+        hours_to_show: 72
+        name: Température moyenne 72h
+        type: sensor
+      - detail: 2
+        entity: sensor.temperature_158d0001b96127
+        graph: line
+        hours_to_show: 72
+        name: Température chambre Doudou 72h
+        type: sensor
+      - detail: 2
+        entity: sensor.temperature_158d00022734f8
+        graph: line
+        hours_to_show: 72
+        name: Température salle de bains 72h
+        type: sensor
+      - detail: 0
+        entity: sensor.temperature_158d000273a1ce
+        graph: line
+        hours_to_show: 72
+        name: Température Frigo 72h
+        type: sensor
+      - detail: 2
+        entity: sensor.pi_cpu_temp
+        graph: line
+        hours_to_show: 72
+        name: Pi temp 72h
+        type: sensor
+      - entities:
+          - entity: sensor.chambre_alex_temperature
+          - entity: sensor.temperature_158d0001b92bcc
+        hours_to_show: 96
+        refresh_interval: 0
+        title: Chambre
+        type: history-graph
+      - entities:
+          - entity: sensor.salon_temperature
+          - entity: sensor.temperature_158d0001b8f1b1
+        hours_to_show: 96
+        refresh_interval: 0
+        title: Salon
+        type: history-graph
+      - entities:
+          - entity: sensor.chambre_doudou_temperature
+          - entity: sensor.temperature_158d0001b96127
+        hours_to_show: 96
+        refresh_interval: 0
+        type: history-graph
+    path: Sensors
+    title: Sensors
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.pi_cpu_temp
+          - entity: sensor.processor_use
+          - entity: sensor.disk_free
+          - entity: sensor.disk_use
+          - entity: sensor.disk_use_percent
+          - entity: sensor.memory_free
+          - entity: sensor.last_boot
+        show_header_toggle: false
+        title: Raspberry PI
+        type: entities
+      - entities:
+          - entity: sensor.synology_dsm_cpu_load_total
+          - entity: sensor.synology_dsm_total_size_volume_1
+          - entity: sensor.synology_dsm_used_space_volume_1
+          - entity: sensor.synology_dsm_volume_used_volume_1
+        show_header_toggle: false
+        title: Nas
+        type: entities
+      - entities:
+          - entity: sensor.fritz_box_6490_cable_kbyte_sec_received
+          - entity: sensor.fritz_box_6490_cable_kbyte_sec_sent
+        show_header_toggle: false
+        title: FritzBox
+        type: entities
+    icon: 'mdi:wrench'
+    path: monitoring
+    title: Monitoring
+  - badges: []
+    cards:
+      - card:
+          title: Lumières Allumées
+          type: glance
+        filter:
+          include:
+            - entity_id: light.*
+              state: 'on'
+        type: 'custom:monster-card'
+      - entities:
+          - entity: light.gateway_light_34ce00fb5df0
+          - entity: light.yeelight_color2_7c49eb157ed5
+          - entity: light.yeelight_color1_7811dc6a9651
+          - entity: light.yeelight_strip1_7811dc66e549
+          - entity: light.yeelight_color2_7c49eb157a7e
+          - entity: light.yeelight_color1_34ce008fcea8
+          - entity: light.yeelight_color1_34ce00900013
+          - entity: light.yeelight_color1_7811dc6aaca4
+          - entity: light.yeelight_strip1_7811dca22953
+          - entity: light.yeelight_strip2_04cf8c7acfe8
+        show_header_toggle: true
+        title: Ampoules
+        type: entities
+      - entities:
+          - entity: light.bedside_philips
+          - entity: light.yeelight_bslamp1_7811dc904840
+        show_header_toggle: true
+        title: Lampes
+        type: entities
+      - entities:
+          - input_number.salon_brightness
+          - input_select.salon_color
+          - group.light_salon
+          - switch.plug_158d0001a5d465
+          - binary_sensor.cube_158d00027984bb_2
+        show_header_toggle: true
+        title: Ambiance Salon
+        type: entities
+      - entities:
+          - entity: light.yeelight_color1_34ce008fcea8
+          - entity: light.yeelight_color1_34ce00900013
+          - entity: light.yeelight_color1_7811dc6aaca4
+          - entity: light.yeelight_strip1_7811dca22953
+        show_header_toggle: true
+        title: Salon
+        type: entities
+      - entities:
+          - entity: light.bedside_philips
+          - entity: light.yeelight_bslamp1_7811dc904840
+          - entity: light.gateway_light_34ce00fb5df0
+          - entity: light.yeelight_color2_7c49eb157ed5
+          - entity: light.yeelight_color1_7811dc6a9651
+          - entity: light.yeelight_strip1_7811dc66e549
+          - entity: light.yeelight_color2_7c49eb157a7e
+          - entity: light.yeelight_color1_34ce008fcea8
+          - entity: light.yeelight_color1_34ce00900013
+          - entity: light.yeelight_color1_7811dc6aaca4
+          - entity: light.yeelight_strip1_7811dca22953
+          - entity: light.yeelight_strip2_04cf8c7acfe8
+        show_header_toggle: true
+        title: Police
+        type: entities
+      - entities:
+          - entity: switch.plug_158d0001de56c2
+          - entity: switch.chambre
+          - entity: switch.chambredoud
+          - entity: automation.bouton_cuisine
+          - entity: switch.cuisine1
+          - entity: switch.cuisine2
+          - entity: group.light_cuisine
+          - entity: switch.chiottelum
+          - entity: switch.plug_158d0001a5d465
+          - entity: switch.lustresalon
+          - entity: switch.appliquesalon
+        show_header_toggle: true
+        title: Controle
+        type: entities
+      - entities:
+          - switch.cuisine1
+          - switch.cuisine2
+        show_header_toggle: true
+        title: Cuisine
+        type: entities
+      - entities:
+          - input_number.global_brightness
+          - input_select.global_color
+          - input_boolean.mode_douche
+          - binary_sensor.cube_158d00027984bb_2
+        show_header_toggle: true
+        title: Paramètres
+        type: entities
+      - entities:
+          - automation.allumage_chiotte_auto
+          - automation.extinction_chiotte_auto
+          - automation.allumage_sdb_auto
+          - automation.extinction_sdb_auto
+          - automation.allumage_couloir_auto
+          - automation.extinction_couloir_auto
+        show_header_toggle: true
+        title: Lumières
+        type: entities
+      - entities:
+          - switch.chiottelum
+          - switch.chiotteventil
+        show_header_toggle: true
+        title: Chiotte
+        type: entities
+    icon: 'mdi:lightbulb'
+    path: lights
+    title: Lights
+  - badges: []
+    cards:
+      - entities:
+          - switch.tv
+          - switch.tv_ch
+          - switch.sound_bar_vol
+        show_header_toggle: false
+        title: Commandes IR
+        type: entities
+      - entity: media_player.lg_tv_remote
+        type: media-control
+    icon: 'mdi:monitor'
+    path: media
+    title: Media
+  - badges: []
+    cards:
+      - entity: camera.frigo
+        type: picture-entity
+      - entity: camera.dafang1
+        type: picture-entity
+      - entities:
+          - group.tracked_devices
+          - input_boolean.mode_present
+          - switch.synology_home_mode
+          - input_boolean.mode_douche
+          - input_boolean.snooze_notifs
+          - sensor.last_motion
+          - sensor.already_snoozed_notifs
+        show_header_toggle: false
+        title: Présence
+        type: entities
+      - entities:
+          - entity: device_tracker.qcombtd
+          - entity: device_tracker.galaxy_s8
+          - entity: device_tracker.samsungsmg920f
+          - entity: device_tracker.lia
+          - entity: device_tracker.samsung_galaxy_s7
+        show_header_toggle: false
+        title: Tracked devices
+        type: entities
+      - entities:
+          - binary_sensor.door_window_sensor_158d0001ab1b67
+          - binary_sensor.door_window_sensor_158d0001ab5aaa
+          - binary_sensor.door_window_sensor_158d0001d8526a
+          - binary_sensor.door_window_sensor_158d000272f13c
+        show_header_toggle: false
+        title: Ouvertures Portes
+        type: entities
+      - entities:
+          - binary_sensor.motion_sensor_158d0001e47f52
+          - binary_sensor.motion_sensor_158d0001e47d34
+          - binary_sensor.motion_sensor_158d0001ddca38
+          - binary_sensor.motion_sensor_158d0001b7542d
+          - binary_sensor.motion_sensor_158d0001d6675f
+        show_header_toggle: false
+        title: Mouvement intérieur
+        type: entities
+      - entities:
+          - binary_sensor.door_window_sensor_158d0001dbd24f
+          - binary_sensor.door_window_sensor_158d0001de78e5
+          - binary_sensor.door_window_sensor_158d0002391048
+          - binary_sensor.door_window_sensor_158d000239438b
+          - binary_sensor.door_window_sensor_158d00023949af
+        show_header_toggle: false
+        title: Ouvertures Fenêtres
+        type: entities
+      - entities:
+          - sensor.temperature_158d0002c8bc1c
+          - sensor.humidity_158d0002c8bc1c
+        show_header_toggle: false
+        title: Conditions garage
+        type: entities
+      - entities:
+          - cover.garage_door
+          - sensor.garage_summary
+          - group.garage_conditions
+        show_header_toggle: false
+        title: Garage door
+        type: entities
+    icon: 'mdi:camcorder'
+    path: surveillance
+    title: Surveillance
+  - badges: []
+    cards:
+      - entities:
+          - sun.sun
+          - sensor.yr_symbol
+          - sensor.yr_temperature
+          - sensor.yr_humidity
+          - sensor.yr_pressure
+          - sensor.yr_precipitation
+          - sensor.temperature_158d000272e88d
+          - sensor.humidity_158d000272e88d
+          - sensor.pressure_158d000272e88d
+        show_header_toggle: false
+        title: Exterieur
+        type: entities
+      - entities:
+          - sensor.illumination_158d0001b7542d
+          - sensor.illumination_158d0001e47d34
+          - sensor.illumination_158d0001e47f52
+          - sensor.illumination_158d0001ddca38
+        show_header_toggle: false
+        title: Luminosité
+        type: entities
+      - entities:
+          - sensor.temperature_158d0001b96127
+          - sensor.temperature_158d0001b92bcc
+          - sensor.temperature_158d0001b8f1b1
+          - sensor.temperature_158d00022734f8
+        show_header_toggle: false
+        title: Température Maison
+        type: entities
+      - entities:
+          - entity: sensor.humidity_158d0001b96127
+          - entity: sensor.chambre_doudou_humidity
+          - entity: sensor.humidity_158d0001b92bcc
+          - entity: sensor.chambre_alex_humidity
+          - entity: sensor.humidity_158d0001b8f1b1
+          - entity: sensor.salon_humidity
+          - entity: sensor.humidity_158d00022734f8
+        show_header_toggle: false
+        title: Humidité Maison
+        type: entities
+      - entities:
+          - sensor.average_temperature
+          - sensor.average_humidity
+        show_header_toggle: false
+        title: Moyennes
+        type: entities
+      - entities:
+          - sensor.pressure_158d0001b92bcc
+          - sensor.pressure_158d0001b96127
+          - sensor.pressure_158d00022734f8
+        show_header_toggle: false
+        title: Pression
+        type: entities
+      - entities:
+          - sensor.humidity_158d000273a1ce
+          - sensor.temperature_158d000273a1ce
+          - sensor.pressure_158d000273a1ce
+        show_header_toggle: false
+        title: Frigo
+        type: entities
+      - entities:
+          - sensor.temperature_158d0002c8bc1c
+          - sensor.humidity_158d0002c8bc1c
+        show_header_toggle: false
+        title: Conditions garage
+        type: entities
+    icon: 'mdi:nfc'
+    path: capteurs
+    title: Capteurs
+  - badges: []
+    cards:
+      - entities:
+          - sensor.flower1_battery
+          - sensor.flower1_conductivity
+          - sensor.flower1_light_intensity
+          - sensor.flower1_moisture
+          - sensor.flower1_temperature
+        show_header_toggle: false
+        title: Clivia
+        type: entities
+      - entities:
+          - sensor.flower2_battery
+          - sensor.flower2_conductivity
+          - sensor.flower2_light_intensity
+          - sensor.flower2_moisture
+          - sensor.flower2_temperature
+        show_header_toggle: false
+        title: Spathiphyllum
+        type: entities
+      - entities: []
+        hours_to_show: 24
+        refresh_interval: 0
+        type: history-graph
+    icon: 'mdi:flower'
+    path: plantes
+    title: Plantes
+  - badges: []
+    cards:
+      - entities:
+          - sensor.bat_mvt_couloir
+          - sensor.bat_mvt_entree
+          - sensor.bat_mvt_salon
+          - sensor.bat_mvt_sdb
+          - sensor.bat_ouv_chiotte
+          - sensor.bat_ouv_entree
+          - sensor.bat_ouv_garage
+          - sensor.bat_ouv_terasse
+          - sensor.bat_ouv_sdb
+          - sensor.bat_tmp_chambre
+          - sensor.bat_tmp_salon
+          - sensor.bat_tmp_sdb
+          - sensor.bat_tmp_doudou
+        show_header_toggle: false
+        title: Capteurs
+        type: entities
+      - entities:
+          - sensor.bat_aspi
+          - sensor.bat_btn_cuisine
+          - sensor.bat_btn_garage
+          - sensor.bat_btn_douche
+        show_header_toggle: false
+        title: Autres
+        type: entities
+      - card:
+          title: Batteries basses
+          type: glance
+        filter:
+          include:
+            - entity_id: sensor.bat*
+              state: < 30
+        type: 'custom:monster-card'
+    icon: 'mdi:battery'
+    path: batterie
+    title: Batterie
+  - badges: []
+    cards:
+      - entities:
+          - automation.allumage_chiotte_auto
+          - automation.extinction_chiotte_auto
+          - automation.allumage_sdb_auto
+          - automation.extinction_sdb_auto
+          - automation.allumage_couloir_auto
+          - automation.extinction_couloir_auto
+        show_header_toggle: true
+        title: Lumières
+        type: entities
+      - entities:
+          - entity: automation.bouton_cuisine
+          - entity: automation.bouton_salon
+          - entity: automation.switch_mode_douche
+        show_header_toggle: true
+        title: Boutons
+        type: entities
+      - entities:
+          - automation.notification_si_porte_reste_ouverte
+          - automation.notification_si_absent_et_mouvement
+          - automation.suspend_notifs_telegram
+          - automation.reactive_notifs_telegram
+        show_header_toggle: true
+        title: Notifications
+        type: entities
+      - entities:
+          - automation.changement_lumieres_a_6h_et_20
+          - automation.changement_lumieres_a_7h_et_19h
+          - automation.changement_lumieres_a_9h_et_17h
+          - automation.changement_lumieres_a_22h
+          - automation.changement_lumieres_a_23
+          - automation.aspi_9h_si_absent
+        show_header_toggle: true
+        title: Planifiées
+        type: entities
+      - entities:
+          - automation.passage_mode_absent_auto_apres_5_min
+          - automation.passage_mode_present_auto_bt_phone
+          - automation.enclenchement_mode_absent
+          - automation.enclenchement_mode_present
+          - automation.notification_si_absent_et_mouvement
+          - automation.demande_si_aspi_doit_passer_apres_depart
+        show_header_toggle: true
+        title: Detection Presence
+        type: entities
+      - entities:
+          - automation.telegram_active_alarme
+          - automation.telegram_stoppe_alarme
+          - automation.telegram_mode_present
+          - automation.telegram_mode_absent
+          - automation.telegram_activate_notifs
+          - automation.telegram_stop_notifs
+          - automation.telegram_active_aspi
+        show_header_toggle: true
+        title: Actions Telegramme
+        type: entities
+      - entities:
+          - entity: automation.cube_rotate
+          - entity: automation.cube_move
+          - entity: automation.cube_flip180
+          - entity: automation.cube_tap_twice
+          - entity: automation.bouton_salon_double
+          - entity: automation.telegram_ouvre_garage
+          - entity: automation.mise_a_jour_statut_garage
+          - entity: automation.bouton_salon_double
+          - entity: automation.cube_free_fall
+          - entity: automation.sortie_mode_douche
+          - entity: automation.aspi_bloque
+          - entity: automation.enclenchement_mode_douche
+          - entity: automation.change_ambiance_salon
+          - entity: automation.cube_shake
+          - entity: automation.bouton_salon
+          - entity: automation.telegram_commandes
+          - entity: automation.telegram_etat
+          - entity: automation.change_luminosite_salon
+          - entity: automation.bouton_doudou
+          - entity: automation.bouton_salon_long
+          - entity: automation.telegram_ferme_garage
+          - entity: automation.cube_flip90
+          - entity: automation.notification_si_porte_reste_ouverte
+        title: Automation
+        type: entities
+      - entities:
+          - entity: automation.force_les_sonoffs_a_se_montrer
+          - entity: automation.arret_mode_waf
+          - entity: automation.enclenchement_mode_waf
+        title: Help
+        type: entities
+      - entities:
+          - entity: automation.activation_chauffage_si_present
+          - entity: automation.enclenchement_mode_douche
+          - entity: automation.chauffage_mode_auto
+          - entity: automation.chauffage_mode_eco
+          - entity: automation.telegram_chauffage_eco
+          - entity: automation.telegram_chauffage_auto
+        show_header_toggle: false
+        title: Chauffage
+        type: entities
+    icon: ''
+    path: scenarios
+    title: SCENARIOS
+  - badges: []
+    cards:
+      - entities:
+          - entity: calendar.calendar_main
+          - entity: calendar.calendar_betterme
+          - entity: calendar.calendar_doudou
+          - entity: calendar.calendar_poubelle
+          - entity: calendar.calendar_encombrants
+          - entity: calendar.calendar_papier_verre
+        type: entities
+    icon: 'mdi:calendar-clock'
+    path: calendar
+    title: CALENDAR
