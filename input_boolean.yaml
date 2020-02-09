@@ -32,5 +32,5 @@
     icon: mdi:human-female-girl
   heating:
     name: Chauffage
-    initial: off
+    initial: on
     icon: mdi:radiator
