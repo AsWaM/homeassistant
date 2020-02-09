@@ -56,7 +56,6 @@
 
   Surveillance:
     icon: mdi:camcorder
-    view: yes
     entities:
        - group.cameras
        - group.detectors_presence
