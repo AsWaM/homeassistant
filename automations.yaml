@@ -16,6 +16,8 @@
       entity_id: light.yeelight_strip1_7811dc66e549
     - service: switch.toggle
       entity_id: switch.plug_158d0001de56c2
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.mode_nuit
 # Ambiance Salon
 # Toggle les lampes d'ambiance lors de l'appui du bouton salon
 - alias: Bouton Salon
@@ -60,20 +62,6 @@
     service: switch.toggle
     entity_id: switch.plug_158d0001a5d465
 
-# Toggle le mode présent lors de l'appui du bouton garage (recyclé pour doudou)
-#- alias: Switch present absent manuel
-#  id: manual.present.absent
-#  trigger:
-#    platform: event
-#    event_type: xiaomi_aqara.click
-#    event_data:
-#      click_type: single
-#      entity_id: binary_sensor.switch_158d0001e18d16
-#  condition: []
-#  action:
-#    service: input_boolean.toggle
-#    data:
-#      entity_id: input_boolean.mode_present
 # Toggle le mode douche lors de l'appui du bouton sdb
 - alias: Switch mode douche
   id: switch.douche
@@ -115,6 +103,21 @@
   action:
     - service: light.toggle
       entity_id: light.yeelight_strip2_04cf8c7acfe8
+# Désactivation auto mode douche apres 30 minutes
+- alias: Auto fin douche
+  id: auto.douche.off
+  trigger:
+    platform: state
+    entity_id: input_boolean.mode_douche
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 30
+  condition: []
+  action:
+    service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.mode_douche
 #################################
 #      wow effect (cube)        #
 #################################
@@ -147,7 +150,7 @@
       entity_id: light.yeelight_strip1_7811dc66e549
     - service: switch.toggle
       entity_id: switch.plug_158d0001de56c2
-# shake allume la télé et les lumieres du salon douces, et eteint les autres lumieres (plus tard media center)
+# shake allume la télé et les lumieres du salon douces, et eteint les autres lumieres (plus tard media center) / Et mode jour
 - alias: Cube Shake
   id: cube.shake
   trigger:
@@ -164,6 +167,8 @@
       entity_id: switch.plug_158d0001de56c2, switch.plug_158d0001a5d465, group.light_cuisine, switch.lustresalon, switch.appliquesalon
     - service: switch.turn_on
       entity_id: switch.tv
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.mode_nuit
     - service: light.turn_on
       data: 
         entity_id: group.light_salon
@@ -442,24 +447,44 @@
     - service: switch.turn_on
       data:
         entity_id: switch.synology_home_mode
-# Revert unexpected auto mode --> devrait ne plus servir
-#- alias: Mode eco forcé si bouton désactivé
-#  id: override.homemode.heating
-#  trigger:
-#    platform: state
-#    entity_id: climate.cuisine, climate.salon, climate.chambre_alex, climate.chambre_doudou, climate.salle_de_bains
-#    from: 'heat'
-#    to: 'auto'
-#    for:
-#      minutes: 5
-#  condition:
-#    - condition: state
-#      entity_id: input_boolean.heating
-#      state: 'off'
-#  action:
-#    service: script.turn_on
-#    data:
-#      entity_id: script.heating_off
+# Ne pas chauffer chez doudou si elle est chez Diana
+- alias: Mode absent doudou
+  id: override.doudou.heating
+  trigger:
+    platform: state
+    entity_id: climate.chambre_doudou
+    from: 'heat'
+    to: 'auto'
+    for:
+      minutes: 3
+  condition:
+    - condition: state
+      entity_id: calendar.calendar_doudou
+      state: 'off'
+  action:
+    service: climate.set_temperature
+    data:
+      entity_id: climate.chambre_doudou
+      hvac_mode: heat
+      temperature: 16
+# Si une valve passe en auto toute seul et que le chauffage est desactivé, on les éteint toutes
+- alias: Mode 
+  id: override.auto.heating
+  trigger:
+    platform: state
+    entity_id: climate.chambre_doudou, climate.salon, climate.cuisine, climate.chambre_alex, climate.salle_de_bains
+    from: 'heat'
+    to: 'auto'
+    for:
+      minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.heating_on
+      state: 'off'
+  action:
+    service: script.turn_on
+    data:
+      entity_id: script.heating_off
 # Exécute les actions du mode heating
 - alias: Chauffage mode auto
   id: activate.heating
@@ -663,7 +688,7 @@
           Lumières allumées: {{ states("sensor.active_lights") }}
           Porte garage: {{ states("sensor.garage_summary") }}
 - alias: Telegram active aspi
-  id: telegrambot.alarm.start
+  id: telegrambot.aspi.start
   trigger:
     - platform: event
       event_type: telegram_command
