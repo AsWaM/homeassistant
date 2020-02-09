@@ -11,7 +11,6 @@
 #  Default_view:
   Home:
 #    name: Home
-    view: yes
     icon: mdi:home
     entities:
        - group.detectors_presence
@@ -29,7 +28,6 @@
 #                  Lumière                         #
 ####################################################
   Lights:
-    view: yes
     icon: mdi:lightbulb
     entities:
        - group.light_bulbs
@@ -46,7 +44,6 @@
 
 
   Media:
-    view: yes
     icon: mdi:monitor
     entities:
        - group.media_switches
@@ -79,7 +76,6 @@
 
   Capteurs:
     icon: mdi:nfc
-    view: yes
     entities:
        - group.sensors_external
        - group.sensors_luminosity
@@ -96,7 +92,6 @@
 
   Plantes:
     icon: mdi:flower
-    view: yes
     entities:
        - group.plant_clivia
        - group.plant_spathiphyllum
@@ -108,7 +103,6 @@
 
   Batterie:
     icon: mdi:battery
-    view: yes
     entities:
        - group.batteries_sensors
        - group.batteries_others
@@ -119,7 +113,6 @@
 
 
   Scenarios:
-    view: yes
     icon: mdi:home-automation
     entities:
        - group.automation_lights
@@ -133,7 +126,6 @@
 ####################################################
 
   Vrac:
-    view: yes
     icon: mdi:delete-variant
     entities:
        - binary_sensor.switch_158d0001e18d16
