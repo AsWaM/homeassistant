@@ -23,32 +23,18 @@ recorder:
 #  db_url: !secret mariadb
   purge_keep_days: 10
 
-frontend:
-  extra_html_url:
-    - /local/custom_ui/state-card-floorplan.html
 config:
 
 weather:
   - platform: darksky
     api_key: !secret darksky
 
-panel_custom:
-  - name: floorplan
-    sidebar_title: Floorplan
-    sidebar_icon: mdi:floor-plan
-    url_path: floorplan
-    config: !include floorplan.yaml
 panel_iframe:
   ide:
     title: IDE
     icon: mdi:code-braces
     url: !redacted
 
-
-binary_sensor:
-  - platform: mqtt
-    state_topic: dummy/floorplan/sensor
-    name: Floorplan
 http:
   # Secrets are defined in the file secrets.yaml
   #api_password: !secret http_password
@@ -109,10 +95,6 @@ vacuum:
 
 device_tracker:
   - platform: bluetooth_tracker
-  - platform: tado
-    username: !secret tado_user
-    password: !secret tado_pass
-    home_id: !secret tado_homeid
 #INPUTS
 input_boolean: !include input_boolean.yaml
 input_select: !include input_select.yaml
@@ -133,24 +115,7 @@ media_player:
   - platform: lg_netcast
     host: !redacted
     access_token: !secret tv_token
-weblink:
-  entities:
-    - name: FritzBox
-      url: !redacted
-      icon: mdi:router-wireless
-    - name: OpenWrt
-      url: !redacted
-      icon: mdi:router-wireless
-    - name: Dafang
-      icon: mdi:camcorder
-      url: !redacted
-    - name: NAS
-      icon: mdi:nas
-      url: !redacted
-    - name: Sickrage
-      icon: mdi:cloud-download
-      url: !redacted
-
+light:
   - platform: xiaomi_miio
     name: Bedside Philips
     host: !redacted
