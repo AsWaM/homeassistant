@@ -287,8 +287,8 @@ elements:
     type: icon
   - entity: switch.chambre
     style:
-      '--iron-icon-height': 70px
-      '--iron-icon-width': 70px
+      '--iron-icon-height': 60px
+      '--iron-icon-width': 60px
       left: 28%
       top: 50%
     tap_action:
@@ -297,8 +297,8 @@ elements:
     type: state-icon
   - entity: switch.chambredoud
     style:
-      '--iron-icon-height': 70px
-      '--iron-icon-width': 70px
+      '--iron-icon-height': 60px
+      '--iron-icon-width': 60px
       left: 28%
       top: 34%
     tap_action:
@@ -319,7 +319,7 @@ elements:
     style:
       '--iron-icon-height': 50px
       '--iron-icon-width': 50px
-      left: 67%
+      left: 65%
       top: 40%
     tap_action:
       action: toggle
@@ -349,7 +349,7 @@ elements:
     style:
       '--iron-icon-height': 50px
       '--iron-icon-width': 50px
-      left: 77%
+      left: 75%
       top: 40%
     tap_action:
       action: toggle
@@ -379,7 +379,7 @@ elements:
     style:
       '--iron-icon-height': 30px
       '--iron-icon-width': 30px
-      left: 79%
+      left: 77%
       top: 35%
     tap_action:
       action: toggle
@@ -387,8 +387,8 @@ elements:
     type: state-icon
   - entity: light.yeelight_color2_7c49eb157ed5
     style:
-      '--iron-icon-height': 70px
-      '--iron-icon-width': 70px
+      '--iron-icon-height': 60px
+      '--iron-icon-width': 60px
       left: 45%
       top: 13%
     tap_action:
@@ -397,8 +397,8 @@ elements:
     type: state-icon
   - entity: switch.sdb
     style:
-      '--iron-icon-height': 70px
-      '--iron-icon-width': 70px
+      '--iron-icon-height': 60px
+      '--iron-icon-width': 60px
       left: 28%
       top: 10%
     tap_action:
@@ -407,8 +407,8 @@ elements:
     type: state-icon
   - entity: light.yeelight_color1_7811dc6a9651
     style:
-      '--iron-icon-height': 70px
-      '--iron-icon-width': 70px
+      '--iron-icon-height': 60px
+      '--iron-icon-width': 60px
       left: 45%
       top: 45%
     tap_action:
@@ -487,8 +487,8 @@ elements:
       '--iron-icon-width': 20px
       '--paper-item-icon-active-color': red
       '--paper-item-icon-color': lightgreen
-      left: 20%
-      top: 20%
+      left: 19%
+      top: 9%
     title: Mouvement Salle de bains
     type: state-icon
   - entity: binary_sensor.motion_sensor_158d0001e47d34
@@ -562,8 +562,8 @@ elements:
   - entity: sensor.temperature_158d0001b96127
     style:
       font-size: 15px
-      left: 39%
-      top: 29%
+      left: 35%
+      top: 41%
     title: température chanmbre Doudou
     type: state-label
   - entity: sensor.temperature_158d0001b8f1b1
@@ -583,7 +583,7 @@ elements:
   - entity: sensor.temperature_158d00022734f8
     style:
       font-size: 15px
-      left: 39%
+      left: 25%
       top: 7%
     title: température salle de bains
     type: state-label
@@ -604,8 +604,8 @@ elements:
   - entity: sensor.humidity_158d0001b96127
     style:
       font-size: 15px
-      left: 39%
-      top: 31%
+      left: 35%
+      top: 43%
     title: humidité chanmbre Doudou
     type: state-label
   - entity: sensor.humidity_158d0001b8f1b1
@@ -625,7 +625,7 @@ elements:
   - entity: sensor.humidity_158d00022734f8
     style:
       font-size: 15px
-      left: 39%
+      left: 25%
       top: 9%
     title: humidité salle de bains
     type: state-label
@@ -733,8 +733,8 @@ elements:
     style:
       '--iron-icon-height': 40px
       '--iron-icon-width': 40px
-      left: 20%
-      top: 39%
+      left: 40%
+      top: 26%
     title: radiateur doudou
     type: state-icon
   - entity: climate.salle_de_bains
@@ -742,7 +742,7 @@ elements:
       '--iron-icon-height': 40px
       '--iron-icon-width': 40px
       left: 20%
-      top: 10%
+      top: 19%
     title: radiateur sdb
     type: state-icon
   - entity: climate.cuisine
@@ -750,9 +750,20 @@ elements:
       '--iron-icon-height': 40px
       '--iron-icon-width': 40px
       left: 80%
-      top: 49%
+      top: 38%
     title: radiateur cuisine
     type: state-icon
+  - entity: input_boolean.mode_douche
+    title: mode douche
+    state_image:
+      'off': /local/images/shower_off.png
+      'on': /local/images/shower_on.png
+    style:
+      left: 38%
+      top: 10%
+      width: 4.5%
+    tap_action:
+      action: toggle
+    type: image
 image: /local/images/floorplan.png
 type: picture-elements
-
