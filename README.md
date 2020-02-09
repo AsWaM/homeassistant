@@ -27,7 +27,7 @@ Below a few screenshots of how it looks like (wip)
 Except the furniture, everything is clickable or actionable
 [Live demo (YouTube)](https://www.youtube.com/watch?v=4EGnCFBxhZg)
 [Yaml configuration](lovelace-overview.yaml)
-![Overview](Overview.PNG)
+![Overview](overview.png)
 
 ### Interactive Living Room (Picture Elements card) 
 All the lights and the tv are actionable
