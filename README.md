@@ -247,6 +247,35 @@ All the automations can be found in the dedicated file [automations.yaml](automa
 
 ## Time based
 
+# Scripts
+
+All the scripts can be found in the dedicated file [scripts.yaml](scripts.yaml)
+## Heating
+
+The tado application allows to set daily patterns for the heating, but if you use their geofencing mode, you cannot override the presence (you cannot start the heating in adavance for example). So the turn on heating is actually switching all the valves in auto mode (with a 3s delay not to stress the server) and the turn off sets them to manual on a low tempreature.
+
+```
+  heating_on:
+    alias: Passe chauffage en mode Home
+    sequence:
+      - service: climate.set_hvac_mode
+        data: 
+          entity_id: climate.salon
+          hvac_mode: auto
+      - delay:
+          seconds: 3
+      - service: climate.set_hvac_mode
+        data: 
+          entity_id: climate.cuisine
+          hvac_mode: auto
+      - delay:
+          seconds: 3
+      - service: climate.set_hvac_mode
+        data: 
+          entity_id: climate.chambre_alex
+          hvac_mode: auto
+```
+
 
 # Custom Sensors
 
