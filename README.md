@@ -433,13 +433,17 @@ N.B: There is a little (not very acceptable) bug: if a sensor is unavailable, it
 
 # How it works
 ## lovelace dynamic
-It is based on the moster card. You can find it on [ciotlosm Github](https://github.com/ciotlosm/custom-lovelace/tree/master/monster-card). Copy it to your /js folder
+It was based on the monster card. You can find it on [ciotlosm Github](https://github.com/ciotlosm/custom-lovelace/tree/master/monster-card). Copy it to your /js folder
+
+Edit: Migrated to Auto entities. You can find it on [thomasloven Github](https://github.com/thomasloven/lovelace-auto-entities). Copy it to your /js folder
+
+
 
 Add code at the beigining of the lovelace file
 ```
 resources:
   - type: js
-   url: /local/js/monster-card.js?v=1.1
+   url: /local/js/auto-entities.js?v=1.1
 ```
 You for example can the get all the turned on lights with the following code
 ```
@@ -450,7 +454,7 @@ You for example can the get all the turned on lights with the following code
           include:
             - entity_id: light.*
               state: 'on'
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
 ```
 Or the present device trackers
 ```
@@ -461,7 +465,7 @@ Or the present device trackers
           include:
             - entity_id: device_tracker.*
               state: home
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
 ```
 Or all the low batteries
 ```
@@ -472,7 +476,7 @@ Or all the low batteries
           include:
             - entity_id: sensor.bat*
               state: < 30
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
 ```
 Last example with exclusions, all the turned on switches except the ones created by the dafang cam
 ```
@@ -485,7 +489,7 @@ Last example with exclusions, all the turned on switches except the ones created
           include:
             - entity_id: switch.*
               state: 'on'
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
 ```
 ## Picture elements
 You need a background image, and if you like a different one for the switched (on or off) then another one.
