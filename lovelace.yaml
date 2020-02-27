@@ -1,15 +1,11 @@
 resources:
   - type: js
-    url: /local/js/monster-card.js?v=1.1
+    url: /local/js/auto-entities.js?v=1.1
   - type: js
     url: /local/js/now-playing-card.js?v=1.0
 title: Alex Home
 views:
-  - icon: 'mdi:floor-plan'
-    panel: true
-    path: overview
-    title: OVERVIEW
-    badges: []
+  - badges: []
     cards:
       - elements:
           - entity: switch.chambre
@@ -300,8 +296,8 @@ views:
             type: icon
           - entity: switch.chambre
             style:
-              '--iron-icon-height': 70px
-              '--iron-icon-width': 70px
+              '--iron-icon-height': 60px
+              '--iron-icon-width': 60px
               left: 28%
               top: 50%
             tap_action:
@@ -310,8 +306,8 @@ views:
             type: state-icon
           - entity: switch.chambredoud
             style:
-              '--iron-icon-height': 70px
-              '--iron-icon-width': 70px
+              '--iron-icon-height': 60px
+              '--iron-icon-width': 60px
               left: 28%
               top: 34%
             tap_action:
@@ -332,7 +328,7 @@ views:
             style:
               '--iron-icon-height': 50px
               '--iron-icon-width': 50px
-              left: 67%
+              left: 65%
               top: 40%
             tap_action:
               action: toggle
@@ -362,7 +358,7 @@ views:
             style:
               '--iron-icon-height': 50px
               '--iron-icon-width': 50px
-              left: 77%
+              left: 75%
               top: 40%
             tap_action:
               action: toggle
@@ -392,7 +388,7 @@ views:
             style:
               '--iron-icon-height': 30px
               '--iron-icon-width': 30px
-              left: 79%
+              left: 77%
               top: 35%
             tap_action:
               action: toggle
@@ -400,18 +396,18 @@ views:
             type: state-icon
           - entity: light.yeelight_color2_7c49eb157ed5
             style:
-              '--iron-icon-height': 70px
-              '--iron-icon-width': 70px
+              '--iron-icon-height': 60px
+              '--iron-icon-width': 60px
               left: 45%
-              top: 13%
+              top: 17%
             tap_action:
               action: toggle
             title: lampe couloir entrée
             type: state-icon
           - entity: switch.sdb
             style:
-              '--iron-icon-height': 70px
-              '--iron-icon-width': 70px
+              '--iron-icon-height': 60px
+              '--iron-icon-width': 60px
               left: 28%
               top: 10%
             tap_action:
@@ -420,8 +416,8 @@ views:
             type: state-icon
           - entity: light.yeelight_color1_7811dc6a9651
             style:
-              '--iron-icon-height': 70px
-              '--iron-icon-width': 70px
+              '--iron-icon-height': 60px
+              '--iron-icon-width': 60px
               left: 45%
               top: 45%
             tap_action:
@@ -500,8 +496,8 @@ views:
               '--iron-icon-width': 20px
               '--paper-item-icon-active-color': red
               '--paper-item-icon-color': lightgreen
-              left: 20%
-              top: 20%
+              left: 19%
+              top: 9%
             title: Mouvement Salle de bains
             type: state-icon
           - entity: binary_sensor.motion_sensor_158d0001e47d34
@@ -575,8 +571,8 @@ views:
           - entity: sensor.temperature_158d0001b96127
             style:
               font-size: 15px
-              left: 39%
-              top: 29%
+              left: 35%
+              top: 41%
             title: température chanmbre Doudou
             type: state-label
           - entity: sensor.temperature_158d0001b8f1b1
@@ -596,7 +592,7 @@ views:
           - entity: sensor.temperature_158d00022734f8
             style:
               font-size: 15px
-              left: 39%
+              left: 25%
               top: 7%
             title: température salle de bains
             type: state-label
@@ -617,8 +613,8 @@ views:
           - entity: sensor.humidity_158d0001b96127
             style:
               font-size: 15px
-              left: 39%
-              top: 31%
+              left: 35%
+              top: 43%
             title: humidité chanmbre Doudou
             type: state-label
           - entity: sensor.humidity_158d0001b8f1b1
@@ -638,7 +634,7 @@ views:
           - entity: sensor.humidity_158d00022734f8
             style:
               font-size: 15px
-              left: 39%
+              left: 25%
               top: 9%
             title: humidité salle de bains
             type: state-label
@@ -746,8 +742,8 @@ views:
             style:
               '--iron-icon-height': 40px
               '--iron-icon-width': 40px
-              left: 20%
-              top: 39%
+              left: 40%
+              top: 26%
             title: radiateur doudou
             type: state-icon
           - entity: climate.salle_de_bains
@@ -755,7 +751,7 @@ views:
               '--iron-icon-height': 40px
               '--iron-icon-width': 40px
               left: 20%
-              top: 10%
+              top: 19%
             title: radiateur sdb
             type: state-icon
           - entity: climate.cuisine
@@ -763,11 +759,27 @@ views:
               '--iron-icon-height': 40px
               '--iron-icon-width': 40px
               left: 80%
-              top: 49%
+              top: 38%
             title: radiateur cuisine
             type: state-icon
+          - entity: input_boolean.mode_douche
+            state_image:
+              'off': /local/images/shower_off.png
+              'on': /local/images/shower_on.png
+            style:
+              left: 38%
+              top: 10%
+              width: 4.5%
+            tap_action:
+              action: toggle
+            title: mode douche
+            type: image
         image: /local/images/floorplan.png
         type: picture-elements
+    icon: 'mdi:floor-plan'
+    panel: true
+    path: overview
+    title: OVERVIEW
   - badges: []
     cards:
       - elements:
@@ -893,7 +905,7 @@ views:
           include:
             - entity_id: light.*
               state: 'on'
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
       - card:
           title: Personnes présentes
           type: glance
@@ -901,7 +913,7 @@ views:
           include:
             - entity_id: device_tracker.*
               state: home
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
       - card:
           title: Interrupteurs Allumées
           type: entities
@@ -915,7 +927,7 @@ views:
           include:
             - entity_id: switch.*
               state: 'on'
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
       - card:
           title: Portes/fenêtres ouvertes
           type: glance
@@ -923,7 +935,7 @@ views:
           include:
             - entity_id: binary_sensor.door_window_sensor*
               state: 'on'
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
       - card:
           title: Batteries inférieures a 33%
           type: glance
@@ -931,15 +943,15 @@ views:
           include:
             - entity_id: sensor.bat*
               state: < 30
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
       - card:
-          title: Radiateurs chauffants
+          title: Radiateurs Allumés
           type: glance
         filter:
           include:
-            - entity_id: climate.*
-              state: heating
-        type: 'custom:monster-card'
+            - entity_id: sensor.*_heating
+              state: '> 0'
+        type: 'custom:auto-entities'
     title: DYNAMIC
   - badges:
       - entity: binary_sensor.floorplan
@@ -1023,6 +1035,7 @@ views:
           - entity: device_tracker.galaxy_s8
           - entity: device_tracker.samsungsmg920f
           - entity: device_tracker.lia
+          - entity: device_tracker.galaxy_s9
         show_header_toggle: false
         title: Tracked devices
         type: entities
@@ -1431,6 +1444,11 @@ views:
         hours_to_show: 96
         refresh_interval: 0
         type: history-graph
+      - entities:
+          - entity: sensor.salle_de_bains_temperature
+        hours_to_show: 240
+        refresh_interval: 0
+        type: history-graph
     path: Sensors
     title: Sensors
   - badges: []
@@ -1466,6 +1484,8 @@ views:
   - badges: []
     cards:
       - card:
+          entities:
+            - entity: light.yeelight_strip1_7811dc66e549
           title: Lumières Allumées
           type: glance
         filter:
@@ -1840,13 +1860,12 @@ views:
         title: Detection Presence
         type: entities
       - entities:
-          - automation.telegram_active_alarme
-          - automation.telegram_stoppe_alarme
-          - automation.telegram_mode_present
-          - automation.telegram_mode_absent
-          - automation.telegram_activate_notifs
-          - automation.telegram_stop_notifs
-          - automation.telegram_active_aspi
+          - entity: automation.telegram_stoppe_alarme
+          - entity: automation.telegram_mode_present
+          - entity: automation.telegram_mode_absent
+          - entity: automation.telegram_activate_notifs
+          - entity: automation.telegram_stop_notifs
+          - entity: automation.telegram_active_aspi
         show_header_toggle: true
         title: Actions Telegramme
         type: entities
@@ -1889,6 +1908,7 @@ views:
           - entity: automation.chauffage_mode_eco
           - entity: automation.telegram_chauffage_eco
           - entity: automation.telegram_chauffage_auto
+          - entity: automation.mode
         show_header_toggle: false
         title: Chauffage
         type: entities
