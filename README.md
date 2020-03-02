@@ -371,7 +371,7 @@ This is used to receive a photo of the dafang cam directly in telegram
           message: "Captures des caméras"
           data:
             photo:
-            - url: https://192.168.178.240/cgi-bin/currentpic.cgi
+            - url: https://CAM-IP-HERE/cgi-bin/currentpic.cgi
               username: root
               password: !secret dafang_pass
               verify_ssl: false
