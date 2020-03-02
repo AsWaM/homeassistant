@@ -237,15 +237,79 @@ All the automations can be found in the dedicated file [automations.yaml](automa
 
 ## Buttons
 
+The Kitchen button toggles the light of the worktop (smart plug + yeelight ledstrip), and turns off the night mode (usually, when I get up, I pour a cofee and need to light up the worktop for this)
+
+### Kitchen
+
+```
+# Toggle le led strip et la prise lors de l'appui du bouton cuisine + Exit night mode
+- alias: Bouton Cuisine
+  id: switch.cuisine
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001e18d90
+  condition: []
+  action:
+    - service: light.toggle
+      entity_id: light.yeelight_strip1_7811dc66e549
+    - service: switch.toggle
+      entity_id: switch.plug_158d0001de56c2
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.mode_nuit
+```
+### Room
+Some other buttons, for example in the kids room allow to control the room lamp from the bed (main lamp, and desk led strip)
+```
+# Chambre Doudou
+# Toggle la lampe principale lors de l'apuui du bouton
+- alias: Bouton Doudou
+  id: switch.doudou
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001e18d16
+  condition: []
+  action:
+    - service: switch.toggle
+      entity_id: switch.chambredoud
+## Toggle le lightstrip (double clic)
+- alias: Bouton doudou double
+  id: switch.doudou.double
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d0001e18d16
+  condition: []
+  action:
+    - service: light.toggle
+      entity_id: light.yeelight_strip2_04cf8c7acfe8
+
+```
+### Modes
+Some buttons switch modes to on/off (Shower mode, Night mode etc.) 
+```
+
+```
+
+
 ## Automatic
 
 ## Telegram
 
-## Magic Cube
+## Boolean based
 
 ## Calendar based
 
 ## Time based
+
+## Wow effect (Magic Cube)
 
 # Scripts
 
