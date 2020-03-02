@@ -14,7 +14,7 @@
       - service: input_boolean.turn_off
         data: 
           entity_id: input_boolean.mode_douche
-#Passage de tous les radiateurs en mode auto [TODO: considerer le calendrier doudou]
+#Passage de tous les radiateurs en mode auto 
   heating_on:
     alias: Passe chauffage en mode Home
     sequence:
