@@ -145,7 +145,7 @@ The magic about that, is that the group is 'home' if any of the trackers is 'hom
 The magic about that, is that if any goes from 'off' to 'on' the the whole group goes from 'off' to 'on', so you can trigger an automation if any of them is triggered, and if you add a new one, just add it to the group and it is intergrated to automations automatically
 
 The list here is not exhaustive, have a look a the groups.yaml file
-
+### Motion sensors
 Motion sensors inside the house 
 ```
   motion_sensors:
@@ -157,6 +157,7 @@ Motion sensors inside the house
        - binary_sensor.motion_sensor_158d0001b7542d
        - binary_sensor.motion_sensor_158d0001d6675f
 ```
+### Aperture sensors
 Open closed sensor on doors
 ```
   door_sensors:
@@ -167,7 +168,7 @@ Open closed sensor on doors
        - binary_sensor.door_window_sensor_158d0001d8526a
        - binary_sensor.door_window_sensor_158d000272f13c
 ```
-
+### Averages
 These groups help for the averages
 ```
   room_humidity:
@@ -295,11 +296,51 @@ Some other buttons, for example in the kids room allow to control the room lamp 
 ### Modes
 Some buttons switch modes to on/off (Shower mode, Night mode etc.) 
 ```
-
+# Toggle le mode douche lors de l'appui du bouton sdb
+- alias: Switch mode douche
+  id: switch.douche
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0002134b92
+  condition: []
+  action:
+    service: input_boolean.toggle
+    data:
+      entity_id: input_boolean.mode_douche
 ```
 
-
 ## Automatic
+
+### Heating
+The heating in the daughter's room is not necessary if she is at her mother's. So if her climate switches to auto (basically when a tracked person comes in), switch it back to manual if she is not home.
+
+TODO: Override this behavior with some flag maybe
+```
+# Ne pas chauffer chez doudou si elle est chez sa mère
+- alias: Mode absent doudou
+  id: override.doudou.heating
+  trigger:
+    platform: state
+    entity_id: climate.chambre_doudou
+    from: 'heat'
+    to: 'auto'
+    for:
+      minutes: 3
+  condition:
+    - condition: state
+      entity_id: calendar.calendar_doudou
+      state: 'off'
+  action:
+    service: climate.set_temperature
+    data:
+      entity_id: climate.chambre_doudou
+      hvac_mode: heat
+      temperature: 16
+```
+
 
 ## Telegram
 
@@ -308,6 +349,8 @@ Some buttons switch modes to on/off (Shower mode, Night mode etc.)
 ## Calendar based
 
 ## Time based
+This automations run at given times of the day
+
 
 ## Wow effect (Magic Cube)
 
@@ -317,7 +360,7 @@ All the scripts can be found in the dedicated file [scripts.yaml](scripts.yaml)
 ## Heating
 
 The tado application allows to set daily patterns for the heating, but if you use their geofencing mode, you cannot override the presence (you cannot start the heating in adavance for example). So the turn on heating is actually switching all the valves in auto mode (with a 3s delay not to stress the server) and the turn off sets them to manual on a low tempreature.
-
+### Heating On
 ```
   heating_on:
     alias: Passe chauffage en mode Home
@@ -339,6 +382,8 @@ The tado application allows to set daily patterns for the heating, but if you us
           entity_id: climate.chambre_alex
           hvac_mode: auto
 ```
+### Heating Off
+
 To turn the heating off, when nobody is home, the trick is to sitch them to manual mode with a low temperature. For readability, i did not put them all :)
 
 ```
@@ -597,19 +642,20 @@ N.B: There is a little (not very acceptable) bug: if a sensor is unavailable, it
 ```
 
 # How it works
-## lovelace dynamic
+## Lovelace dynamic
 It was based on the monster card. You can find it on [ciotlosm Github](https://github.com/ciotlosm/custom-lovelace/tree/master/monster-card). Copy it to your /js folder
 
 Edit: Migrated to Auto entities. You can find it on [thomasloven Github](https://github.com/thomasloven/lovelace-auto-entities). Copy it to your /js folder
 
 
-
+### Import Resources
 Add code at the beigining of the lovelace file
 ```
 resources:
   - type: js
    url: /local/js/auto-entities.js?v=1.1
 ```
+### Turned on lights
 You for example can the get all the turned on lights with the following code
 ```
       - card:
@@ -621,6 +667,7 @@ You for example can the get all the turned on lights with the following code
               state: 'on'
         type: 'custom:auto-entities'
 ```
+### Visible trackers
 Or the present device trackers
 ```
       - card:
@@ -632,6 +679,8 @@ Or the present device trackers
               state: home
         type: 'custom:auto-entities'
 ```
+### Low batteries
+
 Or all the low batteries
 ```
       - card:
@@ -643,6 +692,7 @@ Or all the low batteries
               state: < 30
         type: 'custom:auto-entities'
 ```
+### Exclusions
 Last example with exclusions, all the turned on switches except the ones created by the dafang cam
 ```
      - card:
@@ -657,9 +707,12 @@ Last example with exclusions, all the turned on switches except the ones created
         type: 'custom:auto-entities'
 ```
 ## Picture elements
+### Prerequisites
 You need a background image, and if you like a different one for the switched (on or off) then another one.
 I used [Paint.Net](https://www.getpaint.net/download.html) to darken/lighten the images
 then you just need to switch the image according to the status of a sensor (here a switch). You could also do the same with css transforms on the image.
+### Change image based on state
+
 ```
           - entity: switch.chambre
             image: /local/images/chambre.png
@@ -674,6 +727,7 @@ then you just need to switch the image according to the status of a sensor (here
               action: none
             type: image
  ```
+### Add action to an image
 You can also add a tap action on the image
  ```
 - entity: input_boolean.mode_waf
@@ -689,6 +743,7 @@ You can also add a tap action on the image
             title: mode waf
             type: image
  ```
+
 ## Customizations
 They are mostly used to force the icon in the lovelace ui and/or in the picture elements cards, and to give them a friendlier name
 All this can be found in the dedicated file [customize.yaml](customize.yaml)
