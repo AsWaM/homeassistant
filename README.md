@@ -275,7 +275,108 @@ The tado application allows to set daily patterns for the heating, but if you us
           entity_id: climate.chambre_alex
           hvac_mode: auto
 ```
+To turn the heating off, when nobody is home, the trick is to sitch them to manual mode with a low temperature. For readability, i did not put them all :)
 
+```
+ #Passage de tous les radiateurs en mode manuel 
+  heating_off:
+    alias: Eteint chauffage
+    sequence:
+      - service: climate.set_temperature
+        data: 
+          entity_id: climate.salon
+          hvac_mode: heat
+          temperature: 16
+      - delay:
+          seconds: 3
+      - service: climate.set_temperature
+        data: 
+          entity_id: climate.salle_de_bains
+          hvac_mode: heat
+          temperature: 14
+```
+## Presence
+
+The script allows to run multiple actions upon the detection of 'nobody home'
+
+```
+#Mode absent: Extinction de toutes les lumières, de la télé, activation des cams, desactivation du mode douche
+  away_mode:
+    alias: Passage mode absent
+    sequence:
+      - service: light.turn_off
+        data:
+          entity_id: group.light_devices, group.light_bulbs
+      - service: switch.turn_off
+        data:
+          entity_id: switch.synology_home_mode, switch.plug_158d0001de56c2, switch.chambre, switch.cuisine1, switch.cuisine2, switch.plug_158d0001a5d465, switch.chambredoud, switch.chiottelum, switch.chiotteventil, switch.plug_158d0001a5d465, switch.terasse, switch.lustresalon, switch.appliquesalon, switch.sdb
+      - service: media_player.turn_off
+        data: 
+          entity_id: media_player.lg_tv_remote
+      - service: input_boolean.turn_off
+        data: 
+          entity_id: input_boolean.mode_douche
+```
+## Waf Mode
+
+The script is used to turn on (or off) the non WAF automations. For convenience/maintenance purposes, these automations are in a group
+
+```
+ #waf mode: force l'allumage et fixe la couleur des lampes du couloir et du salon, desactive les allumages/changements de couleurs/extinctions automatiques des lampes du couloir et du salon
+  waf_mode:
+    alias: Stop non WAF Automations
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: light.yeelight_color1_7811dc6a9651, light.yeelight_color2_7c49eb157ed5, light.yeelight_color2_7c49eb157a7e
+          color_name: ivory
+          brightness: 250
+      - service: automation.turn_off
+        data:
+          entity_id: group.non_waf
+```
+## Snooze alerts
+
+When there is movement and/or opened door when nobody is home, there are telegram notifications that are sent. Sometimes I don't want to receive them (like when the cleaning ladies are here, or when the dogs are active). The automation deactivates them for 1h, then if disable again for 3h, then 5, etc... In short it deactivates it, then delays the reactivation for 2 times the number of times it was already deactivated plus one.
+
+```
+# Snooze alerts. Finalement pour 1h, puis 3, puis 5, etc. Desactive les notifications d'intrusion temporairement
+  snooze_xh:
+    alias: Snooze an automation for x hour
+    sequence:
+      - service: automation.turn_off
+        data_template:
+          entity_id: '{{ automation }}'
+      - delay: '{{ states.sensor.already_snoozed_notifs.state | int * 2 +1 }}:00:00'
+      - service: automation.turn_on
+        data_template:
+          entity_id: '{{ automation }}'
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.snooze_notifs
+
+```
+
+## Télégram Live photo
+
+This is used to receive a photo of the dafang cam directly in telegram
+
+```
+#Photo de la dafang en direct, envoyée via télégram
+  camera_snap_message:
+    alias: Send Camera snapshot
+    sequence:
+      - service: notify.telegram
+        data:
+          message: "Captures des caméras"
+          data:
+            photo:
+            - url: https://192.168.178.240/cgi-bin/currentpic.cgi
+              username: root
+              password: !secret dafang_pass
+              verify_ssl: false
+
+```
 
 # Custom Sensors
 
