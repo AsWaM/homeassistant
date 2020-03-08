@@ -344,6 +344,88 @@ TODO: Override this behavior with some flag maybe
 
 ## Telegram
 
+Telegram is my main way of interacting with HA, and same the main way of HA to notify me
+### Commands
+Any good system has a good help :) So i have this command reminder. Note that the telegram command are case sensitive, and if you want tu support several, just add them to the trigger. Then these commands are clickable directly
+```
+- alias: Telegram commandes
+  id: telegrambot.help
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/Help'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/help'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/?'
+  condition: []
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Commandes implémentées*'
+      message: |
+          Résumé: /Status
+          Alarme: /StopAlarm  /LaunchAlarm
+          Lumières: /LightsOff
+          Présence: /HomeMode  /AwayMode
+          Caméras: /Cams  /NoCams  /Live
+          Notifications: /SnoozeNotifs  /LaunchNotifs
+          Aspi: /LaunchAspi
+          Chauffage: /Heat /NoHeat
+          Garage: /OpenGarage /CloseGarage
+```
+
+Summary
+```
+# commande /Status
+- alias: Telegram etat
+  id: telegrambot.status
+  trigger:
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/Status'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/status'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/s'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/!'
+  condition: []
+  action:
+    service: notify.telegram
+    data_template:
+      title: '*Statut de la maison*'
+      message: |
+          Mode présent: {% if is_state("input_boolean.mode_present", "on") -%} Activé {%- else -%} Désactivé {%- endif %}
+          Mode de chauffage: {% if is_state("input_boolean.heating", "on") -%} Auto {%- else -%} Absent {%- endif %}
+          Mode nuit: {% if is_state("input_boolean.mode_nuit", "on") -%} Activé {%- else -%} Désactivé {%- endif %}
+          Dernier mouvement: {{ states("sensor.last_motion") }}
+          Cameras : {% if is_state("switch.synology_home_mode", "on") -%} Desactivées {%- else -%} Activées {%- endif %}
+          Notifications: {% if is_state("input_boolean.snooze_notifs", "on") -%} Desactivées {%- else -%} Activées {%- endif %} (Desactivées {{ states("sensor.already_snoozed_notifs") }} fois ce jour)
+          Aspi: Passé pendant {{ states("sensor.cleaned_today") }} h
+          Conditions: {{ states("sensor.average_temperature") }} °C, {{ states("sensor.average_humidity") }} % hum
+          Portes ouvertes: {{ states("sensor.opened_doors") }} 
+          Fenetres ouvertes: {{ states("sensor.opened_windows") }}
+          Lumières allumées: {{ states("sensor.active_lights") }}
+          Porte garage: {{ states("sensor.garage_summary") }}
+
+```
+
+
+### Notifications
+
 ## Boolean based
 
 ## Calendar based
