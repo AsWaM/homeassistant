@@ -380,6 +380,10 @@ Any good system has a good help :) So i have this command reminder. Note that th
           Garage: /OpenGarage /CloseGarage
 ```
 
+It then looks like this
+![Help Telegram](telegram_help.jpg)
+
+
 Summary
 ```
 # commande /Status
@@ -422,6 +426,8 @@ Summary
           Porte garage: {{ states("sensor.garage_summary") }}
 
 ```
+It then looks like this
+![Summary Telegram](telegram_status.jpg)
 
 
 ### Notifications
