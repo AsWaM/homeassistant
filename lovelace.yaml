@@ -1425,27 +1425,29 @@ views:
         name: Pi temp 72h
         type: sensor
       - entities:
-          - entity: sensor.chambre_alex_temperature
+          - entity: sensor.chambre_alex_temperature_2
           - entity: sensor.temperature_158d0001b92bcc
         hours_to_show: 96
         refresh_interval: 0
         title: Chambre
         type: history-graph
       - entities:
-          - entity: sensor.salon_temperature
+          - entity: sensor.salon_temperature_2
           - entity: sensor.temperature_158d0001b8f1b1
+          - entity: sensor.cuisine_temperature_3
         hours_to_show: 96
         refresh_interval: 0
         title: Salon
         type: history-graph
       - entities:
-          - entity: sensor.chambre_doudou_temperature
+          - entity: sensor.chambre_doudou_temperature_2
           - entity: sensor.temperature_158d0001b96127
         hours_to_show: 96
         refresh_interval: 0
         type: history-graph
       - entities:
-          - entity: sensor.salle_de_bains_temperature
+          - entity: sensor.salle_de_bains_temperature_2
+          - entity: sensor.temperature_158d00022734f8
         hours_to_show: 240
         refresh_interval: 0
         type: history-graph
@@ -1484,15 +1486,13 @@ views:
   - badges: []
     cards:
       - card:
-          entities:
-            - entity: light.yeelight_strip1_7811dc66e549
           title: Lumières Allumées
           type: glance
         filter:
           include:
             - entity_id: light.*
               state: 'on'
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
       - entities:
           - entity: light.gateway_light_34ce00fb5df0
           - entity: light.yeelight_color2_7c49eb157ed5
@@ -1709,11 +1709,11 @@ views:
         type: entities
       - entities:
           - entity: sensor.humidity_158d0001b96127
-          - entity: sensor.chambre_doudou_humidity
+          - entity: sensor.chambre_doudou_humidity_2
           - entity: sensor.humidity_158d0001b92bcc
-          - entity: sensor.chambre_alex_humidity
+          - entity: sensor.chambre_alex_humidity_2
           - entity: sensor.humidity_158d0001b8f1b1
-          - entity: sensor.salon_humidity
+          - entity: sensor.salon_humidity_2
           - entity: sensor.humidity_158d00022734f8
         show_header_toggle: false
         title: Humidité Maison
@@ -1771,6 +1771,9 @@ views:
         hours_to_show: 24
         refresh_interval: 0
         type: history-graph
+      - entities:
+          - entity: device_tracker.mi_band_alex
+        type: entities
     icon: 'mdi:flower'
     path: plantes
     title: Plantes
@@ -1808,7 +1811,7 @@ views:
           include:
             - entity_id: sensor.bat*
               state: < 30
-        type: 'custom:monster-card'
+        type: 'custom:auto-entities'
     icon: 'mdi:battery'
     path: batterie
     title: Batterie
