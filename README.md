@@ -41,7 +41,7 @@ All the lights and the tv are actionable
 ### Graphics (Sensor/History Graph card)
 ![Graph](Graph.PNG)
 
-### Dynamic content (Monster card)
+### Dynamic content (Auto-Entities card)
 ![Dynamic](Dynamic.PNG)
 
 ### Heating overview (Climate/Entities card)
@@ -843,3 +843,46 @@ light.yeelight_strip2_04cf8c7acfe8:
   friendly_name: LightStrip Doudou
   icon: mdi:led-off
 ```
+# User Guide
+## Français
+### Présence
+La maison fonctionne dans 2 modes. Présent et Absent. Le mode présent est activé dès qu'un téléphone tracké est détecté (bluetooth). Pour confirmer l'activation du mode présent, les lumières du salon (lampadaire, les 3 petites lampes et le ledstrip sous la télé s'allument). Lorsque le mode présent est activé, le chauffage se met en route, les caméras sont désactivées et les lumières du couloir et de la salle de bains s'allument sur notre passage et s'éteignent 1 min après qu'on aie quitté la pièce.
+
+De même lorsque la maison ne voit plus aucun téléphone tracké pendant 5 min elle passe en mode absent (tout s'éteint (lumières, tv, chauffage), les caméras s'allument et je suis notifié si il y a un mouvement ou une ouverture de porte)
+
+Sur l'interface, l'icone de la maison est coloré, pour signaler le mode présent, et grisé si il est désactivé
+
+N.B: L'appui sur le bouton depuis l'interface change directement le mode présent/abesnt
+
+### Mode nuit
+Le petit Hic, c'est que la chambre est en limite de portée de bluetooth, donc il arrive qu'il perde la connectique, puis la retrouve. Pour éviter que les lumières du salon s'allument, il y a le mode nuit pour ca. Le mode nuit permet de ne pas allumer les lampes si on déconnecte/reconnecte, et de ne pas couper le chauffage non plus. Le mode nuit est activé en jettant en l'air le cube a coté de la tv, (idéalement en le rattrapant), ou a l'appui du mode nuit sur la tablette. Le mode nuit éteint toutes les lumières et la TV. 
+
+Le mode nuit se désactive automatiquement à 8h30 le matin, ou si on appuie sur l'interrupteur du plan de travail dans la cuisine.
+
+Sur l'interface, l'icone de la nuit est coloré, pour signaler le mode nuit, et grisé si il est désactivé
+N.B: L'appui sur le bouton depuis l'interface change directement le mode nuit
+
+### Mode douche
+La lumière de la salle de baisn s'éteint toute seule si elle ne détecte personne pendant 1 minute. Parfois, elle ne nous voit pas sous la douche. 
+
+Il y a le mode douche pour ca. Il désactive l'allumage/extinction automatique de la salle de bains, et met le chauffage de la salle de bains à fond
+
+Pour l'activer, le bouton à l'entrée de la salle de bains allume le mode douche (et la lumière), et l'éteint (et la lumière)
+
+Le mode douche se désactive automatiquement apres 45 minutes, ou si on passe en mode absent.
+
+Sur l'interface, l'icone de la douche (dans la salle de bains) est coloré, pour signaler le mode douche, et grisé si il est désactivé
+N.B: L'appui sur le bouton depuis l'interface change directement le mode douche
+
+### Ecrans
+
+L'écran principal est le résumé. Il permet de voir en un coup d'oeil l'état de la maison (lumières, modes, chauffages, etc). Tout les éléments sont cliquables
+![Overview](overview.png)
+
+L'écran suivant est une photo interactive du salon. Il permet d'allumer éteindre toutes les lumières du salon en cliquant sur la photo. C'est plus un gadget qu'autre chose, je voulais juste voir comment ça rendait
+![LivingRoom](LivingRoom.PNG)
+
+L'écran important restant est le "dynamic" qui permet de voit toutes les lumieres allumées, interrupteurs enclenchés, portes ouvertes, personnes preésentes, etc... Pour les lumières et interrupteurs, on peut directement les éteindre (tous ou un par un).
+![Dynamic](Dynamic.PNG)
+
+
