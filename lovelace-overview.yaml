@@ -390,7 +390,7 @@ elements:
       '--iron-icon-height': 60px
       '--iron-icon-width': 60px
       left: 45%
-      top: 13%
+      top: 17%
     tap_action:
       action: toggle
     title: lampe couloir entrée
@@ -754,7 +754,6 @@ elements:
     title: radiateur cuisine
     type: state-icon
   - entity: input_boolean.mode_douche
-    title: mode douche
     state_image:
       'off': /local/images/shower_off.png
       'on': /local/images/shower_on.png
@@ -764,6 +763,19 @@ elements:
       width: 4.5%
     tap_action:
       action: toggle
+    title: mode douche
+    type: image
+  - entity: input_boolean.home_office
+    state_image:
+      'off': /local/images/homeoffice_off.png
+      'on': /local/images/homeoffice_on.png
+    style:
+      left: 6%
+      top: 80%
+      width: 4.5%
+    tap_action:
+      action: toggle
+    title: mode confinement
     type: image
 image: /local/images/floorplan.png
 type: picture-elements
