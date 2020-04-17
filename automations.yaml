@@ -112,7 +112,7 @@
     from: 'off'
     to: 'on'
     for:
-      minutes: 30
+      minutes: 45
   condition: []
   action:
     service: input_boolean.turn_off
@@ -468,7 +468,7 @@
       hvac_mode: heat
       temperature: 16
 # Si une valve passe en auto toute seul et que le chauffage est desactivé, on les éteint toutes
-- alias: Mode 
+- alias: Mode manuel forcé
   id: override.auto.heating
   trigger:
     platform: state
@@ -479,7 +479,7 @@
       minutes: 5
   condition:
     - condition: state
-      entity_id: input_boolean.heating_on
+      entity_id: input_boolean.heating
       state: 'off'
   action:
     service: script.turn_on
@@ -493,6 +493,32 @@
     entity_id: input_boolean.heating
     from: 'off'
     to: 'on'
+  condition: []
+  action:
+    service: script.turn_on
+    data:
+      entity_id: script.heating_on
+# Exécute les actions du mode HOME OFFICE
+- alias: Chauffage home office
+  id: activate.home_office_heating
+  trigger:
+    platform: state
+    entity_id: input_boolean.home_office
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+    service: script.turn_on
+    data:
+      entity_id: script.heating_home_office
+# Exécute les actions de sortie du mode HOME OFFICE
+- alias: Fin Chauffage home office
+  id: deactivate.home_office_heating
+  trigger:
+    platform: state
+    entity_id: input_boolean.home_office
+    from: 'on'
+    to: 'off'
   condition: []
   action:
     service: script.turn_on
@@ -709,7 +735,7 @@
       entity_id: vacuum.xiaomi_vacuum_cleaner
 #command snpashot (/live)
 - alias: Telegram photo dafang
-  id: telegrambot.alarm.start
+  id: telegrambot.live.photo
   trigger:
     - platform: event
       event_type: telegram_command
