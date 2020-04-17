@@ -13,7 +13,7 @@
           entity_id: media_player.lg_tv_remote
       - service: input_boolean.turn_off
         data: 
-          entity_id: input_boolean.mode_douche
+          entity_id: input_boolean.mode_douche, input_boolean.home_office
 #Passage de tous les radiateurs en mode auto 
   heating_on:
     alias: Passe chauffage en mode Home
@@ -83,6 +83,31 @@
           entity_id: climate.salle_de_bains
           hvac_mode: heat
           temperature: 14
+#Passage des radiateurs salon et chambre doudou en mode heat forcé
+  heating_home_office:
+    alias: Chauffage Confinement
+    sequence:
+      - service: climate.set_temperature
+        data: 
+          entity_id: climate.salon
+          hvac_mode: heat
+          temperature: 21
+      - delay:
+          seconds: 3
+      - service: climate.set_temperature
+        data: 
+          entity_id: climate.cuisine
+          hvac_mode: heat
+          temperature: 21
+      - delay:
+          seconds: 3
+      - service: climate.set_temperature
+        data: 
+          entity_id: climate.chambre_doudou
+          hvac_mode: heat
+          temperature: 21
+      - delay:
+          seconds: 3
 #Allumage des lampes d'ambiance et du lampadaire piur confirmer la détection
   home_mode:
     alias: Passage mode présent
