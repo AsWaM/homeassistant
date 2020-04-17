@@ -1,11 +1,10 @@
-resources:
-  - type: js
-    url: /local/js/auto-entities.js?v=1.1
-  - type: js
-    url: /local/js/now-playing-card.js?v=1.0
 title: Alex Home
 views:
-  - badges: []
+  - icon: 'mdi:floor-plan'
+    panel: true
+    path: overview
+    title: OVERVIEW
+    badges: []
     cards:
       - elements:
           - entity: switch.chambre
@@ -774,12 +773,20 @@ views:
               action: toggle
             title: mode douche
             type: image
+          - entity: input_boolean.home_office
+            state_image:
+              'off': /local/images/homeoffice_off.png
+              'on': /local/images/homeoffice_on.png
+            style:
+              left: 6%
+              top: 80%
+              width: 4.5%
+            tap_action:
+              action: toggle
+            title: mode confinement
+            type: image
         image: /local/images/floorplan.png
         type: picture-elements
-    icon: 'mdi:floor-plan'
-    panel: true
-    path: overview
-    title: OVERVIEW
   - badges: []
     cards:
       - elements:
@@ -949,7 +956,7 @@ views:
           type: glance
         filter:
           include:
-            - entity_id: sensor.*_heating
+            - entity_id: sensor.*_heating*
               state: '> 0'
         type: 'custom:auto-entities'
     title: DYNAMIC
@@ -1266,6 +1273,7 @@ views:
           - entity: sensor.average_humidity
           - entity: sensor.average_temperature
           - entity: input_boolean.mode_nuit
+          - entity: input_boolean.home_office
         title: Résumé
         type: glance
       - columns: 2
@@ -1351,11 +1359,11 @@ views:
           - entity: sensor.temperature_158d0001b92bcc
           - entity: sensor.temperature_158d0001b8f1b1
           - entity: sensor.temperature_158d00022734f8
-          - entity: sensor.chambre_alex_temperature
-          - entity: sensor.salon_temperature
-          - entity: sensor.chambre_doudou_temperature
-          - entity: sensor.cuisine_temperature_2
-          - entity: sensor.salle_de_bains_temperature
+          - entity: sensor.chambre_alex_temperature_2
+          - entity: sensor.salon_temperature_2
+          - entity: sensor.chambre_doudou_temperature_2
+          - entity: sensor.cuisine_temperature_3
+          - entity: sensor.salle_de_bains_temperature_2
         show_header_toggle: false
         title: Température Maison
         type: entities
@@ -1831,6 +1839,9 @@ views:
           - entity: automation.bouton_cuisine
           - entity: automation.bouton_salon
           - entity: automation.switch_mode_douche
+          - entity: automation.bouton_salon_double
+          - entity: automation.bouton_doudou
+          - entity: automation.bouton_doudou_double
         show_header_toggle: true
         title: Boutons
         type: entities
