@@ -34,3 +34,7 @@
     name: Chauffage
     initial: on
     icon: mdi:radiator
+  home_office:
+    name: Confinement
+    initial: off
+    icon: mdi:verified_user
