@@ -119,6 +119,74 @@
     data:
       entity_id: input_boolean.mode_douche
 #################################
+#     Double click sonoffs       #
+#################################
+# Toggle le lampadaire au doucle clic salon
+- alias: Double clic sonoff salon
+  id: sonoff.double.salon
+  trigger:
+     - platform: mqtt
+       topic: sonoff/salon/stat/BUTTON1T
+     - platform: mqtt
+       topic: sonoff/salon/stat/BUTTON2T
+  condition: 
+    condition: template
+    value_template: "{{ trigger.payload_json['TRIG'] == 'DOUBLE' }}"
+  action:
+    - service: switch.toggle
+      entity_id: switch.plug_158d0001a5d465
+# Toggle le lampadaire au doucle clic salon
+#- alias: Double clic sonoff salon - B2
+#  id: sonoff.double.salon.2
+#  trigger:
+#    platform: mqtt
+#    topic: sonoff/salon/stat/BUTTON2T
+#  condition: 
+#    condition: template
+#    value_template: "{{ trigger.payload_json['TRIG'] == 'DOUBLE' }}"
+#  action:
+#    - service: switch.toggle
+#      entity_id: switch.plug_158d0001a5d465
+# Toggle la lampe de chevet au doucle clic chambre
+- alias: Double clic sonoff chambre Alex
+  id: sonoff.double.chambre.alex
+  trigger:
+    platform: mqtt
+    topic: sonoff/chambre/alex/stat/BUTTON1T
+  condition: 
+    condition: template
+    value_template: "{{ trigger.payload_json['TRIG'] == 'DOUBLE' }}"
+  action:
+    - service: light.toggle
+      entity_id: light.yeelight_bedside_7811dc904840
+# Toggle le ledstrip au doucle clic Doudou
+- alias: Double clic sonoff chambre Doudou
+  id: sonoff.double.chambre.doudou
+  trigger:
+    platform: mqtt
+    topic: sonoff/chambre/doudou/stat/BUTTON1T
+  condition: 
+    condition: template
+    value_template: "{{ trigger.payload_json['TRIG'] == 'DOUBLE' }}"
+  action:
+    - service: light.toggle
+      entity_id: light.yeelight_strip2_04cf8c7acfe8
+# Toggle le plan de travail au doucle clic cuisine
+- alias: Double clic sonoff cuisine 1
+  id: sonoff.double.cuicine.1
+  trigger:
+    - platform: mqtt
+      topic: sonoff/cuisine/stat/BUTTON1T
+    - platform: mqtt
+      topic: sonoff/cuisine/stat/BUTTON2T
+  condition: 
+    condition: template
+    value_template: "{{ trigger.payload_json['TRIG'] == 'DOUBLE' }}"
+  action:
+    - service: automation.trigger
+      entity_id: automation.bouton_cuisine
+
+#################################
 #      wow effect (cube)        #
 #################################
 # rotate change la couleur du salon 
